@@ -1,0 +1,32 @@
+<!-- Bootstrap Navbar -->
+<nav class="navbar navbar-light bg-faded">
+  <div class="container">
+    <a class="navbar-brand" href="#">Mean</a>
+  </div>
+</nav>
+
+<div class="container">
+  <div [style.margin-top.px]="10" class="row">
+    <h3>Add new User</h3>
+    <form class="form-inline">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" class="form-control" id="email" #name>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="number" class="form-control" id="password" #age>
+      </div>
+      <button type="button" (click)="addPerson(email.value, password.value)"
+      class="btn btn-primary">Add person</button>
+    </form>
+  </div>
+  <div [style.margin-top.px]="10" class="row">
+    <h3>People</h3>
+    <!-- Bootstrap Card -->
+    <div [style.margin-right.px]="10" class="card card-block col-md-3" *ngFor="let person of people">
+    <h4 class="card-title">{{person.email}}  {{person.password}}</h4>
+    </div>
+  </div>
+</div>
