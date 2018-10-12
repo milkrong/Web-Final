@@ -9,11 +9,12 @@
     <title>Title</title>
 </head>
 <body>
+<!--navigation-->
 <nav class="navbar navbar-expand-lg bg-light">
-    <a href="index.html" class="mx-lg-5">
+    <a href="index.html" class="mx-sm-5">
         <img src="img/facebook.svg" alt="brand" width="30px" height="30px">
     </a>
-    <form class="my-2 my-lg-0 mr-lg-4">
+    <form class="my-2 my-lg-0 mr-sm-4">
         <div class="input-group">
             <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
             <div class="input-group-append">
@@ -49,7 +50,7 @@
             </li>
         </ul>
 
-        <ul class="navbar-nav ml-md-auto mr-lg-5">
+        <ul class="navbar-nav ml-md-auto mr-sm-5">
             <li class="nav-item mr-2">
                 <a href="#" class="nav-link">
                     <i class="far fa-comment"></i>
@@ -71,7 +72,67 @@
     </div>
     
 </nav>
-
+<!--nav end-->
+<!--main wrapper-->
+<div class="container">
+    <div class="row">
+        <!--left section-->
+        <div class="left-area col-lg-3 col-md-12 mr-lg-3">
+            <div class="card mt-5 shadow-sm" style="width: 18rem;">
+                <img class="card-img-top" src="http://placehold.it/30x20" alt="Card image cap">
+                <div class="card-body">
+                    <h5 class="card-title">Eric Liu</h5>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Cras justo odio</li>
+                    <li class="list-group-item">Dapibus ac facilisis in</li>
+                    <li class="list-group-item">Vestibulum at eros</li>
+                </ul>
+                <div class="card-body">
+                    <a href="#" class="card-link">View Profile</a>
+                </div>
+            </div>
+        </div>
+        <!--main section-->
+        <div class="main-area col-lg-6 col-md-12 mx-lg-3">
+            <div class="new-feed-form mt-5 shadow-sm p-3 ">
+                <ul class="nav nav-tabs" id="new-feed-tab" role="tablist">
+                    <li class="nav-item">
+                        <a href="#post" class="nav-link active" id="post-tab" data-toggle="tab"
+                           role="tab" aria-controls="post" aria-selected="true">New Post</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#media" class="nav-link" id="media-tab" data-toggle="tab"
+                        role="tab" aria-controls="media" aria-selected="false">Media</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#long" class="nav-link" id="long-tab" data-toggle="tab"
+                        role="tab" aria-controls="long" aria-selected="false">Long Post</a>
+                    </li>
+                </ul>
+                <div class="tab-content" id="new-feed-content">
+                    <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
+                        <form>
+                            <div class="form-group">
+                                <textarea class="form-control" id="postInput" rows="4" placeholder="Edit Here"></textarea>
+                            </div>
+                            <div class="post-options text-right">
+                                <button class="btn btn-light">cancel</button>
+                                <button class="btn btn-light"><i class="far fa-paper-plane"></i></button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="media" role="tabpanel" aria-labelledby="media-tab"></div>
+                    <div class="tab-pane fade" id="long" role="tabpanel" aria-labelledby="long-tab"></div>
+                </div>
+            </div>
+        </div>
+        <!--right section-->
+        <div class="right-area col-lg-3 col-md-12 ml-lg-3"></div>
+    </div>
+</div>
+<!--end main-->
 
 <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
