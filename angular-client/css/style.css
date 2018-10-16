@@ -1,9 +1,25 @@
 @import url('https://fonts.googleapis.com/css?family=Pangolin');
 
+/* navigation */
 nav {
     font-family: 'Pangolin', cursive;
 }
 
-.avatar {
 
+/* new feed */
+.new-feed .new-feed-card .feed-topbar .user-avatar img{
+    position: relative;
+    bottom: 1.2rem;
+}
+
+.new-feed .new-feed-card .feed-topbar .user-name h3 {
+    font-size: 1.2rem;
+    position: relative;
+    top: 5px;
+}
+
+.new-feed .new-feed-card .feed-topbar .user-name span {
+    font-size: 0.8rem;
+    position: relative;
+    bottom: 8px
 }
