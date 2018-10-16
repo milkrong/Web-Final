@@ -5,6 +5,12 @@ nav {
     font-family: 'Pangolin', cursive;
 }
 
+nav .navigation-group .profile-navigation img {
+    position: relative;
+    bottom: 4.5px;
+    margin-right: 4px;
+    float: left;
+}
 
 /* new feed */
 .new-feed .new-feed-card .feed-topbar .user-avatar img{
@@ -22,4 +28,8 @@ nav {
     font-size: 0.8rem;
     position: relative;
     bottom: 8px
+}
+
+.new-feed .new-feed-card .feed-topbar .feed-option a {
+    color: grey;
 }

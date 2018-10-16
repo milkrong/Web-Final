@@ -5,79 +5,84 @@
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
     <link rel="stylesheet" href="css/all.min.css" type="text/css">
     <link rel="stylesheet" href="css/style.css" type="text/css">
-
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.4.4/plyr.css">
     <title>Title</title>
 </head>
 <body>
 <!--navigation-->
-<nav class="navbar navbar-expand-lg bg-light">
-    <a href="index.html" class="mx-sm-5">
-        <img src="img/facebook.svg" alt="brand" width="30px" height="30px">
-    </a>
-    <form class="my-2 my-lg-0 mr-sm-4">
-        <div class="input-group">
-            <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
-            <div class="input-group-append">
-                <button type="button" class="btn btn-outline-secondary my-2 my-sm-0"><i class="fa fa-search"></i></button>
-            </div>
-        </div>
-    </form>
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="fa fa-bars"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a href="index.html" class="nav-link">
-                    <i class="fas fa-home"></i>
-                    Home
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-star"></i>
-                    Favorites
-                </a>
-            </li>
-            <li class="nav-item">
-                <a href="#" class="nav-link">
-                    <i class="far fa-kiss"></i>
-                    Recommendation
-                </a>
-            </li>
-        </ul>
-
-        <ul class="navbar-nav ml-md-auto mr-sm-5">
-            <li class="nav-item mr-2">
-                <a href="#" class="nav-link">
-                    <i class="far fa-comment"></i>
-                    Comments
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <img src="http://placehold.it/30x30" alt="avatar" class="float-left rounded-circle">
-                    My Profile
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a href="#" class="dropdown-item">My Account</a>
-                    <a href="#" class="dropdown-item">My Friends</a>
+<nav class="top-nav navbar navbar-expand-lg bg-light">
+    <div class="brand">   
+        <a href="index.html" class="mx-sm-5">
+            <img src="img/facebook.svg" alt="brand" width="30px" height="30px">
+        </a>
+    </div> 
+    <div class="search-bar">
+        <form class="my-2 my-lg-0 mr-sm-4">
+            <div class="input-group">
+                <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+                <div class="input-group-append">
+                    <button type="button" class="btn btn-outline-secondary my-2 my-sm-0"><i class="fa fa-search"></i></button>
                 </div>
-            </li>
-        </ul>
+            </div>
+        </form>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span>
+        </button>
+    </div>
+    <div class="navigation-group collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navigation">    
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a href="index.html" class="nav-link">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-star"></i>
+                        Favorites
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-kiss"></i>
+                        Recommendation
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="profile-navigation ml-md-auto">
+            <ul class="navbar-nav mr-sm-5">
+                <li class="nav-item mr-2">
+                    <a href="#" class="nav-link">
+                        <i class="far fa-comment"></i>
+                        Notice
+                    </a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                        <img src="http://placehold.it/30x30" alt="avatar" class="rounded-circle">
+                        My Profile
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a href="#" class="dropdown-item">My Account</a>
+                        <a href="#" class="dropdown-item">My Friends</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
     
 </nav>
 <!--nav end-->
 <!--main wrapper-->
-<div class="container">
+<div class="container-fluid px-sm-2 px-lg-5">
     <div class="row">
         <!--left section-->
-        <div class="left-area col-lg-3 col-md-12 mr-lg-3">
+        <div class="left-area col-lg-3 col-md-12 mr-lg-2">
             <div class="card mt-5 shadow-sm" style="width: 18rem;">
                 <img class="card-img-top" src="http://placehold.it/30x20" alt="Card image cap">
                 <div class="card-body">
@@ -95,7 +100,7 @@
             </div>
         </div>
         <!--main section-->
-        <div class="main-area col-lg-6 col-md-12 mx-lg-3">
+        <div class="main-area col-lg-6 col-md-12 mx-lg-2">
             <div class="new-feed-form mt-5 shadow-sm p-3 ">
                 <ul class="nav nav-tabs" id="new-feed-tab" role="tablist">
                     <li class="nav-item">
@@ -127,9 +132,9 @@
                     <div class="tab-pane fade" id="long" role="tabpanel" aria-labelledby="long-tab"></div>
                 </div>
             </div>
-            <div class="new-feed mt-4 shadow">
-                <div class="new-feed-card">
-                    <div class="feed-topbar p-2">
+            <div class="new-feed mt-4 shadow-sm">
+                <div class="new-feed-card p-3 my-1 border-bottom">
+                    <div class="feed-topbar">
                         <div class="user-avatar d-inline-block">
                             <img src="http://placehold.it/45x45" alt="" class="rounded-circle">
                         </div>
@@ -137,18 +142,78 @@
                             <h3>Eirc</h3>
                             <span><i class="far fa-clock mr-1"></i>3 mins ago</span>
                         </div> 
+                        <div class="feed-option d-inline-block float-right">
+                            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                        </div>
                     </div>
                     <div class="feed-content">
-
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                            Aliquam luctus hendrerit metus, 
+                            ut ullamcorper quam finibus at. 
+                            Etiam id magna sit amet..
+                            <a href="#">view more</a>
+                        </p>        
                     </div>
-                    <div class="feed-foot">
-
+                    <div class="feed-footbar">
+                        <a href="#"><i class="far fa-heart"></i></a>
+                        <a href="#"><i class="far fa-thumbs-up mx-md-1"></i>12</a>
+                        <a href="#"><i class="far fa-thumbs-down mx-md-1"></i>1</a>
+                        <a href="" class="float-right"><i class="far fa-comment-dots mr-md-2"></i>15 comments</a>
                     </div>
                 </div>
+                <div class="new-feed-card p-3 my-1 border-bottom">
+                        <div class="feed-topbar">
+                            <div class="user-avatar d-inline-block">
+                                <img src="http://placehold.it/45x45" alt="" class="rounded-circle">
+                            </div>
+                            <div class="user-name ml-2 d-inline-block">   
+                                <h3>Eirc</h3>
+                                <span><i class="far fa-clock mr-1"></i>3 mins ago</span>
+                            </div> 
+                            <div class="feed-option d-inline-block float-right">
+                                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                            </div>
+                        </div>
+                        <div class="feed-content mb-2 plyr__video-embed" id="player">
+                            <iframe src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" 
+                                allowfullscreen allowtransparency allow="autoplay">
+                            </iframe>          
+                        </div>
+                        <div class="feed-footbar">
+                            <a href="#"><i class="far fa-heart"></i></a>
+                            <a href="#"><i class="far fa-thumbs-up mx-md-1"></i>12</a>
+                            <a href="#"><i class="far fa-thumbs-down mx-md-1"></i>1</a>
+                            <a href="" class="float-right"><i class="far fa-comment-dots mr-md-2"></i>15 comments</a>
+                        </div>
+                </div>
+                <div class="new-feed-card p-3 my-1 border-bottom">
+                        <div class="feed-topbar">
+                            <div class="user-avatar d-inline-block">
+                                <img src="http://placehold.it/45x45" alt="" class="rounded-circle">
+                            </div>
+                            <div class="user-name ml-2 d-inline-block">   
+                                <h3>Eirc</h3>
+                                <span><i class="far fa-clock mr-1"></i>3 mins ago</span>
+                            </div> 
+                            <div class="feed-option d-inline-block float-right">
+                                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                            </div>
+                        </div>
+                        <div class="feed-content">
+                                   
+                        </div>
+                        <div class="feed-footbar">
+                            <a href="#"><i class="far fa-heart"></i></a>
+                            <a href="#"><i class="far fa-thumbs-up mx-md-1"></i>12</a>
+                            <a href="#"><i class="far fa-thumbs-down mx-md-1"></i>1</a>
+                            <a href="" class="float-right"><i class="far fa-comment-dots mr-md-2"></i>15 comments</a>
+                        </div>
+                </div>
             </div>
+                    
         </div>
         <!--right section-->
-        <div class="right-area col-lg-3 col-md-12 ml-lg-3"></div>
+        <div class="right-area col-lg-3 col-md-12 ml-lg-2"></div>
     </div>
 </div>
 <!--end main-->
@@ -163,5 +228,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
 </script>
+<script src="https://cdn.plyr.io/3.4.4/plyr.js"></script>
 </body>
 </html>
