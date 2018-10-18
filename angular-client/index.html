@@ -80,28 +80,28 @@
 </nav>
 <!--nav end-->
 <!--main wrapper-->
-<div class="container-fluid px-sm-2 px-lg-5">
+<div class="container-fluid">
     <div class="row">
         <!--left section-->
-        <div class="left-area col-lg-3 col-md-12 mr-lg-2">
-            <div class="card mt-5 shadow-sm" style="width: 18rem;">
-                <img class="card-img-top" src="http://placehold.it/30x20" alt="Card image cap">
+        <div class="left-area col-lg-3 col-md-9 mr-lg-2">
+            <div class="card mt-5 shadow-sm profile-card">
+                <img class="card-img-top" src="http://placehold.it/30x20" alt="Profile img">
                 <div class="card-body">
                     <h5 class="card-title">Eric Liu</h5>
                     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                <ul class="list-group list-group-flush d-none d-lg-block">
+                    <li class="list-group-item">22 Followers</li>
+                    <li class="list-group-item">34 Following</li>
+                    <li class="list-group-item">34 Posts</li>
                 </ul>
                 <div class="card-body">
-                    <a href="#" class="card-link">View Profile</a>
+                    <a href="#" class="card-link">View Page</a>
                 </div>
             </div>
         </div>
         <!--main section-->
-        <div class="main-area col-lg-6 col-md-12 mx-lg-2">
+        <div class="main-area col-lg-5 col-md-9">
             <div class="new-feed-form mt-5 shadow-sm p-3 ">
                 <ul class="nav nav-tabs" id="new-feed-tab" role="tablist">
                     <li class="nav-item">
@@ -147,13 +147,16 @@
                             <a href="#"><i class="fas fa-ellipsis-v"></i></a>
                         </div>
                     </div>
-                    <div class="feed-content">
+                    <div class="feed-content mb-2">
                         <p class="text-feed">Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                             Aliquam luctus hendrerit metus, 
                             ut ullamcorper quam finibus at. 
                             Etiam id magna sit amet..
                             <a href="#">view more</a>
                         </p>        
+                    </div>
+                    <div class="feed-info mb-2">
+                        <span class="badge badge-pill badge-primary">Music Comment</span>
                     </div>
                     <div class="feed-footbar">
                         <a href="#"><i class="far fa-heart"></i></a>
@@ -163,24 +166,80 @@
                     </div>
                 </div>
                 <div class="new-feed-card p-3 my-1 border-bottom">
-                        <div class="feed-topbar">
-                            <div class="user-avatar d-inline-block">
-                                <img src="http://placehold.it/45x45" alt="" class="rounded-circle">
+                    <div class="feed-topbar">
+                        <div class="user-avatar d-inline-block">
+                            <img src="http://placehold.it/45x45" alt="" class="rounded-circle">
+                        </div>
+                        <div class="user-name ml-2 d-inline-block">
+                            <h3>Eirc</h3>
+                            <span><i class="far fa-clock mr-1"></i>3 mins ago</span>
+                        </div>
+                        <div class="feed-option d-inline-block float-right">
+                            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                        </div>
+                    </div>
+                    <div class="feed-content mb-2">
+                        <div id="player" data-plyr-provider="youtube" data-plyr-embed-id="ScMzIvxBSi4"></div>
+                    </div>
+                    <div class="feed-info mb-2">
+                        <span class="badge badge-pill badge-primary">Music MV</span>
+                    </div>
+                    <div class="feed-footbar">
+                        <a href="#"><i class="far fa-heart"></i></a>
+                        <a href="#"><i class="far fa-thumbs-up mx-md-1"></i>12</a>
+                        <a href="#"><i class="far fa-thumbs-down mx-md-1"></i>1</a>
+                        <a href="" class="float-right"><i class="far fa-comment-dots mr-md-2"></i>15 comments</a>
+                    </div>
+                </div>
+                <div class="new-feed-card p-3 my-1 border-bottom">
+                    <div class="feed-topbar">
+                        <div class="user-avatar d-inline-block">
+                            <img src="http://placehold.it/45x45" alt="" class="rounded-circle">
+                        </div>
+                        <div class="user-name ml-2 d-inline-block">
+                            <h3>Eirc</h3>
+                            <span><i class="far fa-clock mr-1"></i>3 mins ago</span>
+                        </div>
+                        <div class="feed-option d-inline-block float-right">
+                            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                        </div>
+                    </div>
+                    <div class="feed-content mb-2">
+                        <div class="feed-player">
+                            <audio src="#" preload="auto"></audio>
+                            <div class="player-info">
+                                <div class="info-cover">
+                                    <img src="http://placehold.it/90x90" alt="cd-cover">
+                                </div>
+                                <div class="player-meta">
+                                    <div class="meta-title">Shape Of You</div>
+                                    <div class="meta-author">XXXX</div>
+                                    <span class="meta-play-time-text">01:31</span>
+                                </div>
                             </div>
-                            <div class="user-name ml-2 d-inline-block">   
-                                <h3>Eirc</h3>
-                                <span><i class="far fa-clock mr-1"></i>3 mins ago</span>
-                            </div> 
-                            <div class="feed-option d-inline-block float-right">
-                                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                            <canvas class="player-spectrum"></canvas>
+                            <!--<div class="player-lyric"> -->
+                                <!---->
+                            <!--</div>-->
+                            <div class="player-control">
+                                <div class="player-control-button">
+                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-pause"></i>
+                                </div>
+                            </div>
+                            <div class="player-timeline-bg">
+                                <div class="player-timeline">
+                                    <div class="player-timeline-passed">
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="feed-content mb-2 plyr__video-embed" id="player">
-                            <iframe src="https://www.youtube.com/embed/bTqVqk7FSmY?origin=https://plyr.io&amp;iv_load_policy=3&amp;modestbranding=1&amp;playsinline=1&amp;showinfo=0&amp;rel=0&amp;enablejsapi=1" 
-                                allowfullscreen allowtransparency allow="autoplay">
-                            </iframe>          
-                        </div>
-                        <div class="feed-footbar">
+                    </div>
+                    <div class="feed-info mb-2">
+                        <span class="badge badge-pill badge-primary">Music</span>
+                        <span class="badge badge-pill badge-info">Pop</span>
+                    </div>
+                    <div class="feed-footbar">
                             <a href="#"><i class="far fa-heart"></i></a>
                             <a href="#"><i class="far fa-thumbs-up mx-md-1"></i>12</a>
                             <a href="#"><i class="far fa-thumbs-down mx-md-1"></i>1</a>
@@ -188,70 +247,97 @@
                         </div>
                 </div>
                 <div class="new-feed-card p-3 my-1 border-bottom">
-                        <div class="feed-topbar">
-                            <div class="user-avatar d-inline-block">
-                                <img src="http://placehold.it/45x45" alt="" class="rounded-circle">
-                            </div>
-                            <div class="user-name ml-2 d-inline-block">   
-                                <h3>Eirc</h3>
-                                <span><i class="far fa-clock mr-1"></i>3 mins ago</span>
-                            </div> 
-                            <div class="feed-option d-inline-block float-right">
-                                <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                            </div>
+                    <div class="feed-topbar">
+                        <div class="user-avatar d-inline-block">
+                            <img src="http://placehold.it/45x45" alt="" class="rounded-circle">
                         </div>
-                        <div class="feed-content">
-                            <div class="feed-player">
-                                <audio src="#" preload="auto"></audio>
-                                <div class="player-info">
-                                    <div class="info-cover">
-                                        <img src="" alt="cd-cover">
+                        <div class="user-name ml-2 d-inline-block">
+                            <h3>Eirc</h3>
+                            <span><i class="far fa-clock mr-1"></i>3 mins ago</span>
+                        </div>
+                        <div class="feed-option d-inline-block float-right">
+                            <a href="#"><i class="fas fa-ellipsis-v"></i></a>
+                        </div>
+                    </div>
+                    <div class="feed-content mb-2">
+                        <p class="text-feed">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                            Aliquam luctus hendrerit metus,
+                            ut ullamcorper quam finibus at.
+                            Etiam id magna sit amet..
+                            <a href="#">view more</a>
+                        </p>
+                    </div>
+                    <div class="feed-footbar">
+                        <a href="#"><i class="far fa-heart"></i></a>
+                        <a href="#"><i class="far fa-thumbs-up mx-md-1"></i>12</a>
+                        <a href="#"><i class="far fa-thumbs-down mx-md-1"></i>1</a>
+                        <a href="" class="float-right"><i class="far fa-comment-dots mr-md-2"></i>15 comments</a>
+                    </div>
+                    <div class="feed-comments border-top mt-2">
+                        <ul>
+                            <li>
+                                <div class="comment-list">
+                                    <div class="avatar">
+                                        <img src="http://placehold.it/30x30" alt="comment avatar">
                                     </div>
-                                    <div class="player-meta">
-                                            <div class="meta-title">Shape Of You</div>
-                                            <div class="meta-author">XXXX</div>
-                                            <div class="meta-play-time">
-                                                <span class="meta-play-time-text">01:31</span>
+                                    <div class="comment">
+                                        <h3>Jone</h3>
+                                        <span><i class="far fa-clock mr-1"></i>3 min ago</span>
+                                        <p>Hi,</p>
+                                        <a href="#"><i class="fas fa-reply-all mr-1"></i>Replay</a>
+                                    </div>
+                                </div>
+                                <ul>
+                                    <li>
+                                        <div class="comment-list">
+                                            <div class="avatar">
+                                                <img src="http://placehold.it/30x30" alt="comment avatar">
                                             </div>
-                                    </div>
-                                </div>
-                                <canvas class="player-spectrum"></canvas>
-                                <div class="player-lyric"> 
-                                    
-                                </div>
-                                <div class="player-control">
-                                    <div class="player-control-button">
-                                        <i class="fas fa-play"></i>
-                                        <i class="fas fa-pause"></i>
-                                    </div>
-                                </div>
-                                <div class="player-duration">
-                                    <i class="far fa-clock"></i>
-                                    <span class="player-duration-text">5:20</span>
-                                </div>
-                                <div class="player-loading">
-                                    <span class="animated infinite shake delay-2s">Loading</span>
-                                </div>
-                                <div class="player-timeline-bg">
-                                    <div class="player-timeline">
-                                        <div class="player-timeline-passed" width="50%">
+                                            <div class="comment">
+                                                <h3>Jone</h3>
+                                                <span><i class="far fa-clock mr-1"></i>3 min ago</span>
+                                                <p>Hi,</p>
+                                                <a href="#"><i class="fas fa-reply-all mr-1"></i>Replay</a>
+                                            </div>
                                         </div>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <div class="comment-list">
+                                    <div class="avatar">
+                                        <img src="http://placehold.it/30x30" alt="comment avatar">
+                                    </div>
+                                    <div class="comment">
+                                        <h3>Jone</h3>
+                                        <span><i class="far fa-clock mr-1"></i>3 min ago</span>
+                                        <p>Hi,</p>
+                                        <a href="#"><i class="fas fa-reply-all mr-1"></i>Replay</a>
                                     </div>
                                 </div>
-                            </div>       
+                            </li>
+                        </ul>
+                        <div class="post-comment">
+                            <form>
+                                <div class="input-group">
+                                    <input type="text" placeholder="Post a comment" class="form-control">
+                                    <div class="input-group-append">
+                                        <button class="btn btn-primary" type="submit">Send</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                        <div class="feed-footbar">
-                            <a href="#"><i class="far fa-heart"></i></a>
-                            <a href="#"><i class="far fa-thumbs-up mx-md-1"></i>12</a>
-                            <a href="#"><i class="far fa-thumbs-down mx-md-1"></i>1</a>
-                            <a href="" class="float-right"><i class="far fa-comment-dots mr-md-2"></i>15 comments</a>
-                        </div>
+                    </div>
                 </div>
             </div>
-                    
+            <div class="feed-loading">
+                <h2 class="text-info animated infinite swing delay-2s">Loading</h2>
+            </div>
         </div>
         <!--right section-->
-        <div class="right-area col-lg-3 col-md-12 ml-lg-2"></div>
+        <div class="right-area col-lg-2 col-md-9 ml-lg-2">
+            
+        </div>
     </div>
 </div>
 <!--end main-->
@@ -267,5 +353,6 @@
         integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
 </script>
 <script src="node_modules/plyr/dist/plyr.min.js"></script>
+<script>const player = new Plyr('#player');</script>
 </body>
 </html>
