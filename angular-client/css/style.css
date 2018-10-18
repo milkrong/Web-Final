@@ -7,9 +7,10 @@ body {
     font-family: 'Chakra Petch', sans-serif;
 }
 
-.main-area .new-feed-form,
-.main-area .new-feed {
-    background-color: #fff;
+h3 {
+    font-size: 20px;
+    font-weight: 400;
+    text-transform: capitalize;
 }
 
 /* navigation */
@@ -24,10 +25,15 @@ nav .navigation-group .profile-navigation img {
     float: left;
 }
 
+/*===== Left Section =====*/
 /* profile card */
-.profile-card {
-    width: 80%;
-    float: right;
+
+
+/*===== Main Section =====*/
+
+.main-area .new-feed-form,
+.main-area .new-feed {
+    background-color: #fff;
 }
 
 /* new feed top*/
@@ -37,7 +43,6 @@ nav .navigation-group .profile-navigation img {
 }
 
 .feed-topbar .user-name h3 {
-    font-size: 1.2rem;
     position: relative;
     top: 5px;
 }
@@ -267,8 +272,6 @@ nav .navigation-group .profile-navigation img {
 }
 
 .comment h3 {
-    font-size: 16px;
-    font-weight: 400;
     margin-bottom: 10px;
 }
 
@@ -292,7 +295,7 @@ nav .navigation-group .profile-navigation img {
 }
 
 .comment > a:hover {
-    color: #D94240;
+    color: #007bff;
     text-decoration: none;
 }
 
@@ -305,4 +308,97 @@ nav .navigation-group .profile-navigation img {
     padding-top: 40px;
     text-align: center;
     height: 80px;
+}
+
+/*===== Right Section =====*/
+
+/* Hot music */
+.right-area .music-rank {
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    width: 80%;
+}
+
+.music-rank .rank-head {
+    width: 100%;
+
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px 20px;
+}
+
+.music-rank .music-slider {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    display: table;
+}
+
+.music-slider .music-card {
+    overflow: hidden;
+}
+
+.music-slider .music-card .card-title {
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.music-slider .music-card .music-author {
+    font-size: 15px;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.music-slider .music-card .music-duration {
+    font-size: 15px;
+    display: inline-block;
+}
+
+
+.music-card .card-control {
+    text-align: center;
+    display: block;
+}
+
+.music-card .card-control i{
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.music-slider a.btn-left {
+    display: table-cell;
+}
+
+.music-slider a img{
+    width: 10px;
+    height: 15px;
+}
+
+.music-slider .carousel-inner {
+    display: table-cell;
+    width: 90%;
+}
+
+.music-slider a.btn-right {
+    display: table-cell;
+}
+
+
+/* Music Categories */
+.right-area .tags {
+    margin-top: 20px;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    width: 80%;
+}
+
+.tags .tags-head {
+    width: 100%;
+
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px 20px;
+}
+
+.tags .tags-body {
+    padding: 10px;
 }

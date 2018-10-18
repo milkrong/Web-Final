@@ -10,11 +10,11 @@
     <title>Title</title>
 </head>
 <body>
-<!--navigation-->
+<!----------- Navigation ------------>
 <nav class="top-nav navbar navbar-expand-lg bg-light">
     <div class="brand">   
         <a href="index.html" class="mx-sm-5">
-            <img src="img/facebook.svg" alt="brand" width="30px" height="30px">
+            <img src="img/icons/facebook.svg" alt="brand" width="30px" height="30px">
         </a>
     </div> 
     <div class="search-bar">
@@ -78,12 +78,15 @@
     </div>
     
 </nav>
-<!--nav end-->
-<!--main wrapper-->
+<!-- Nav End -->
+
+<!------------ Main Wrapper ------------->
 <div class="container-fluid">
-    <div class="row">
-        <!--left section-->
-        <div class="left-area col-lg-3 col-md-9 mr-lg-2">
+    <div class="row justify-content-center">
+        <!-- Left Section -->
+        <div class="left-area col-lg-2 col-md-9 mr-lg-2">
+
+            <!-- Profile Card -->
             <div class="card mt-5 shadow-sm profile-card">
                 <img class="card-img-top" src="http://placehold.it/30x20" alt="Profile img">
                 <div class="card-body">
@@ -99,9 +102,14 @@
                     <a href="#" class="card-link">View Page</a>
                 </div>
             </div>
+            <!-- End Profile Card -->
+
         </div>
-        <!--main section-->
+        <!-- Left Section End -->
+
+        <!-- Main Section -->
         <div class="main-area col-lg-5 col-md-9">
+            <!-- New Feed From -->
             <div class="new-feed-form mt-5 shadow-sm p-3 ">
                 <ul class="nav nav-tabs" id="new-feed-tab" role="tablist">
                     <li class="nav-item">
@@ -133,6 +141,9 @@
                     <div class="tab-pane fade" id="long" role="tabpanel" aria-labelledby="long-tab"></div>
                 </div>
             </div>
+            <!-- End Form -->
+
+            <!-- Feeds -->
             <div class="new-feed mt-4 shadow-sm">
                 <div class="new-feed-card p-3 my-1 border-bottom">
                     <div class="feed-topbar">
@@ -330,17 +341,103 @@
                     </div>
                 </div>
             </div>
+            <!-- End Feeds -->
+
+            <!-- Loading -->
             <div class="feed-loading">
                 <h2 class="text-info animated infinite swing delay-2s">Loading</h2>
             </div>
+            <!-- End Loading-->
+
         </div>
-        <!--right section-->
-        <div class="right-area col-lg-2 col-md-9 ml-lg-2">
+        <!-- Main Section End -->
+
+
+        <!-- Right Section -->
+        <div class="right-area col-lg-3 col-md-9 ml-lg-2">
+            <!-- Hot Music-->
+            <div class="music-rank mt-5">
+                <div class="rank-head">
+                    <h3>Hot Music</h3>
+                </div>
+                <div class="carousel slide music-slider" id="top-music" data-ride="carousel" data-interval="3000">
+                    <a class="btn btn-left" href="#top-music" data-slide="prev">
+                        <img src="img/icons/hand-drawn/left-arrow-hand-drawn-outline.svg" alt="">
+                    </a>
+                    <div class="carousel-inner">
+                         <div class="carousel-item active">
+                            <div class="card text-white music-card">
+                                <img class="card-img"   src="http://placehold.it/30x30" alt="album cover">
+                                <div class="card-img-overlay">
+                                    <h4 class="card-title music-name">Shape of my heart</h4>
+                                    <p class="card-text music-author">XXXX</p>
+                                    <p class="card-text music-duration">5:03</p>
+                                    <div class="card-control">
+                                        <i class="fas fa-play px-2"></i>
+                                        <i class="fas fa-pause px-2"></i>
+                                        <i class="fas fa-stop px-2"></i>
+                                    </div>
+                                </div>
+                            </div>
+                         </div>
+                         <div class="carousel-item">
+                             <div class="card text-white music-card">
+                                 <img class="card-img"   src="http://placehold.it/30x30" alt="album cover">
+                                 <div class="card-img-overlay">
+                                     <h4 class="card-title music-name">Shape of her heart</h4>
+                                     <p class="card-text music-author">XXXX</p>
+                                     <p class="card-text music-duration">5:03</p>
+                                     <div class="card-control">
+                                         <i class="fas fa-play px-2"></i>
+                                         <i class="fas fa-pause px-2"></i>
+                                         <i class="fas fa-stop px-2"></i>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                         <div class="carousel-item">
+                             <div class="card text-white music-card">
+                                 <img class="card-img"   src="http://placehold.it/30x30" alt="album cover">
+                                 <div class="card-img-overlay">
+                                     <h4 class="card-title music-name">Shape of your heart</h4>
+                                     <p class="card-text music-author">XXXX</p>
+                                     <p class="card-text music-duration">5:03</p>
+                                     <div class="card-control">
+                                         <i class="fas fa-play px-2"></i>
+                                         <i class="fas fa-pause px-2"></i>
+                                         <i class="fas fa-stop px-2"></i>
+                                     </div>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                    <a class="btn btn-right" href="#top-music" data-slide="next">
+                        <img src="img/icons/hand-drawn/right-arrow-hand-drawn-outline.svg" alt="">
+                    </a>
+                </div>
+            </div>
+            <!-- Hot Music End-->
+
+            <!-- Category Tags-->
+            <div class="tags">
+                <div class="tags-head">
+                    <h3>Categories</h3>
+                </div>
+                <div class="tags-body">
+                    <a href="#Posts"><span class="badge badge-pill badge-primary">#Posts</span></a>
+                    <a href="#MV"><span class="badge badge-pill badge-primary">#MV</span></a>
+                    <a href="#Music"><span class="badge badge-pill badge-primary">#Music</span></a>
+                    <a href="#Pop"><span class="badge badge-pill badge-success">#Pop Music</span></a>
+                    <a href="#Hip"><span class="badge badge-pill badge-success">#Hip Hop</span></a>
+                </div>
+            </div>
+            <!-- End Category Tags-->
+
             
         </div>
     </div>
 </div>
-<!--end main-->
+<!------------End Main ------------>
 
 <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
