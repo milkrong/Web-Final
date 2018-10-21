@@ -14,15 +14,15 @@ h3 {
 }
 
 /* navigation */
-nav {
-    font-family: 'Pangolin', cursive;
-}
-
 nav .navigation-group .profile-navigation img {
     position: relative;
     bottom: 4.5px;
     margin-right: 4px;
     float: left;
+}
+
+.profile-navigation .profile-list .profile-link-group {
+    font-size: 14px;
 }
 
 /*===== Left Section =====*/
@@ -315,7 +315,6 @@ nav .navigation-group .profile-navigation img {
 /* Hot music */
 .right-area .music-rank {
     background: #fff;
-    border: 1px solid #e5e5e5;
     width: 80%;
 }
 
@@ -388,7 +387,6 @@ nav .navigation-group .profile-navigation img {
 .right-area .tags {
     margin-top: 20px;
     background: #fff;
-    border: 1px solid #e5e5e5;
     width: 80%;
 }
 
@@ -401,4 +399,18 @@ nav .navigation-group .profile-navigation img {
 
 .tags .tags-body {
     padding: 10px;
+}
+
+
+
+/* Back to top*/
+.cd-top.cd-top--show {
+    /* the button becomes visible */
+    visibility: visible;
+    opacity: 1;
+}
+
+.cd-top.cd-top--fade-out {
+    /* if the user keeps scrolling down, the button is out of focus and becomes less visible */
+    opacity: .5;
 }

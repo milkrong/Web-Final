@@ -42,14 +42,8 @@
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="far fa-star"></i>
-                        Favorites
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
                         <i class="far fa-kiss"></i>
-                        Recommendation
+                        Friends
                     </a>
                 </li>
             </ul>
@@ -62,15 +56,34 @@
                         Notice
                     </a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="profile-dropdown nav-item dropdown">
                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                         <img src="http://placehold.it/30x30" alt="avatar" class="rounded-circle">
-                        My Profile
+                        Eric Liu
                     </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a href="#" class="dropdown-item">My Account</a>
-                        <a href="#" class="dropdown-item">My Friends</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <ul class="list-group list-group-flush profile-list">
+                            <li class="list-group-item">
+                                About Me
+                                <div class="list-group profile-link-group">
+                                    <a href="#" class="list-group-item py-1">My Page</a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                Notifications
+                                <div class="list-group">
+                                    <a href="" class="list-group-item py-1">New Friends</a>
+                                    <a href="" class="list-group-item py-1">Comments</a>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                Settings
+                                <div class="list-group">
+                                    <a href="" class="list-group-item py-1">Account</a>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
                 </li>
             </ul>
@@ -111,34 +124,50 @@
         <div class="main-area col-lg-5 col-md-9">
             <!-- New Feed From -->
             <div class="new-feed-form mt-5 shadow-sm p-3 ">
-                <ul class="nav nav-tabs" id="new-feed-tab" role="tablist">
+                <ul class="nav nav-pills mb-3" id="new-feed-tab" role="tablist">
                     <li class="nav-item">
                         <a href="#post" class="nav-link active" id="post-tab" data-toggle="tab"
-                           role="tab" aria-controls="post" aria-selected="true">New Post</a>
+                           role="tab" aria-controls="post" aria-selected="true">
+                            <i class="fas fa-cannabis mr-1"></i>New Post
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a href="#media" class="nav-link" id="media-tab" data-toggle="tab"
-                        role="tab" aria-controls="media" aria-selected="false">Media</a>
+                        role="tab" aria-controls="media" aria-selected="false">
+                            <i class="fab fa-algolia mr-1"></i>Media
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#long" class="nav-link" id="long-tab" data-toggle="tab"
-                        role="tab" aria-controls="long" aria-selected="false">Long Post</a>
+                        <a href="#links" class="nav-link" id="links-tab" data-toggle="tab"
+                           role="tab" aria-controls="links" aria-selected="false">
+                            <i class="fas fa-anchor mr-1"></i></i>Link
+                        </a>
                     </li>
                 </ul>
                 <div class="tab-content" id="new-feed-content">
                     <div class="tab-pane fade show active" id="post" role="tabpanel" aria-labelledby="post-tab">
                         <form>
                             <div class="form-group">
-                                <textarea class="form-control" id="postInput" rows="4" placeholder="Edit Here"></textarea>
-                            </div>
-                            <div class="post-options text-right">
-                                <button class="btn btn-light">cancel</button>
-                                <button class="btn btn-light"><i class="far fa-paper-plane"></i></button>
+                                <textarea class="form-control" rows="4" placeholder="Edit Here"></textarea>
                             </div>
                         </form>
                     </div>
-                    <div class="tab-pane fade" id="media" role="tabpanel" aria-labelledby="media-tab"></div>
-                    <div class="tab-pane fade" id="long" role="tabpanel" aria-labelledby="long-tab"></div>
+                    <div class="tab-pane fade" id="media" role="tabpanel" aria-labelledby="media-tab">
+                        <form>
+                            <div class="form-group">
+                                <textarea class="form-control" rows="4" placeholder="Edit Here"></textarea>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="links" role="tabpanel" aria-labelledby="media-tab">
+                        <form>
+                            <input type="text" class="form-control" placeholder="paste your share link here">
+                        </form>
+                    </div>
+                </div>
+                <div class="post-options text-right mt-3">
+                    <button class="btn btn-light text-danger">Clean</button>
+                    <button class="btn btn-light"><i class="far fa-paper-plane"></i></button>
                 </div>
             </div>
             <!-- End Form -->
@@ -356,7 +385,7 @@
         <!-- Right Section -->
         <div class="right-area col-lg-3 col-md-9 ml-lg-2">
             <!-- Hot Music-->
-            <div class="music-rank mt-5">
+            <div class="music-rank mt-5 shadow-sm">
                 <div class="rank-head">
                     <h3>Hot Music</h3>
                 </div>
@@ -419,7 +448,7 @@
             <!-- Hot Music End-->
 
             <!-- Category Tags-->
-            <div class="tags">
+            <div class="tags shadow-sm">
                 <div class="tags-head">
                     <h3>Categories</h3>
                 </div>
@@ -433,11 +462,14 @@
             </div>
             <!-- End Category Tags-->
 
-            
+
         </div>
     </div>
 </div>
 <!------------End Main ------------>
+<!------- Back To Top -------->
+<a href="#0" class="cd-top js-cd-top">Top</a>
+<!-------- End -------->
 
 <script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.7.4/angular.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
