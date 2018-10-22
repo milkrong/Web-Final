@@ -1,0 +1,574 @@
+@import url('https://fonts.googleapis.com/css?family=Pangolin|Chakra+Petch|Monoton');
+
+
+/* ============================ Global Css ==================================*/
+body {
+    background-color: #eeeeee;
+    font-family: 'Chakra Petch', sans-serif;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+ul > li {
+    list-style: none;
+}
+
+/* navigation */
+nav .navigation-group .profile-navigation img {
+    position: relative;
+    bottom: 4.5px;
+    margin-right: 4px;
+    float: left;
+}
+
+.profile-navigation .profile-list .profile-link-group {
+    font-size: 14px;
+}
+
+/* =========================== Home Page =================================== */
+/*===== Left Section =====*/
+/* profile card */
+
+
+/*===== Main Section =====*/
+
+.main-area .new-feed-form {
+    background-color: #EAF5FC
+}
+.main-area .new-feed {
+    background-color: #fff;
+}
+
+/* feed navigation */
+.feed-nav-container {
+    padding: 10px 0 5px;
+}
+
+.feed-nav-container .feed-nav {
+    display: flex;
+    padding: 0;
+    background: #fff;
+    justify-content: center;
+    font-weight: 500;
+}
+
+.feed-nav .feed-nav-item {
+    display: flex;
+    margin: 0 20px;
+}
+
+.feed-nav .feed-nav-item.active,
+.feed-nav .feed-nav-item:hover {
+    border-bottom: 2px solid #007bff;
+}
+
+.feed-nav-item a {
+    display: block;
+    padding: 10px 15px;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    color: #b2b2b2;
+}
+
+.feed-nav-item a.active {
+    color: #007bff;
+}
+
+.feed-nav-container .feed-nav-tip {
+    text-align: center;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* new feed top*/
+.feed-topbar .user-avatar img{
+    position: relative;
+    bottom: 1.2rem;
+}
+
+.feed-topbar .user-name h3 {
+    position: relative;
+    top: 5px;
+}
+
+.feed-topbar .user-name span {
+    font-size: 0.8rem;
+    position: relative;
+    bottom: 8px
+}
+
+.feed-topbar .feed-option a {
+    color: grey;
+}
+
+/* new feed music player */
+.feed-content .feed-player {
+    position: relative;
+    box-sizing: border-box;
+    width: 100%;
+    height: 90px;
+
+    background: #FFF;
+    box-shadow: 0 0 20px rgba(59, 59, 177, .18);
+}
+
+.feed-content .feed-player .player-info {
+    font-weight: 300;
+    position: relative;
+
+    left: 0;
+}
+
+.feed-content .feed-player .player-info .info-cover {
+    position: absolute;
+    left: 0;
+    top: 0;
+
+    overflow: hidden;
+
+    height: 84px;
+    padding-right: 10px;
+}
+
+.feed-content .feed-player .player-info .info-cover img {
+    width: 78px;
+    height: 78px;
+
+    border: 6px solid #FFF;
+    box-shadow: 0 0 20px rgba(59, 59, 177, .35);
+}
+
+.feed-content .feed-player .player-info .player-meta {
+    float: left;
+    margin-left: 100px;
+}
+
+.feed-content .feed-player .player-info .player-meta .meta-title {
+    font-size: 14px;
+
+    margin-top: 10px;
+    margin-bottom: 2px;
+
+    color: #6A6B6F;
+}
+
+.feed-content .feed-player .player-info .player-meta .meta-author {
+    font-size: 12px;
+
+    color: #CECED6;
+}
+
+.feed-content .feed-player .player-info .player-meta .meta-play-time-text {
+    font-size: 12px;
+
+    -webkit-transition: all .6s cubic-bezier(0, .36, .51, 1.39) .65s;
+    transition: all .6s cubic-bezier(0, .36, .51, 1.39) .65s;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+
+    color: rgba(0, 0, 0, .6);
+}
+
+.feed-content .feed-player .player-spectrum {
+    position: relative;
+
+    top: 25px;
+    left: 15px;
+
+    width: 30%;
+    height: 30px;
+
+    opacity: 1;
+}
+
+.feed-content .feed-player.has-lyric .player-control-button {
+    display: none;
+}
+
+.feed-content .feed-player .player-control {
+    position: relative;
+    float: right;
+    margin-right: 40px;
+}
+
+.feed-content .feed-player .player-control .player-control-button {
+    position: relative;
+    top: 20px;
+    right: 0;
+
+    width: 50px;
+    height: 50px;
+
+    color: #D94240;
+    border-radius: 50%;
+    background: #FFF;
+    box-shadow: 0 0 10px rgba(59, 59, 177, .22);
+}
+
+.feed-content .feed-player .player-control .player-control-button:hover {
+    -webkit-animation: breath 2s infinite alternate;
+    animation: breath 2s infinite alternate;
+}
+
+.feed-content .feed-player .player-control .player-control-button i {
+    line-height: 50px;
+    position: relative;
+
+    left: 7px;
+
+    transition: all .5s;
+}
+
+.feed-content .feed-player .player-control .player-control-button .fa-play {
+    -webkit-transform: translateX(12px);
+    transform: translateX(12px);
+
+    opacity: 1;
+}
+
+.feed-content .feed-player .player-control.is-play .player-control-button .fa-play {
+    -webkit-transform: translateX(8px);
+    transform: translateX(8px);
+
+    opacity: 0;
+}
+
+.feed-content .feed-player .player-control .player-control-button .fa-pause {
+    -webkit-transform: translateX(-8px);
+    transform: translateX(-8px);
+
+    opacity: 0;
+}
+
+.feed-content .feed-player .player-control-button.is-play .player-control-button .fa-pause {
+    -webkit-transform: translateX(-1px);
+    transform: translateX(-1px);
+
+    opacity: 1;
+}
+
+.feed-content .feed-player .player-timeline-bg {
+    position: absolute;
+
+    height: 8px;
+    bottom: 0;
+    width: 100%;
+}
+
+.feed-content .feed-player .player-timeline {
+    position: absolute;
+    bottom: 0;
+
+    cursor: pointer;
+
+    width: 100%;
+    height: 3px;
+
+    -webkit-transition: all .5s;
+
+    transition: all .5s;
+    -webkit-transform: translateY(2px);
+    transform: translateY(2px);
+
+    background: rgba(231, 231, 239, .8);
+}
+
+.feed-content .feed-player .player-timeline:hover {
+    height: 8px;
+}
+
+.feed-content .feed-player .player-timeline .player-timeline-passed {
+    position: absolute;
+    bottom: 0;
+
+    width: 50%;
+    height: 100%;
+
+    background: #D94240;
+}
+
+.feed-comments {
+    width: 100%;
+    padding-top: 30px;
+}
+
+.feed-comments ul{
+    width: 100%;
+    list-style: none;
+}
+
+.feed-comments .comment-list {
+    padding-bottom: 25px;
+    display: table;
+}
+
+.comment-list .avatar {
+    display: table-cell;
+}
+
+.comment-list .avatar img {
+    border-radius: 100px;
+}
+
+.comment-list .comment {
+    display: table-cell;
+    padding-left: 10px;
+}
+
+.comment h3 {
+    margin-bottom: 10px;
+}
+
+.comment span {
+    color: #b2b2b2;
+    font-size: 14px;
+    display: block;
+}
+
+.comment p {
+    color: #686868;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.comment > a {
+    color: #b2b2b2;
+    display: inline-block;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.comment > a:hover {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.comment-list ul ul {
+    padding-left: 50px;
+}
+
+.feed-loading {
+    font-family: 'Monoton', cursive;
+    padding-top: 40px;
+    text-align: center;
+    height: 80px;
+}
+
+/*===== Right Section =====*/
+
+/* Hot music */
+.right-area .music-rank {
+    background: #fff;
+    width: 80%;
+}
+
+.music-rank .rank-head {
+    width: 100%;
+
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px 20px;
+}
+
+.music-rank .music-slider {
+    width: 100%;
+    padding: 10px;
+    text-align: center;
+    display: table;
+}
+
+.music-slider .music-card {
+    overflow: hidden;
+}
+
+.music-slider .music-card .card-title {
+    font-size: 22px;
+    font-weight: 400;
+    margin-top: 10px;
+}
+
+.music-slider .music-card .music-author {
+    font-size: 15px;
+    display: inline-block;
+    margin-right: 30px;
+}
+
+.music-slider .music-card .music-duration {
+    font-size: 15px;
+    display: inline-block;
+}
+
+
+.music-card .card-control {
+    text-align: center;
+    display: block;
+}
+
+.music-card .card-control i{
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+
+.music-slider a.btn-left {
+    display: table-cell;
+}
+
+.music-slider a img{
+    width: 10px;
+    height: 15px;
+}
+
+.music-slider .carousel-inner {
+    display: table-cell;
+    width: 90%;
+}
+
+.music-slider a.btn-right {
+    display: table-cell;
+}
+
+
+/* Music Categories */
+.right-area .tags {
+    margin-top: 20px;
+    background: #fff;
+    width: 80%;
+}
+
+.tags .tags-head {
+    width: 100%;
+
+    border-bottom: 1px solid #e5e5e5;
+    padding: 20px 20px;
+}
+
+.tags .tags-body {
+    padding: 10px;
+}
+
+
+
+/* Back to top*/
+#return-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgb(0, 0, 0);
+    background: rgba(0, 0, 0, 0.7);
+    width: 50px;
+    height: 50px;
+    display: block;
+    text-decoration: none;
+    -webkit-border-radius: 35px;
+    -moz-border-radius: 35px;
+    border-radius: 35px;
+    display: none;
+    -webkit-transition: all 0.3s linear;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#return-to-top i {
+    color: #fff;
+    margin: 0;
+    position: relative;
+    left: 16px;
+    top: 13px;
+    font-size: 19px;
+    -webkit-transition: all 0.3s ease;
+    -moz-transition: all 0.3s ease;
+    -ms-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+#return-to-top:hover {
+    background: rgba(0, 0, 0, 0.9);
+}
+#return-to-top:hover i {
+    color: #fff;
+    top: 5px;
+}
+
+/* ================================= Home Page End ========================================== */
+
+/* ================================= Personal Page ========================================== */
+
+/* personal cover */
+.cover-section {
+    position: relative;
+    width: 100%
+}
+
+.cover-section img {
+    width: 100%;
+}
+
+.cover-section a {
+    display: inline-block;
+    color: #007bff;
+    background-color: #fff;
+    font-size: 16px;
+    border: 1px solid #007bff;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    padding: 10px 15px;
+	font-weight: 500;
+	margin-right: 15px;
+}
+
+.cover-section a i{
+    padding-right: 5px;
+}
+
+/* personal nav bar */
+.personal-nav-container .personal-nav {
+    display: flex;
+    padding: 0;
+    background: #fff;
+    justify-content: center;
+    font-weight: 400;
+}
+
+.personal-nav .personal-nav-item {
+    display: flex;
+    margin: 0 20px;
+}
+
+.personal-nav .personal-nav-item.active,
+.personal-nav .personal-nav-item:hover {
+    border-bottom: 2px solid #007bff;
+}
+
+.personal-nav-item a {
+    display: block;
+    padding: 10px 15px;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    color: #b2b2b2;
+}
+
+.personal-nav-item a.active {
+    color: #007bff;
+}
+
+/* side section */
+.side-bar .bar-info-list {
+    display: table;
+    padding-left: 0;
+}
+
+.side-bar .bar-info-item {
+    display: table-cell;
+    padding: 10px;
+}
+
+/* ================================= Personal Page End ========================================== */
