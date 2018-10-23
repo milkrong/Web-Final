@@ -502,12 +502,26 @@ nav .navigation-group .profile-navigation img {
 
 /* personal cover */
 .cover-section {
+    width: 100%;
+    height: 300px;
     position: relative;
-    width: 100%
 }
 
-.cover-section img {
+.cover-section img.landing {
     width: 100%;
+}
+
+.cover-section img.big-avatar {
+    position: absolute;
+
+    width: 15rem;
+    height: 15rem;
+
+    bottom: -2rem;
+    left: 17rem;
+
+    border: 4px solid #FFF;
+    border-radius: 150px;
 }
 
 .cover-section a {
@@ -562,12 +576,14 @@ nav .navigation-group .profile-navigation img {
 
 /* side section */
 .side-bar .bar-info-list {
-    display: table;
+    position: relative;
+
+    top: 2rem;
+    display: flex;
     padding-left: 0;
 }
 
 .side-bar .bar-info-item {
-    display: table-cell;
     padding: 10px;
 }
 
