@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="css/all.min.css" type="text/css">
+    <link rel="stylesheet" href="css/style.css" type="text/css">
+    <link rel="stylesheet" href="node_modules/plyr/dist/plyr.css">
+    <link rel="stylesheet" href="node_modules/animate.css/animate.min.css">
+
+    <title>Firends</title>
+</head>
+<body>
+<!----------- Navigation ------------>
+<nav class="top-nav navbar navbar-expand-lg bg-white">
+        <div class="brand">   
+            <a href="index.html" class="mx-sm-3">
+                <img src="img/icons/facebook.svg" alt="brand" width="30px" height="30px">
+            </a>
+        </div> 
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="navigation-group collapse navbar-collapse" id="navbarSupportedContent">
+            <form class="form-inline my-2 my-lg-0 mr-sm-4">
+                    <div class="input-group">
+                        <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-secondary my-2 my-sm-0"><i class="fa fa-search"></i></button>
+                        </div>
+                    </div>
+            </form>
+            <div class="navigation">    
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a href="index.html" class="nav-link">
+                            <i class="fas fa-home"></i>
+                            Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-kiss"></i>
+                            Friends
+                        </a>
+                    </li>
+                </ul>
+            </div>
+    
+            <div class="profile-navigation ml-md-auto">
+                <ul class="navbar-nav mr-sm-5">
+                    <li class="nav-item mr-2">
+                        <a href="#" class="nav-link">
+                            <i class="far fa-comment"></i>
+                            Notice
+                        </a>
+                    </li>
+                    <li class="profile-dropdown nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                            <img src="http://placehold.it/30x30" alt="avatar" class="rounded-circle">
+                            Eric Liu
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <ul class="list-group list-group-flush profile-list">
+                                <li class="list-group-item">
+                                    About Me
+                                    <div class="list-group profile-link-group">
+                                        <a href="#" class="list-group-item py-1">My Page</a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Notifications
+                                    <div class="list-group">
+                                        <a href="" class="list-group-item py-1">New Friends</a>
+                                        <a href="" class="list-group-item py-1">Comments</a>
+                                    </div>
+                                </li>
+                                <li class="list-group-item">
+                                    Settings
+                                    <div class="list-group">
+                                        <a href="" class="list-group-item py-1">Account</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        
+</nav>
+<!-- End Navigation -->
+
+<!----------- Main Wrapper ----------->
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="friend-nav-container col-12">
+            <ul class="friend-nav">
+                <li class="friend-nav-item active">
+                    <a href="#" class="friend-nav-link">
+                        Following
+                    </a>
+                </li>
+                <li class="friend-nav-item">
+                    <a href="#" class="friend-nav-link">
+                        Followers
+                    </a>
+                </li>
+                <li class="friend-nav-item">
+                    <a href="#" class="friend-nav-link">
+                        Friends
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="friend-cards-container">   
+                <div class="friend-card">
+                    <div class="card-front">
+                        <div class="friend-card-img">
+                            <img src="http://placehold.it/40x40" alt="friend" class="rounded-circle">
+                        </div>
+                        <div class="friend-content">
+                            <div class="friend-main">
+                                <h3 class="friend-name">John Marvel</h3>
+                                <p class="text-center">"I'm the new Sinatra, and since I made it here I can make it anywhere, yeah, they love me everywhere"</p>
+                            </div>
+                            <div class="footer">
+                                <button class="btn btn-secondary">Unfollow</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-back">
+                        <div class="friend-card-header">
+                            <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                        </div>
+                        <div class="friend-content">
+                            <div class="friend-main">
+                                <h4 class="text-center">Zhijian Li</h4>
+                                <div class="friend-stats-container">
+                                    <div class="friend-stats">
+                                        <h4>235</h4>
+                                        <p>
+                                            Followers
+                                        </p>
+                                    </div>
+                                    <div class="friend-stats">
+                                        <h4>114</h4>
+                                        <p>
+                                            Following
+                                        </p>
+                                    </div>
+                                    <div class="friend-stats">
+                                        <h4>35</h4>
+                                        <p>
+                                            Projects
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="footer">
+                            <a href="">View Page</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="friend-cards-container">   
+                    <div class="friend-card">
+                        <div class="card-front">
+                            <div class="friend-card-img">
+                                <img src="http://placehold.it/40x40" alt="friend" class="rounded-circle">
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="friend-card-header">
+                                <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                            </div>
+                            <div class="friend-card-content">
+                                <div class="friend-content-main">
+                                    <h4 class="text-center">Zhijian Li</h4>
+                                    <div class="friend-stats-container">
+                                        <div class="friend-stats">
+                                            <h4>235</h4>
+                                            <p>
+                                                Followers
+                                            </p>
+                                        </div>
+                                        <div class="friend-stats">
+                                            <h4>114</h4>
+                                            <p>
+                                                Following
+                                            </p>
+                                        </div>
+                                        <div class="friend-stats">
+                                            <h4>35</h4>
+                                            <p>
+                                                Projects
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="friend-cards-container">   
+                    <div class="friend-card">
+                        <div class="card-front">
+                            <div class="friend-card-img">
+                                <img src="http://placehold.it/40x40" alt="friend" class="rounded-circle">
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="friend-card-header">
+                                <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                            </div>
+                            <div class="friend-card-content">
+                                <div class="friend-content-main">
+                                    <h4 class="text-center">Zhijian Li</h4>
+                                    <div class="friend-stats-container">
+                                        <div class="friend-stats">
+                                            <h4>235</h4>
+                                            <p>
+                                                Followers
+                                            </p>
+                                        </div>
+                                        <div class="friend-stats">
+                                            <h4>114</h4>
+                                            <p>
+                                                Following
+                                            </p>
+                                        </div>
+                                        <div class="friend-stats">
+                                            <h4>35</h4>
+                                            <p>
+                                                Projects
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="col-lg-3 col-md-4 col-sm-6">
+            <div class="friend-cards-container">   
+                    <div class="friend-card">
+                        <div class="card-front">
+                            <div class="friend-card-img">
+                                <img src="http://placehold.it/40x40" alt="friend" class="rounded-circle">
+                            </div>
+                        </div>
+                        <div class="card-back">
+                            <div class="friend-card-header">
+                                <h5 class="motto">"To be or not to be, this is my awesome motto!"</h5>
+                            </div>
+                            <div class="friend-card-content">
+                                <div class="friend-content-main">
+                                    <h4 class="text-center">Zhijian Li</h4>
+                                    <div class="friend-stats-container">
+                                        <div class="friend-stats">
+                                            <h4>235</h4>
+                                            <p>
+                                                Followers
+                                            </p>
+                                        </div>
+                                        <div class="friend-stats">
+                                            <h4>114</h4>
+                                            <p>
+                                                Following
+                                            </p>
+                                        </div>
+                                        <div class="friend-stats">
+                                            <h4>35</h4>
+                                            <p>
+                                                Projects
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            </div>
+        </div> -->
+    </div>
+</div>
+
+    
+</body>
+</html>

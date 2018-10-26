@@ -4,11 +4,16 @@
   "description": "social network server side",
   "main": "index.js",
   "scripts": {
+    "start": "./node_modules/nodemon/bin/nodemon.js src/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Eric Liu",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.16.4"
+    "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
+    "express": "^4.16.4",
+    "morgan": "^1.9.1",
+    "nodemon": "^1.18.4"
   }
 }
