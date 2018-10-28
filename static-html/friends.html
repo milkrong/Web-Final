@@ -97,12 +97,12 @@
 <!-- End Navigation -->
 
 <!----------- Main Wrapper ----------->
-<div class="container">
+<div class="container-fluid">
     <div class="row justify-content-center">
         <div class="friend-nav-container col-12">
             <ul class="friend-nav">
                 <li class="friend-nav-item active">
-                    <a href="#" class="friend-nav-link">
+                    <a href="#" class="friend-nav-link active">
                         Following
                     </a>
                 </li>
@@ -161,6 +161,9 @@
                                             Projects
                                         </p>
                                     </div>
+                                </div>
+                                <div class="friend-location text-center">
+                                    <i class="fas fa-map-marker-alt"></i>Beijing
                                 </div>
                             </div>
                         </div>
@@ -297,6 +300,33 @@
     </div>
 </div>
 
+<!-- Return to Top -->
+<a href="javascript:" id="return-to-top"><i class="fas fa-chevron-up"></i></a>
+<!-------- End -------->
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+        integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
+</script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous">
+</script>
+<script src="node_modules/plyr/dist/plyr.min.js"></script>
+<script>const player = new Plyr('#player');</script>
+<script>
+// ===== Scroll to Top ==== 
+$(window).scroll(function() {
+    if ($(this).scrollTop() >= 50) {        // If page is scrolled more than 50px
+        $('#return-to-top').fadeIn(200);    // Fade in the arrow
+    } else {
+        $('#return-to-top').fadeOut(200);   // Else fade out the arrow
+    }
+});
+$('#return-to-top').click(function() {      // When arrow is clicked
+    $('body,html').animate({
+        scrollTop : 0                       // Scroll to top of body
+    }, 500);
+});</script>
     
 </body>
 </html>

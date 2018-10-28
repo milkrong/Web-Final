@@ -4,7 +4,7 @@
 /* ============================ Global Css ==================================*/
 body {
     background-color: #eeeeee;
-    font-family: 'Chakra Petch', sans-serif;
+    font-family: 'Pangolin', sans-serif;
 }
 
 h3 {
@@ -647,27 +647,36 @@ nav .navigation-group .profile-navigation img {
 /* ================================= Personal Page End ========================================== */
 
 /* ================================= Friends Page ======================================= */
-.friend-nav-container {
-    margin-top: 10px;
-}
-.friend-nav {
-    background-color: #fff;
+.friend-nav-container .friend-nav {
     display: flex;
+    padding: 0;
+    background: #fff;
     justify-content: center;
-
-    font-size: 18px;
-    padding: 10px 0;
-
-    border-radius: 5px;
+    font-weight: 400;
+    margin: 10px 0;
 }
 
-.friend-nav-item {
-    margin: 0 15px;
-    text-decoration: none;
+.friend-nav .friend-nav-item {
+    display: flex;
+    margin: 0 20px;
 }
 
-.friend-nav-item.active {
+.friend-nav .friend-nav-item.active,
+.friend-nav .friend-nav-item:hover {
     border-bottom: 2px solid #007bff;
+}
+
+.friend-nav-item a {
+    display: block;
+    padding: 10px 15px;
+    position: relative;
+    text-decoration: none;
+    cursor: pointer;
+    color: #b2b2b2;
+}
+
+.friend-nav-item a.active {
+    color: #007bff;
 }
 
 .friend-cards-container {
@@ -792,6 +801,11 @@ nav .navigation-group .profile-navigation img {
     text-align: center;
 }
 
+.friend-card .friend-location {
+    color: #D94240;
+    font-weight: 600;
+}
+
 .friend-card .friend-stats-container{
 	width: 100%;
 	margin-top: 50px;
@@ -817,3 +831,43 @@ nav .navigation-group .profile-navigation img {
 	color: #777777;
 }
 /* ========================================= End Friends Page ================================================= */
+
+/* ========================================= Error Page ===================================================== */
+.not-found-container {
+    position: relative;
+}
+
+.not-found {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+
+    max-width: 520px;
+    text-align: center;
+}
+
+.not-found h1 {
+    font-size: 128px;
+}
+
+.not-found p {
+    color: #787878;
+    font-weight: 300;
+}
+
+.not-found span {
+    display: inline-block;
+    width: 128px;
+    height: 128px;
+    background-image: url(../img/compact-disc.png);
+
+}
+
+.not-found a {
+    padding: 12px 30px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 40px;
+    text-decoration: none;
+}
