@@ -92,10 +92,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-#app i {
-  margin-right:2px;
-}
-
 nav .navigation-group .profile-navigation img {
     position: relative;
     bottom: 4.5px;

@@ -5,8 +5,8 @@
                 <span slot="label"><i class="fas fa-bullhorn mr-1"></i>Share</span>
                 <el-input
                 type="textarea"
-                :autosize="{ minRows: 1, maxRows: 4}"
-                placeholder="请输入内容"
+                :autosize="{ minRows: 3, maxRows: 5}"
+                placeholder="Share somthing you like"
                 v-model="textarea">
                 </el-input>
             </el-tab-pane>
