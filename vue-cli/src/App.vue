@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="top-nav navbar navbar-expand-lg bg-light">
         <div class="brand">   
-            <a href="index.html" class="mx-sm-3">
+            <a href="/" class="mx-sm-3">
                 <img src="@/assets/icons/facebook.svg" alt="brand" width="30px" height="30px">
             </a>
         </div> 
@@ -55,7 +55,7 @@
                                 <li class="list-group-item">
                                     About Me
                                     <div class="list-group profile-link-group">
-                                        <a href="#" class="list-group-item py-1">My Page</a>
+                                        <router-link to="/profile" class="list-group-item py-1">My page</router-link>
                                     </div>
                                 </li>
                                 <li class="list-group-item">

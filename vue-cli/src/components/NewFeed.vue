@@ -31,7 +31,7 @@
     </div>
 </template>
 
-<style>
+<style scoped>
     .new-feed-form {
         background-color: #EAF5FC
     }

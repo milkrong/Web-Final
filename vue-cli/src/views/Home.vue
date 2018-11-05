@@ -2,11 +2,21 @@
 
 <div class="container-fluid">
     <div class="row justify-content-center">
-        <div class="left-area col-lg-2 col-md-9 mr-lg-2">
+        <div class="left-area col-lg-3 col-md-9 mr-lg-2">
             <profile-card></profile-card>
         </div>
         <div class="main-area col-lg-5 col-md-9">
             <new-feed-form></new-feed-form>
+            <div class="sub-nav">
+                <el-menu :default-active="activeIndex" mode="horizontal">
+                    <el-menu-item index="1">
+                        <el-badge value="new">My Concern</el-badge>
+                    </el-menu-item>
+                    <el-menu-item index="2">
+                        <el-badge>Recommendation</el-badge>
+                    </el-menu-item>
+                </el-menu>
+            </div>
         </div>
         <div class="right-area col-lg-3 col-md-9 ml-lg-2">
              <top-music></top-music>
@@ -23,6 +33,11 @@ import TopMusic from "@/components/TopMusic";
 import Tags from "@/components/Tags";
 
 export default {
+    data: function() {
+        return {
+            activeIndex: "1"
+        }
+    },
     components: {
         "profile-card": ProfileCard,
         "new-feed-form": NewFeed,
@@ -31,3 +46,13 @@ export default {
     }
 }
 </script>
+
+<style>
+.sub-nav {
+    display: flex;
+    justify-content: center;
+    background: #fff;
+    width: 100%;
+}
+</style>
+

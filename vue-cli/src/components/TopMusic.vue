@@ -4,7 +4,7 @@
             <span>Top Music</span>
         </div>
         <div class="rank-body">
-            <aplayer autoplay
+            <aplayer 
             :music="{
                 title: 'secret base~君がくれたもの~',
                 artist: 'Silent Siren',
