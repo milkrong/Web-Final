@@ -2,6 +2,8 @@ import Vue from "vue";
 import App from "./App.vue";
 import ElementUI from 'element-ui';
 import Vuelidate from "vuelidate";
+import VueParticles from 'vue-particles';
+
 
 import 'element-ui/lib/theme-chalk/index.css';
 import "bootstrap/dist/css/bootstrap.css";
@@ -11,6 +13,7 @@ import router from "./router";
 
 Vue.use(Vuelidate);
 Vue.use(ElementUI);
+Vue.use(VueParticles);
 
 Vue.config.productionTip = false;
 

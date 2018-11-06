@@ -79,8 +79,9 @@
         </div>
         
     </nav>
-
     <router-view></router-view>
+      
+    
   </div>
 </template>
 
@@ -90,6 +91,7 @@
   font-family: "Pangolin", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%
 }
 
 nav .navigation-group .profile-navigation img {

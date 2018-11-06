@@ -15,6 +15,7 @@
     "jquery": "^3.3.1",
     "vue": "^2.5.17",
     "vue-aplayer": "^1.6.1",
+    "vue-particles": "^1.0.9",
     "vue-router": "^3.0.1",
     "vuelidate": "^0.7.4"
   },
