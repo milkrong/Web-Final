@@ -1,9 +1,9 @@
 <template>
     <div class="login">
-        <div class="container pt-lg-md">
+        <div class="container fill">
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-5 col-sm-8 login-form">
-                    <el-card class="py-lg-3 px-lg-3 login-form">
+                    <el-card class="py-lg-3 px-lg-3">
                         <div class="text-muted text-center mb-3">
                             <span>Welcome the Postify, Sign In</span>
                         </div>
@@ -128,4 +128,7 @@
     margin: 10% 0;
 }
 
+.fill {
+    min-height: 100vh;
+}
 </style>

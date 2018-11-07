@@ -1,6 +1,6 @@
 <template>
 
-<div class="container-fluid">
+<div class="container-fluid fill">
     <div class="row justify-content-center">
         <div class="left-area col-lg-3 col-md-9 mr-lg-2">
             <profile-card></profile-card>
@@ -48,6 +48,10 @@ export default {
 </script>
 
 <style>
+.fill {
+    min-height: 100vh;
+}
+
 .sub-nav {
     display: flex;
     justify-content: center;

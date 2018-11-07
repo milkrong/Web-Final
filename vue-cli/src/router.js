@@ -35,6 +35,11 @@ export default new Router({
       children: [
         {
           path: '',
+          name: 'registerDefault',
+          component: Register1
+        },
+        {
+          path: 'step1',
           name: 'register1',
           component: Register1
         },

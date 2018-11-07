@@ -1,9 +1,9 @@
 <template>
     <div class="register">
-        <div class="container pt-lg-md">
+        <div class="container fill">
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-5 col-sm-8 register-form">    
-                    <el-card class="p-lg-3 login-form">
+                    <el-card class="p-lg-3">
                         <el-steps :active="step" class="mb-4" align-center>
                             <el-step title="Register"></el-step>
                             <el-step title="Hobbies"></el-step>
@@ -44,6 +44,12 @@
     z-index: 100;
 
     margin: 10% 0;
+
+    height: 100%
+}
+
+.fill {
+    min-height: 100vh;
 }
 </style>
 
