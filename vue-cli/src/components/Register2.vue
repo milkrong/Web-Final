@@ -1,29 +1,44 @@
 <template>
-    <div class="register-step-2">
+    <div class="register">
         <el-form>
             <el-tag
-                v-for="tag in tags"
-                :key="tag.name"
+                v-for="hobby in user.hobbies"
+                :key="hobby"
                 closable
-                class="mr-3">
-            <el-button type="text" size="small">{{ tag.name }}</el-button> 
+                class="mr-3 my-2">
+                <el-button type="text" size="small">{{ hobby }}</el-button> 
             </el-tag>
+            <div class="text-center mt-4">
+                <el-button @click="skip">Skip</el-button>
+                <el-button type="primary" @click="submit">Submit</el-button>
+            </div>
         </el-form>
     </div>
 </template>
 
 <script>
     export default {
-       name: 'register-step2',
-       data () {
-           return {
-               tags: [
-                   {name: 'Pop'},
-                   {name: 'Rock'},
-                   {name: 'Hip-hop'}
-               ]
+       name: 'register-step2', 
+       methods: {
+           skip: function () {
+               this.$emit('next-step');
+               this.$router.push({
+                   path: 'step3'
+               });
+           },
+           submit: function () {
+               this.$router.push({
+                   path: 'step3'
+               });
+               this.$emit('next-step');
            }
        },
-       props: ['step'], 
+       data () {
+           return {
+               user: {
+                   hobbies:['Pop', 'Hiphop', 'R&B', 'Classical']
+               }
+           }
+       }
     }
 </script>

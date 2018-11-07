@@ -2,7 +2,7 @@ import Vue from "vue";
 import App from "./App.vue";
 import ElementUI from 'element-ui';
 import Vuelidate from "vuelidate";
-import VueParticles from 'vue-particles';
+import VueParticles from "vue-particles";
 
 
 import 'element-ui/lib/theme-chalk/index.css';

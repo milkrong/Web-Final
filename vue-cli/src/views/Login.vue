@@ -5,31 +5,17 @@
                 <div class="col-lg-4 col-md-5 col-sm-8 login-form">
                     <el-card class="py-lg-3 px-lg-3 login-form">
                         <div class="text-muted text-center mb-3">
-                            <small>Sign in with</small>
-                        </div>
-                        <div class="btn-wrapper text-center">
-                            <el-button>
-                                <img slot="icon" src="img/icons/common/github.svg">
-                                Github
-                            </el-button>
-
-                            <el-button>
-                                <img slot="icon" src="img/icons/common/google.svg">
-                                Google
-                            </el-button>
-                        </div>
-                        <div class="text-center text-muted mb-4">
-                            <small>Or sign in with credentials</small>
+                            <span>Welcome the Postify, Sign In</span>
                         </div>
                         <el-form>
                             <el-form-item label-width="0">
-                                <el-input placeholder="Email"></el-input>
+                                <el-input placeholder="Email" v-model="user.email"></el-input>
                             </el-form-item>
                             <el-form-item label-width="0">
-                                <el-input placeholder="Password"></el-input>
+                                <el-input placeholder="Password" v-model="user.password"></el-input>
                             </el-form-item>
                             <el-form-item label-width="0">
-                                <el-checkbox label="remember me"></el-checkbox>
+                                <el-checkbox label="remember me" v-model="user.remember"></el-checkbox>
                             </el-form-item>
                             <div class="text-center">
                                 <el-button type="primary">Sign In</el-button>
@@ -43,7 +29,7 @@
                                 </a>
                             </div>
                             <div class="col-6 text-right">
-                                <a href="#">
+                                <a @click="$router.push('/register')" href="#">
                                     <small>Create new account</small>
                                 </a>
                             </div>
@@ -63,7 +49,16 @@
 <script>
     export default {
         name: 'login',
-        components: {}
+        components: {},
+        data () {
+            return {
+                user: {
+                    email: "",
+                    password: "",
+                    remember: false
+                }
+            }
+        }
     }
 </script>
 

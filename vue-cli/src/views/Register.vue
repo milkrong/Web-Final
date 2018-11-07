@@ -3,20 +3,21 @@
         <div class="container pt-lg-md">
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-5 col-sm-8 register-form">    
-                    <el-card class="py-lg-3 px-lg-3 login-form">
-                        <el-steps :active="step" class="mb-4">
-                        <el-step title="Register" icon="el-icon-edit"></el-step>
-                        <el-step title="Hobbies" icon="el-icon-upload"></el-step>
-                        <el-step title="Confirm" icon="el-icon-picture"></el-step>
+                    <el-card class="p-lg-3 login-form">
+                        <el-steps :active="step" class="mb-4" align-center>
+                            <el-step title="Register"></el-step>
+                            <el-step title="Hobbies"></el-step>
+                            <el-step title="Confirm"></el-step>
                         </el-steps>
 
-                        <router-view @next-step="step += 1"></router-view>
+                        <router-view @next-step="next"></router-view>
                     </el-card>
                 </div>
                 <vue-particles 
                 color="#409EFF"
                 linesColor="#409EFF"
-                class="particles">
+                class="particles"
+                hoverMode="repulse">
                 </vue-particles>
             </div>
         </div>
@@ -58,5 +59,10 @@
                 step: 1
             };
         },
+        methods: {
+            next () {
+                if (this.step++ > 2) this.step = 0;
+            }
+        }
     }
 </script>

@@ -1,17 +1,20 @@
 <template>
-<div class="register-step-1">
+<div class="register">
     <div class="text-center text-muted mb-4">
         <span>Welcome to postify music</span>
     </div>
     <el-form>
         <el-form-item label-width="0">
-            <el-input placeholder="Email"></el-input>
+            <el-input placeholder="Email" v-model="user.email"></el-input>
         </el-form-item>
         <el-form-item label-width="0">
-            <el-input placeholder="Password"></el-input>
+            <el-input placeholder="Username" v-model="user.username"></el-input>
         </el-form-item>
         <el-form-item label-width="0">
-            <el-input placeholder="Confirm Password"></el-input>
+            <el-input placeholder="Password" v-model="user.password"></el-input>
+        </el-form-item>
+        <el-form-item label-width="0">
+            <el-input placeholder="Confirm Password" v-model="user.password"></el-input>
         </el-form-item>
         <el-form-item label-width="0">
             <el-checkbox>I Agree with Privacy Policy</el-checkbox>
@@ -29,9 +32,18 @@
         methods: {
             signup () {
                 this.$router.push({
-                    path: '/register/step2'
+                    path: 'register/step2'
                 });
                 this.$emit('next-step');
+            }
+        },
+        data () {
+            return {
+                user: {
+                    username: "",
+                    email: "",
+                    password: ""
+                }
             }
         }
     }
