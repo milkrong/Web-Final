@@ -9,9 +9,11 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.2",
+    "axios": "^0.18.0",
     "bootstrap": "^4.1.3",
     "element-ui": "^2.4.9",
     "jquery": "^3.3.1",
+    "popper.js": "^1.14.4",
     "vue": "^2.5.17",
     "vue-aplayer": "^1.6.1",
     "vue-particles": "^1.0.9",

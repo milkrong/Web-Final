@@ -11,11 +11,14 @@ import "bootstrap/dist/js/bootstrap.js";
 import "@fortawesome/fontawesome-free/css/all.css";
 import router from "./router";
 
+import axios from "./http";
+
 Vue.use(Vuelidate);
 Vue.use(ElementUI);
 Vue.use(VueParticles);
 
 Vue.config.productionTip = false;
+Vue.prototype.$axios = axios;
 
 new Vue({
   router,
