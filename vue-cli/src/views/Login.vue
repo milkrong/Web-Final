@@ -7,18 +7,18 @@
                         <div class="text-muted text-center mb-3">
                             <span>Welcome the Postify, Sign In</span>
                         </div>
-                        <el-form>
-                            <el-form-item label-width="0">
-                                <el-input placeholder="Email" v-model="user.email"></el-input>
+                        <el-form :model="loginForm" status-icon :rules="rule" ref="loginForm">
+                            <el-form-item label-width="0" prop="email">
+                                <el-input placeholder="Email" v-model="loginForm.email"></el-input>
+                            </el-form-item>
+                            <el-form-item label-width="0" prop="password">
+                                <el-input placeholder="Password" v-model="loginForm.password"></el-input>
                             </el-form-item>
                             <el-form-item label-width="0">
-                                <el-input placeholder="Password" v-model="user.password"></el-input>
-                            </el-form-item>
-                            <el-form-item label-width="0">
-                                <el-checkbox label="remember me" v-model="user.remember"></el-checkbox>
+                                <el-checkbox label="remember me"></el-checkbox>
                             </el-form-item>
                             <div class="text-center">
-                                <el-button type="primary">Sign In</el-button>
+                                <el-button type="primary"  :disabled="isDisabled" @click="signin('loginForm')">Sign In</el-button>
                             </div>
                         </el-form>
 
@@ -51,12 +51,56 @@
         name: 'login',
         components: {},
         data () {
-            return {
-                user: {
-                    email: "",
-                    password: "",
-                    remember: false
+            var checkPass = (rule, value, callback) => {
+                if(value === '') {
+                    return callback(new Error('Please input password'));
+                } 
+                callback();
+            };
+
+            var checkEmail = (rule, value, callback) => {
+                let pattern =/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;;
+                if (value === '') {
+                    callback(new Error('Please input email'));
                 }
+                if ( !(pattern.test(value)) ) {
+                    callback(new Error('The Format is incorrect'));
+                } else {
+                    callback();
+                }
+                
+            };
+
+            return {
+                loginForm: {
+                    email: "",
+                    password: ""
+                },
+                rule: {
+                    email: [
+                        { validator: checkEmail, trigger: 'blur'}
+                    ],
+                    password: [
+                        { validator: checkPass, trigger: 'blur'}
+                    ]
+                }
+            };
+        },
+        computed: {
+            isDisabled() {
+                if (this.loginForm.email && this.loginForm.password) return false;
+                else return true;
+            }
+        },
+        methods: {
+            signin(formName) {
+                this.$refs[formName].validate((valid) => {
+                    if (valid) {
+                        alert('submit');
+                    } else {
+                        return false;
+                    }
+                });
             }
         }
     }

@@ -10,7 +10,7 @@
             </el-tag>
             <div class="text-center mt-4">
                 <el-button @click="skip">Skip</el-button>
-                <el-button type="primary" @click="submit">Submit</el-button>
+                <el-button type="primary" @click="submit"  :disabled="disabled">Submit</el-button>
             </div>
         </el-form>
     </div>
