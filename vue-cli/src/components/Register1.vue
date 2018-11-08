@@ -7,6 +7,9 @@
         <el-form-item label-width="0" prop="email">
             <el-input placeholder="Email" v-model="registerForm.email"></el-input>
         </el-form-item>
+        <el-form-item label-width="0" prop="name">
+            <el-input placeholder="Email" v-model="registerForm.name"></el-input>
+        </el-form-item>
         <el-form-item label-width="0" prop="username">
             <el-input placeholder="Username" v-model="registerForm.username"></el-input>
         </el-form-item>
@@ -84,6 +87,7 @@
             return {
                 registerForm: {
                     username: "",
+                    name: "",
                     email: "",
                     password: "",
                     password2:""
