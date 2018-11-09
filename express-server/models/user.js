@@ -12,6 +12,10 @@ const userSchema = new Schema({
         trim: true,
         unique: true
     },
+    motto: {
+        type: String,
+        required: true
+    },
     email: {
         type: String, 
         required: true, 
