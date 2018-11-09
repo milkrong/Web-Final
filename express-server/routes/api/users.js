@@ -13,7 +13,7 @@ router.post("/register/step1", (req, res) => {
     User.findOne({ email: req.body.email })
         .then((user) => {
             if(user) {
-                return res.status(400).json({email: "Email is used"});
+                return res.status(400).json({error: "Email already been used"});
             } else {
                 // store user in newUser object
                 const avatar = gravatar.url(req.body.email, {s: '64', r: 'pg', d:'mm'}); 
@@ -49,7 +49,7 @@ router.post("/login", (req, res) => {
     User.findOne({email})
         .then(user => {
             if(!user){
-                return res.status(404).json({email: 'User is not exist'});
+                return res.status(404).json({error: 'User is not exist'});
             }
 
             // Load hash from your password DB.
@@ -65,7 +65,7 @@ router.post("/login", (req, res) => {
                             });
                         });
                     } else {
-                        return res.status(400).json({ password: "pass is wrong"});
+                        return res.status(400).json({ error: "Password is not correct"});
                     }
                 });
         });
@@ -73,7 +73,13 @@ router.post("/login", (req, res) => {
 
 //$router /api/user/current
 router.get("/current", passport.authenticate("jwt", {session: false}),(req, res) => {
-    res.json(req.user);
+    res.json({
+        id: req.user.id,
+        name: req.user.name,
+        username: req.user.username,
+        email: req.user.email,
+        avatar: req.user.avatar,
+    });
 }) 
 
 module.exports = router;

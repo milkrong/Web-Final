@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const favSchema = mongoose.Schema({
     user_id: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     },
     feed_id: {
         type: Schema.Types.ObjectId,
-        ref: 'Feed'
+        ref: 'feeds'
     }
 })
 
-module.exports = mongoose.model('Fav',favSchema);
+module.exports = Fav = mongoose.model('favs',favSchema);

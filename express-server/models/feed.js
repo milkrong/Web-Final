@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const feedSchema = mongoose.Schema({
     user_id: {
         type: Schema.Types.ObjectId,
-        ref:'User'
+        ref:'users'
     },
     likes: Number,
     favorites: Boolean,
@@ -21,4 +21,4 @@ const feedSchema = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Feed',feedSchema);
+module.exports = Feed = mongoose.model('feeds',feedSchema);

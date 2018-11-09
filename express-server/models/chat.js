@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const chatSchema = mongoose.Schema({
     user_id: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     },
     send_to: {
         type: Schema.Types.ObjectId,
@@ -16,4 +16,4 @@ const chatSchema = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Chat', chatSchema);
+module.exports = Chat = mongoose.model('chats', chatSchema);

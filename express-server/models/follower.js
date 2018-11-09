@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const followerSchema = mongoose.Schema({
     user_id:{
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     },
     follower_id: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     }
 })
 
-module.exports = mongoose.model('Follower',followerSchema);
+module.exports = Follower = mongoose.model('followers',followerSchema);

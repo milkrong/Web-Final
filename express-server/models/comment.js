@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const commentSchema = mongoose.Schema({
     user_id: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     },
     feed_id: {
         type: Schema.Types.ObjectId,
-        ref: 'Feed'
+        ref: 'feeds'
     },
     content: String,
     created_at: {
@@ -16,4 +16,4 @@ const commentSchema = mongoose.Schema({
     }
 })
 
-module.exports = mongoose.model('Comment', commentSchema);
+module.exports = Comment = mongoose.model('comments', commentSchema);

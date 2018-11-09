@@ -2,12 +2,12 @@ const mongoose = require('mongoose');
 const followingSchema = mongoose.Schema({
     user_id: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     },
     following_id: {
         type: Schema.Types.ObjectId,
-        ref: 'User'
+        ref: 'users'
     }
 })
 
-module.exports = mongoose.model('Following', followingSchema);
+module.exports = Following = mongoose.model('followings', followingSchema);
