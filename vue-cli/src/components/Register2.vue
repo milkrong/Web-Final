@@ -52,7 +52,7 @@
        },
        computed: {
             isDisabled() {
-                if (this.hobbyForm.hobbies === [] ) return false;
+                if (this.hobbyForm.hobbies !== []) return false;
                 else return true;
             }
         }
