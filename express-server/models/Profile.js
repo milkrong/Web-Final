@@ -6,6 +6,21 @@ const profileSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "users"
     },
+    background: {
+        type: String
+    },
+    feed_id: {
+        type: Schema.Types.ObjectId,
+        ref: "feeds"
+    },
+    follower_id: {
+        type: Schema.Types.ObjectId,
+        ref: "followers"
+    },
+    following_id: {
+        type: Schema.Types.ObjectId,
+        ref: "followings"
+    },
     created_at: {
         type: Date,
         default: Date.now

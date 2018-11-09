@@ -72,7 +72,7 @@ router.post("/login", (req, res) => {
 })
 
 //$router /api/user/current
-router.get("/current", passport.authenticate("jwt", {session: false}),(req, res) => {
+router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
     res.json({
         id: req.user.id,
         name: req.user.name,

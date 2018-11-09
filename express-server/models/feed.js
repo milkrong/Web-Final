@@ -1,21 +1,38 @@
 const mongoose = require('mongoose');
-const feedSchema = mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const feedSchema = new Schema({
     user_id: {
         type: Schema.Types.ObjectId,
-        ref:'users'
+        ref:'users',
+        required: true
     },
-    likes: Number,
-    favorites: Boolean,
-    feed_type: {
+    name: {
         type: String,
         required: true
     },
-    content: String,
-    created_at: {
-        type: Date,
-        default: Date.now
+    avatar: String,
+    likes: {
+        type: Number,
+        default: 0
     },
-    update_at: {
+    favorites: {
+        type: Boolean,
+        default: false
+    },
+    tag: {
+        type: [String],
+        required: true
+    },
+    text: {
+        type: String,
+        required: true,
+        default: "This is a new post"
+    },
+    imgs: {
+        type: [String]
+    },
+    created_at: {
         type: Date,
         default: Date.now
     }
