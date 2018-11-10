@@ -54,21 +54,21 @@
 </style>
 
 <script>
-    import RegisterStep1 from "@/components/Register1"
+    import RegisterStep1 from '@/components/Register1'
     export default {
-        name: 'register',
-        components: {
-            'register-step-1': RegisterStep1,
-        },
-        data () {
-            return {
-                step: 1
-            };
-        },
-        methods: {
-            next () {
-                if (this.step++ > 2) this.step = 0;
-            }
+      name: 'register',
+      components: {
+        'register-step-1': RegisterStep1
+      },
+      data () {
+        return {
+          step: 1
         }
+  },
+      methods: {
+        next () {
+          if (this.step++ > 2) this.step = 0
+        }
+      }
     }
 </script>

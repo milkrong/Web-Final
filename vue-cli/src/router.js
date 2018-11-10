@@ -1,20 +1,24 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Home from "./views/Home.vue";
-import Profile from "./views/Profile";
-import Login from "./views/Login";
-import Register from "./views/Register";
+import Vue from 'vue'
+import Router from 'vue-router'
+import Home from './views/Home.vue'
+import Profile from './views/Profile'
+import Login from './views/Login'
+import Register from './views/Register'
 
-import Register1 from "@/components/Register1";
-import Register2 from "@/components/Register2";
-import Register3 from "@/components/Register3";
+import Register1 from '@/components/Register1'
+import Register2 from '@/components/Register2'
+import Register3 from '@/components/Register3'
 
-Vue.use(Router);
+Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
+      redirect: '/home'
+    },
+    {
+      path: '/home',
       name: 'home',
       component: Home
     },
