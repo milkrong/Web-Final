@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "start": "npm run serve"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.4.2",
@@ -18,7 +19,7 @@
     "vue-aplayer": "^1.6.1",
     "vue-particles": "^1.0.9",
     "vue-router": "^3.0.1",
-    "vuelidate": "^0.7.4"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.5",

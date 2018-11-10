@@ -21,7 +21,9 @@
     "eslint-config-google": "^0.11.0"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "server": "nodemon server.js"
   },
   "author": "Eric Liu, Jianzhi Li, Ziqi Tang",
   "license": "GPL-3.0"

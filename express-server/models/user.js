@@ -9,13 +9,12 @@ const userSchema = new Schema({
     },
     username: {
         type: String,
-        required: true,
-        trim: true,
-        unique: true
+        required: true
     },
     motto: {
         type: String,
-        required: true
+        required: true,
+        default: "To be or not to be, I am the best"
     },
     email: {
         type: String, 
