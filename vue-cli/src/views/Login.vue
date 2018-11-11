@@ -29,9 +29,9 @@
                                 </a>
                             </div>
                             <div class="col-6 text-right">
-                                <a @click="$router.push('/register')" href="#">
+                                <router-link to="/register">
                                     <small>Create new account</small>
-                                </a>
+                                </router-link>
                             </div>
                         </div>
                     </el-card>
@@ -47,63 +47,86 @@
 </template>
 
 <script>
-    export default {
-        name: 'login',
-        components: {},
-        data () {
-            var checkPass = (rule, value, callback) => {
-                if(value === '') {
-                    return callback(new Error('Please input password'));
-                } 
-                callback();
-            };
+import jwt_decode from 'jwt-decode'
 
-            var checkEmail = (rule, value, callback) => {
-                let pattern =/^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;;
-                if (value === '') {
-                    callback(new Error('Please input email'));
-                }
-                if ( !(pattern.test(value)) ) {
-                    callback(new Error('The Format is incorrect'));
-                } else {
-                    callback();
-                }
-                
-            };
-
-            return {
-                loginForm: {
-                    email: "",
-                    password: ""
-                },
-                rule: {
-                    email: [
-                        { validator: checkEmail, trigger: 'blur'}
-                    ],
-                    password: [
-                        { validator: checkPass, trigger: 'blur'}
-                    ]
-                }
-            };
-        },
-        computed: {
-            isDisabled() {
-                if (this.loginForm.email && this.loginForm.password) return false;
-                else return true;
-            }
-        },
-        methods: {
-            signin(formName) {
-                this.$refs[formName].validate((valid) => {
-                    if (valid) {
-                        alert('submit');
-                    } else {
-                        return false;
-                    }
-                });
-            }
-        }
+export default {
+  name: 'login',
+  components: {},
+  data () {
+    var checkPass = (rule, value, callback) => {
+      if (value === '') {
+        return callback(new Error('Please input password'))
+      }
+      callback()
     }
+
+    var checkEmail = (rule, value, callback) => {
+      let pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
+      if (value === '') {
+        callback(new Error('Please input email'))
+      }
+      if (!(pattern.test(value))) {
+        callback(new Error('The Format is incorrect'))
+      } else {
+        callback()
+      }
+    }
+
+    return {
+      loginForm: {
+        email: '',
+        password: ''
+      },
+      rule: {
+        email: [
+          { validator: checkEmail, trigger: 'blur' }
+        ],
+        password: [
+          { validator: checkPass, trigger: 'blur' }
+        ]
+      }
+    }
+  },
+  computed: {
+    isDisabled () {
+      if (this.loginForm.email && this.loginForm.password) return false
+      else return true
+    }
+  },
+  methods: {
+    signin (formName) {
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          this.$axios
+            .post('/api/users/login', this.loginForm).then(res => {
+              // token
+              const { token } = res.data
+              //   save the token
+              localStorage.setItem('postifyToken', token)
+
+              //   token decode
+              const decode = jwt_decode(token)
+
+              this.$store.dispatch('setIsAutnenticated', !this.isEmpty(decode))
+              this.$store.dispatch('setUser', decode)
+
+              this.$router.push('/home')
+            })
+        } else {
+          return false
+        }
+      })
+    },
+    isEmpty (value) {
+      return (
+        value === undefined ||
+        value === null ||
+        (typeof value === 'object' && Object.keys(value).length === 0) ||
+        (typeof value === 'string' && value.trim().length === 0)
+      )
+    }
+  }
+}
 </script>
 
 <style>

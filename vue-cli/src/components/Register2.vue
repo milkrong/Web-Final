@@ -17,44 +17,44 @@
 
 <script>
     export default {
-       name: 'register-step2', 
-       methods: {
-           skip: function () {
-               this.$emit('next-step');
-               this.$router.push({
-                   path: 'step3'
-               });
-           },
-           submit: function () {
-               this.$router.push({
-                   path: 'step3'
-               });
-               this.$emit('next-step');
-           },
-           addHobby: function (value) {
-               this.hobbyForm.hobbies.push({
-                   name: value
-               });
-           }
-       },
-       data () {
-           return {
-               hobbies: [
-                   { name: 'Hiphop'},
-                   { name: 'Pop'},
-                   { name: 'Classical'},
-                   { name: 'Jazz'},
-               ],
-               hobbyForm: {
-                   hobbies: []
-               }
-           }
-       },
-       computed: {
-            isDisabled() {
-                if (this.hobbyForm.hobbies !== []) return false;
-                else return true;
-            }
+      name: 'register-step2',
+      methods: {
+        skip: function () {
+          this.$emit('next-step')
+          this.$router.push({
+            path: 'step3'
+          })
+        },
+        submit: function () {
+          this.$router.push({
+            path: 'step3'
+          })
+          this.$emit('next-step')
+        },
+        addHobby: function (value) {
+          this.hobbyForm.hobbies.push({
+            name: value
+          })
         }
+      },
+      data () {
+        return {
+          hobbies: [
+            { name: 'Hiphop' },
+            { name: 'Pop' },
+            { name: 'Classical' },
+            { name: 'Jazz' }
+          ],
+          hobbyForm: {
+            hobbies: []
+          }
+        }
+      },
+      computed: {
+        isDisabled () {
+          if (this.hobbyForm.hobbies !== []) return false
+          else return true
+        }
+      }
     }
 </script>

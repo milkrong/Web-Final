@@ -1,9 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from './views/Home.vue'
 import Profile from './views/Profile'
-import Login from './views/Login'
 import Register from './views/Register'
+import Nofind from './views/404'
 
 import Register1 from '@/components/Register1'
 import Register2 from '@/components/Register2'
@@ -11,7 +10,7 @@ import Register3 from '@/components/Register3'
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     {
       path: '/',
@@ -20,7 +19,7 @@ export default new Router({
     {
       path: '/home',
       name: 'home',
-      component: Home
+      component: () => import('./views/Home.vue')
     },
     {
       path: '/profile',
@@ -30,7 +29,7 @@ export default new Router({
     {
       path: '/login',
       name: 'login',
-      component: Login
+      component: () => import('./views/Login')
     },
     {
       path: '/register',
@@ -39,8 +38,7 @@ export default new Router({
       children: [
         {
           path: '',
-          name: 'registerDefault',
-          component: Register1
+          redirect: '/step1'
         },
         {
           path: 'step1',
@@ -58,6 +56,23 @@ export default new Router({
           component: Register3
         }
       ]
+    },
+    {
+      path: '*',
+      name: '/404',
+      component: () => import('./views/404.vue')
     }
   ]
 })
+
+// routes guradiance
+router.beforeEach((to, from, next) => {
+  const isLogin = !!localStorage.postifyToken
+  if (to.path == '/login' || to.path == '/register') {
+    next()
+  } else {
+    isLogin ? next() : next('/login')
+  }
+})
+
+export default router

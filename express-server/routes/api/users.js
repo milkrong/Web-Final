@@ -13,7 +13,7 @@ router.post("/register/step1", (req, res) => {
     User.findOne({ email: req.body.email })
         .then((user) => {
             if(user) {
-                return res.status(400).json({error: "Email already been used"});
+                return res.status(400).json("Email already been used");
             } else {
                 // store user in newUser object
                 const avatar = gravatar.url(req.body.email, {s: '64', r: 'pg', d:'mm'}); 
@@ -49,14 +49,14 @@ router.post("/login", (req, res) => {
     User.findOne({email})
         .then(user => {
             if(!user){
-                return res.status(404).json({error: 'User is not exist'});
+                return res.status(404).json('User is not exist');
             }
 
             // Load hash from your password DB.
             bcrypt.compare(password , user.hash_password)
                 .then(isMatch =>  {
                     if(isMatch) {
-                        const rule = {id:user.id, username: user.username};
+                        const rule = {id:user.id, name: user.name, avatar: user.avatar};
                         jwt.sign(rule, key.secretKey, {expiresIn: 7200}, (err, token) => {
                             if(err) throw err;
                             res.json({
@@ -65,7 +65,7 @@ router.post("/login", (req, res) => {
                             });
                         });
                     } else {
-                        return res.status(400).json({ error: "Password is not correct"});
+                        return res.status(400).json("Password is not correct");
                     }
                 });
         });

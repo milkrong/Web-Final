@@ -1,6 +1,6 @@
 import axios from 'axios'
 import { Message, Loading } from 'element-ui'
-import { endianness } from 'os'
+import { router } from './router'
 
 let loading
 function startLoading () {
@@ -17,6 +17,11 @@ function endLoading () {
 // request check
 axios.interceptors.request.use(config => {
   startLoading()
+
+  if (localStorage.spotifyToken) {
+    // setting request header
+    config.headers.Authorization = localStorage.spotifyToken
+  }
   return config
 }, error => {
   return Promise.reject(error)
@@ -29,6 +34,16 @@ axios.interceptors.response.use(response => {
 }, error => {
   endLoading()
   Message.error(error.response.data)
+
+  const { status } = error.response
+  if (status == 401) {
+    Message.error('Long time no see, please login again')
+    // 清除token
+    localStorage.removeItem('spotifyToken')
+
+    // 页面跳转
+    router.push('/login')
+  }
   return Promise.reject(error)
 })
 
