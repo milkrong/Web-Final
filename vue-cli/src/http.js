@@ -18,9 +18,9 @@ function endLoading () {
 axios.interceptors.request.use(config => {
   startLoading()
 
-  if (localStorage.spotifyToken) {
+  if (localStorage.postifyToken) {
     // setting request header
-    config.headers.Authorization = localStorage.spotifyToken
+    config.headers.Authorization = localStorage.postifyToken
   }
   return config
 }, error => {
@@ -39,7 +39,7 @@ axios.interceptors.response.use(response => {
   if (status == 401) {
     Message.error('Long time no see, please login again')
     // 清除token
-    localStorage.removeItem('spotifyToken')
+    localStorage.removeItem('postifyToken')
 
     // 页面跳转
     router.push('/login')

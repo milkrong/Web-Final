@@ -24,7 +24,7 @@ import jwt_decode from 'jwt-decode'
 export default {
   name: 'app',
   created () {
-    if (localStorage.postifyTokenß) {
+    if (localStorage.postifyToken) {
       const decode = jwt_decode(localStorage.postifyToken)
       this.$store.dispatch('setIsAutnenticated', !this.isEmpty(decode))
       this.$store.dispatch('setUser', decode)

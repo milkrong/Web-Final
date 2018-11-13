@@ -1,15 +1,10 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-
-Vue.use(Vuex)
-
 const types = {
   SET_IS_AUTNENTIATED: 'SET_IS_AUTNENTIATED', // suth
   SET_USER: 'SET_USER' // user
 }
 
 const state = { // status
-  isAutnenticated: false, // auth
+  isAutnenticated: !!localStorage.getItem('postifyToken'), // auth
   user: {} // stored user
 }
 
@@ -40,9 +35,9 @@ const actions = {
   }
 }
 
-export default new Vuex.Store({
+export default {
   state,
   getters,
   mutations,
   actions
-})
+}

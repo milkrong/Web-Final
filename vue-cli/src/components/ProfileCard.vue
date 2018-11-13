@@ -1,76 +1,96 @@
 <template>
     <!-- Profile Card -->
     <div class="card mt-5 shadow-sm profile-card">
-        <div class="personal-card">
-            <div class="personal-card-header">
-                <h5 class="motto">{{user.motto}}</h5>
-            </div>
-            <div class="personal-content">
-                <div class="personal-main">
-                    <div class="personal-media">
-                        <div class="media-img-container">
-                            <div class="media-img">
-                                <img src="http://placehold.it/64x64" alt="">
+        <template v-if="logged">
+            <div class="personal-card">
+                <div class="personal-card-header">
+                    <h5 class="motto">{{user.motto}}</h5>
+                </div>
+                <div class="personal-content">
+                    <div class="personal-main">
+                        <div class="personal-media">
+                            <div class="media-img-container">
+                                <div class="media-img">
+                                    <img src="http://placehold.it/64x64" alt="">
+                                </div>
+                            </div>
+                            <div class="media-content">
+                                <h4>{{user.name}}</h4>
+                                <p>@{{user.username}}</p>
                             </div>
                         </div>
-                        <div class="media-content">
-                            <h4>{{user.name}}</h4>
-                            <p>@{{user.username}}</p>
-                        </div>
-                    </div>
-                    <div class="personal-stats-container">
-                        <div class="personal-stats">
-                            <h4>{{user.follower_number}}</h4>
-                            <p>
-                                Followers
-                            </p>
-                        </div>
-                        <div class="personal-stats">
-                            <h4>{{user.following_number}}</h4>
-                            <p>
-                                Following
-                            </p>
-                        </div>
-                        <div class="personal-stats">
-                            <h4>{{user.post_number}}</h4>
-                            <p>
-                                Posts
-                            </p>
+                        <div class="personal-stats-container">
+                            <div class="personal-stats">
+                                <h4>{{user.follower_number}}</h4>
+                                <p>
+                                    Followers
+                                </p>
+                            </div>
+                            <div class="personal-stats">
+                                <h4>{{user.following_number}}</h4>
+                                <p>
+                                    Following
+                                </p>
+                            </div>
+                            <div class="personal-stats">
+                                <h4>{{user.post_number}}</h4>
+                                <p>
+                                    Posts
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
+                <div class="footer">
+                    <a href="#">View Profile</a>
+                </div>
             </div>
-            <div class="footer">
-                <a href="#">View Profile</a>
+        </template>
+        <template v-else>
+            <div class="log-card">
+                <button @click="$router.push('login')" class="btn btn-primary">Log In</button>
             </div>
-        </div>
+        </template>
     </div>
     <!-- End Profile Card -->
 </template>
 
 <script>
     export default {
-        name: "profile-card",
-        data: function() {
-            return {
-                user: {
-                    name: 'Eric Liu',
-                    motto: 'To be or not to be, this is my awesome motto',
-                    username: "milkrong",
-                    avatar: "http://placehold.it/64x64",
-                    follower_number: 235,
-                    following_number: 144,
-                    post_number: 35
-                }
-            }
+      name: 'profile-card',
+      data: function () {
+        return {
+          user: {
+            name: 'Eric Liu',
+            motto: 'To be or not to be, this is my awesome motto',
+            username: 'milkrong',
+            avatar: 'http://placehold.it/64x64',
+            follower_number: 235,
+            following_number: 144,
+            post_number: 35
+          }
         }
+      },
+      computed: {
+        logged () {
+          return this.$store.getters.isAutnenticated
+        }
+      }
     }
 </script>
 
 <style scoped>
+.log-card {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 5px;
+    color: #444444;
+    text-align: center;
+    padding: 50px 0;
+}
+
 .personal-card {
     background: none repeat scroll 0 0 #FFFFFF;
-    border-radius: 4px;
+    border-radius: 5px;
     color: #444444;
 }
 

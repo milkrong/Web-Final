@@ -33,12 +33,32 @@ router.post("/register/step1", (req, res) => {
                         newUser.hash_password = hash;
                         newUser.save()
                             .then(user => res.json(user))
-                            .catch(err => console.log(err));
+                            .catch(err => {
+                                console.log(err)
+                                res.json('Register Failed')
+                            });
                     });
                 });
             }
         })
 });
+
+// $router post /api/users/register/step2
+router.post("/register/step2", (req, res) => {
+    User.findById(req.body.id)
+        .then(user => {
+            if(!user) {
+                return res.status(400).json('User not exist')
+            }
+            user.hobbies = req.body.hobbies
+            user.save()
+                .then(user => console.log(user))
+                .catch(err => {
+                    console.log(err)
+                    res.json('Error occured')
+                })
+        })
+})
 
 // $router Post /api/user/login
 router.post("/login", (req, res) => {

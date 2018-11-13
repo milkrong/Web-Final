@@ -24,7 +24,7 @@
             <div class="navigation mr-auto">    
                 <ul class="navbar-nav">
                     <li class="nav-item active">
-                        <router-link to="/ome" class="nav-link">
+                        <router-link to="/home" class="nav-link">
                             <i class="fas fa-home mr-1"></i>Home
                         </router-link>
                     </li>
@@ -75,7 +75,7 @@
             </template>
             <template v-else>
                 <div class="profile-navigation">
-                    <ul class="navbar-nav">
+                    <ul class="navbar-nav mr-sm-5">
                         <router-link to="/login" class="mr-2">Login</router-link> 
                         <router-link to="/register">Register</router-link> 
                     </ul>
@@ -94,7 +94,7 @@ export default {
       return this.$store.getters.user
     },
     logged () {
-      return !!localStorage.postifyToken
+      return this.$store.getters.isAutnenticated
     }
   },
   methods: {
@@ -102,7 +102,7 @@ export default {
       localStorage.removeItem('postifyToken')
       this.$store.dispatch('clearCurrentState')
 
-      this.$router.push('/login')
+      this.$router.push('/home')
     }
   }
 }

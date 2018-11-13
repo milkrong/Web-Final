@@ -4,13 +4,13 @@
             <div class="row justify-content-center">
                 <div class="col-lg-4 col-md-5 col-sm-8 register-form">    
                     <el-card class="p-lg-3">
-                        <el-steps :active="step" class="mb-4" align-center>
+                        <el-steps :active="$store.state.rstep.step" class="mb-4" align-center>
                             <el-step title="Register"></el-step>
                             <el-step title="Hobbies"></el-step>
                             <el-step title="Confirm"></el-step>
                         </el-steps>
 
-                        <router-view @next-step="next"></router-view>
+                        <router-view></router-view>
                     </el-card>
                 </div>
                 <vue-particles 
@@ -62,12 +62,7 @@
       },
       data () {
         return {
-          step: 1
-        }
-  },
-      methods: {
-        next () {
-          if (this.step++ > 2) this.step = 0
+          user: {}
         }
       }
     }

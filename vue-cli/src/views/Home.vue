@@ -27,23 +27,23 @@
 </template>
 
 <script>
-import ProfileCard from "@/components/ProfileCard";
-import NewFeed from "@/components/NewFeed";
-import TopMusic from "@/components/TopMusic";
-import Tags from "@/components/Tags";
+import ProfileCard from '@/components/ProfileCard'
+import NewFeed from '@/components/NewFeed'
+import TopMusic from '@/components/TopMusic'
+import Tags from '@/components/Tags'
 
 export default {
-    data: function() {
-        return {
-            activeIndex: "1"
-        }
-    },
-    components: {
-        "profile-card": ProfileCard,
-        "new-feed-form": NewFeed,
-        "top-music": TopMusic,
-        "tags": Tags
+  data: function () {
+    return {
+      activeIndex: '1'
     }
+  },
+  components: {
+    'profile-card': ProfileCard,
+    'new-feed-form': NewFeed,
+    'top-music': TopMusic,
+    'tags': Tags
+  }
 }
 </script>
 

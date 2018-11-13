@@ -38,13 +38,16 @@
             if (valid) {
               this.$axios.post('/api/users/register/step1', this.registerForm)
                 .then((res) => {
-                  this.message({
+                  this.$message({
                     message: 'Register Successfully',
                     type: 'success'
                   })
+                  this.$store.state.rstep.step = 2
+                  this.$store.state.ruser.register = res.data
+                  this.$router.push('/register/step2')
+                  console.log(res.data)
                 })
             }
-            this.$router.push('/register/step2')
           })
         }
       },
