@@ -26,6 +26,7 @@ const userSchema = new Schema({
         require: true
     },
     avatar: String,
+    landing_img: String,
     hobbies: [String],
     created_at: {
         type: Date,

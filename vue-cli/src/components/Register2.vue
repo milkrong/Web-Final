@@ -15,13 +15,12 @@
 <script>
     export default {
       name: 'register-step2',
-      props: ['user'],
       methods: {
         skip: function () {
           this.$router.push({
-            path: 'step3'
+            path: '/login'
           })
-          this.$store.state.rstep.step = 3
+          this.$store.state.rstep.step = 1
         },
         submit: function () {
           if (this.checkedHobby) {
@@ -34,23 +33,19 @@
                   type: 'success'
                 })
                 this.$router.push({
-                  path: 'step3'
+                  path: '/login'
                 })
-                this.$store.state.rstep.step = 3
+                this.$store.state.rstep.step = 1
                 console.log(this.user)
               })
           }
-          this.$router.push({
-            path: 'step3'
-          })
-          this.$store.state.rstep.step = 3
-          console.log(this.checkedHobby)
         }
       },
       data () {
         return {
           hobbyList: ['Hip-hop', 'Pop', 'Classical', 'Jazz'],
-          checkedHobby: []
+          checkedHobby: [],
+          user: {}
         }
       },
       computed: {

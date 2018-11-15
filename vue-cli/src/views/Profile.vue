@@ -71,11 +71,16 @@
 </style>
 
 <script>
-    import ProfileInfo from "@/components/ProfileInfo";
+import ProfileInfo from '@/components/ProfileInfo'
 
-    export default {
-        components: {
-            "profile-info": ProfileInfo
-        }
+export default {
+  data () {
+    return {
+      user: this.$axios.get('/api/profiles/info', this.$store.getters.user.id)
     }
+  },
+  components: {
+    'profile-info': ProfileInfo
+  }
+}
 </script>

@@ -59,11 +59,6 @@
       name: 'register',
       components: {
         'register-step-1': RegisterStep1
-      },
-      data () {
-        return {
-          user: {}
-        }
       }
     }
 </script>

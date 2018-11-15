@@ -51,11 +51,6 @@ const router = new Router({
           path: 'step2',
           name: 'register2',
           component: Register2
-        },
-        {
-          path: 'step3',
-          name: 'register3',
-          component: Register3
         }
       ]
     },

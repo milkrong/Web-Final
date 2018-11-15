@@ -32,7 +32,9 @@ router.post("/register/step1", (req, res) => {
                         
                         newUser.hash_password = hash;
                         newUser.save()
-                            .then(user => res.json(user))
+                            .then(user => res.json({
+                                id: user._id
+                            }))
                             .catch(err => {
                                 console.log(err)
                                 res.json('Register Failed')
@@ -45,6 +47,7 @@ router.post("/register/step1", (req, res) => {
 
 // $router post /api/users/register/step2
 router.post("/register/step2", (req, res) => {
+    console.log(req.body)
     User.findById(req.body.id)
         .then(user => {
             if(!user) {
@@ -52,7 +55,10 @@ router.post("/register/step2", (req, res) => {
             }
             user.hobbies = req.body.hobbies
             user.save()
-                .then(user => console.log(user))
+                .then(user => {
+                    console.log(user)
+                    res.json('Register Finished')
+                })
                 .catch(err => {
                     console.log(err)
                     res.json('Error occured')
@@ -69,7 +75,7 @@ router.post("/login", (req, res) => {
     User.findOne({email})
         .then(user => {
             if(!user){
-                return res.status(404).json('User is not exist');
+                return res.status(404).json('User is not exist')
             }
 
             // Load hash from your password DB.
