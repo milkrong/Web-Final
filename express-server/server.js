@@ -16,6 +16,7 @@ const users = require("./routes/api/users");
 const profiles = require("./routes/api/profiles");
 const feeds  = require("./routes/api/feeds");
 const follow  = require("./routes/api/follow");
+const setting = require("./routes/api/setting")
 // require config
 const db = require("./config/key").mongoURI;
 
@@ -37,6 +38,7 @@ app.use("/api/users", users);
 app.use("/api/profiles", profiles);
 app.use("/api/feeds", feeds);
 app.use("/api/follow", follow);
+app.use("/api/setting", setting);
 
 app.listen(port, () => {
     console.log('Server running on ${port}');

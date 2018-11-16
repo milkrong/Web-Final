@@ -109,10 +109,12 @@
               { validator: checkEmail, trigger: 'blur' }
             ],
             password: [
-              { validator: checkPass, trigger: 'blur' }
+              { validator: checkPass, trigger: 'blur' },
+              { min: 5, max: 20, trigger: 'blur' }
             ],
             password2: [
-              { validator: checkPass2, trigger: 'blur' }
+              { validator: checkPass2, trigger: 'blur' },
+              { min: 5, max: 20, trigger: 'blur' }
             ]
           }
 

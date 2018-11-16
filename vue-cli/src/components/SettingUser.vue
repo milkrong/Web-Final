@@ -1,7 +1,7 @@
 <template>
     <div class="user-setting mt-5">
         <h3>User</h3>
-        <el-form ref="userForm" :model="userForm" label-width="100px">
+        <el-form ref="userForm" :model="userForm" label-width="100px" class="form">
             <el-upload
                 class="avatar-uploader"
                 action="https://jsonplaceholder.typicode.com/posts/"
@@ -12,10 +12,12 @@
                 <i v-else class="el-icon-plus avatar-uploader-icon"></i>
             </el-upload>
             <el-form-item label="Favorites">
-                <el-input v-model="passForm.hobbies" ></el-input>
+                <el-checkbox-group v-model="userForm.hobbies">
+                    <el-checkbox v-for="hobby in userForm.hobbies" :label="hobby" :key="hobby">{{hobby}}</el-checkbox>
+                </el-checkbox-group>
             </el-form-item>
             <el-form-item label="Introduct yourself">
-                <el-input type="textarea" :autosize="{maxRows: 4}" v-model="passForm.motto"></el-input>
+                <el-input type="textarea" :autosize="{ minRows:3, maxRows: 4}" v-model="userForm.motto"></el-input>
             </el-form-item>
             <el-button type="primary">Save Changes</el-button>
         </el-form>
@@ -27,8 +29,8 @@ export default {
   name: 'user-setting',
   data () {
     return {
-      imageUrl: '',
-      passForm: {
+      imageUrl: this.user.avatar,
+      userForm: {
         motto: this.user.motto,
         hobbies: this.user.hobbies
       }
@@ -68,15 +70,17 @@ export default {
     border-bottom: 2px solid #eeeeee;
 }
 
+.form {
+    padding: 10px 30px;
+}
+
 .avatar-uploader .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
     cursor: pointer;
     position: relative;
     overflow: hidden;
-    margin-top: 10px;
-    margin-left: 50px;
-    margin-bottom: 30px;
+    margin-left: 25px;
 }
 .avatar-uploader .el-upload:hover {
     border-color: #409EFF;
