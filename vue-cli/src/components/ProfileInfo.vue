@@ -1,14 +1,15 @@
 <template>
     <div class="profile-info-content">
-        <h3>Eric Liu</h3>
-        <span>@milkrong</span>
-        <p>"To be or not to be, this is my awesome motto!"</p>
+        <h3>{{userData.name}}</h3>
+        <span>@{{userData.username}}</span>
+        <p>{{userData.motto}}</p>
     </div>
 </template>
 
 <script>
     export default {
-      name: 'profile-info'
+      name: 'profile-info',
+      props: ['userData']
     }
 </script>
 

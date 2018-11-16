@@ -4,11 +4,11 @@
             <img src="http://placehold.it/1800x400" alt="" class="img-fluid">
         </div>
         <div class="profile-content">
-            <div class="avatar-container">
-                <img src="http://placehold.it/300x300" alt="">
+            <div class="avatar-container d-none d-lg-block">
+                <img :src="user.avatar" alt="">
             </div>
             <div class="sub-nav row">
-                <el-menu :default-active="1" mode="horizontal" class="col-lg-9 offset-lg-3">
+                <el-menu :default-active="activeIndex" mode="horizontal" class="col-md-9 offset-md-3">
                     <el-menu-item index="1">Posts</el-menu-item>
                     <el-menu-item index="2">Followers</el-menu-item>
                     <el-menu-item index="3">Following</el-menu-item>
@@ -16,11 +16,11 @@
                 </el-menu>
             </div>
             <div class="row">
-                <div class="col-lg-3">
-                    <profile-info class="profile-info"></profile-info>
+                <div class="col-md-3">
+                    <profile-info class="profile-info" :user-data="user"></profile-info>
                 </div>
                 <div class="profile-main col-lg-5">
-
+                    <router-view></router-view>
                 </div>
             </div>
         </div>
@@ -76,11 +76,12 @@ import ProfileInfo from '@/components/ProfileInfo'
 export default {
   data () {
     return {
-      user: this.$axios.get('/api/profiles/info', this.$store.getters.user.id)
+      activeIndex: '1'
     }
   },
   components: {
     'profile-info': ProfileInfo
-  }
+  },
+  props: ['user']
 }
 </script>

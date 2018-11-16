@@ -63,7 +63,7 @@
                                     <li class="list-group-item">
                                         Settings
                                         <div class="list-group">
-                                            <router-link to="/settings" class="list-group-item py-1">Account</router-link>
+                                            <router-link to="/setting" class="list-group-item py-1">Setting</router-link>
                                             <a href="#" @click="logout" class="list-group-item py-1">Logout</a>
                                         </div>
                                     </li>

@@ -4,36 +4,36 @@
         <template v-if="logged">
             <div class="personal-card">
                 <div class="personal-card-header">
-                    <h5 class="motto">{{user.motto}}</h5>
+                    <h5 class="motto">{{userData.motto}}</h5>
                 </div>
                 <div class="personal-content">
                     <div class="personal-main">
                         <div class="personal-media">
                             <div class="media-img-container">
                                 <div class="media-img">
-                                    <img src="http://placehold.it/64x64" alt="">
+                                    <img :src="userData.avatar" alt="">
                                 </div>
                             </div>
                             <div class="media-content">
-                                <h4>{{user.name}}</h4>
-                                <p>@{{user.username}}</p>
+                                <h4>{{userData.name}}</h4>
+                                <p>@{{userData.username}}</p>
                             </div>
                         </div>
                         <div class="personal-stats-container">
                             <div class="personal-stats">
-                                <h4>{{user.follower_number}}</h4>
+                                <h4>0</h4>
                                 <p>
                                     Followers
                                 </p>
                             </div>
                             <div class="personal-stats">
-                                <h4>{{user.following_number}}</h4>
+                                <h4>0</h4>
                                 <p>
                                     Following
                                 </p>
                             </div>
                             <div class="personal-stats">
-                                <h4>{{user.post_number}}</h4>
+                                <h4>0</h4>
                                 <p>
                                     Posts
                                 </p>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="footer">
-                    <a href="#">View Profile</a>
+                    <router-link to="/profile">View Profile</router-link>
                 </div>
             </div>
         </template>
@@ -58,19 +58,7 @@
 <script>
     export default {
       name: 'profile-card',
-      data: function () {
-        return {
-          user: {
-            name: 'Eric Liu',
-            motto: 'To be or not to be, this is my awesome motto',
-            username: 'milkrong',
-            avatar: 'http://placehold.it/64x64',
-            follower_number: 235,
-            following_number: 144,
-            post_number: 35
-          }
-        }
-      },
+      props: ['userData'],
       computed: {
         logged () {
           return this.$store.getters.isAutnenticated

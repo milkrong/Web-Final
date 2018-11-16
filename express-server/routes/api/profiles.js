@@ -5,7 +5,7 @@
  const User = require("../../models/User");
 
 //  $router /api/profiles/
-router.get("/info", passport.authenticate("jwt", {session: false}), (req, res) => {
+router.post("/info", passport.authenticate("jwt", {session: false}), (req, res) => {
     User.findById(req.body.id)
         .then(user => {
             if(!user) {

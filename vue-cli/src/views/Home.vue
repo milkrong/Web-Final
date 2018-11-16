@@ -3,7 +3,7 @@
 <div class="container-fluid fill">
     <div class="row justify-content-center">
         <div class="left-area col-lg-3 col-md-9 mr-lg-2">
-            <profile-card></profile-card>
+            <profile-card :userData="user"></profile-card>
         </div>
         <div class="main-area col-lg-5 col-md-9">
             <template v-if="logged">
@@ -40,6 +40,7 @@ export default {
       activeIndex: '2'
     }
   },
+  props: ['user'],
   components: {
     'profile-card': ProfileCard,
     'new-feed-form': NewFeed,
