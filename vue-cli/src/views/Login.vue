@@ -12,7 +12,7 @@
                                 <el-input placeholder="Email" v-model="loginForm.email"></el-input>
                             </el-form-item>
                             <el-form-item label-width="0" prop="password">
-                                <el-input placeholder="Password" v-model="loginForm.password"></el-input>
+                                <el-input type="password" placeholder="Password" v-model="loginForm.password"></el-input>
                             </el-form-item>
                             <el-form-item label-width="0">
                                 <el-checkbox label="remember me"></el-checkbox>

@@ -14,10 +14,10 @@
             <el-input placeholder="Username" v-model="registerForm.username"></el-input>
         </el-form-item>
         <el-form-item label-width="0" prop="password">
-            <el-input placeholder="Password" v-model="registerForm.password"></el-input>
+            <el-input type="password" placeholder="Password" v-model="registerForm.password"></el-input>
         </el-form-item>
         <el-form-item label-width="0" prop="password2">
-            <el-input placeholder="Confirm Password" v-model="registerForm.password2"></el-input>
+            <el-input type="password" placeholder="Confirm Password" v-model="registerForm.password2"></el-input>
         </el-form-item>
         <el-form-item label-width="0">
             <el-checkbox>I Agree with Privacy Policy</el-checkbox>

@@ -6,12 +6,12 @@
                 <el-input v-model="passForm.oldPassword" ></el-input>
             </el-form-item>
             <el-form-item label="New Password" prop="newPassword">
-                <el-input v-model="passForm.newPassword"></el-input>
+                <el-input type="password" v-model="passForm.newPassword"></el-input>
             </el-form-item>
             <el-form-item label="Confirm Password" prop="newPassword2">
-                <el-input v-model="passForm.newPassword2"></el-input>
+                <el-input type="password" v-model="passForm.newPassword2"></el-input>
             </el-form-item>
-            <el-button type="primary">Save Changes</el-button>
+            <el-button type="primary" @click="save">Save Changes</el-button>
         </el-form>
     </div>
 </template>
@@ -21,43 +21,59 @@ export default {
   name: 'account-setting',
   props: ['user'],
   data () {
-        var checkPass = (rule, value, callback) => {
-            if (value === '') {
-            return callback(new Error('Please input password'))
-            } else {
-            if (this.passForm.newPassword2 !== '') {
-                this.$refs.passForm.validateField('password2')
-            }
-            callback()
-            }
+    var checkPass = (rule, value, callback) => {
+      if (value === '') {
+        return callback(new Error('Please input password'))
+      } else {
+        if (this.passForm.newPassword2 !== '') {
+          this.$refs.passForm.validateField('password2')
         }
+        callback()
+      }
+    }
 
-        var checkPass2 = (rule, value, callback) => {
-          if (value === '') {
-            return callback(new Error('Please confirm password'))
-          } else if (value !== this.passForm.newPassword) {
-            callback(new Error('Password is not same'))
-          } else {
-            callback()
-          }
-        }
+    var checkPass2 = (rule, value, callback) => {
+      if (value === '') {
+        return callback(new Error('Please confirm password'))
+      } else if (value !== this.passForm.newPassword) {
+        callback(new Error('Password is not same'))
+      } else {
+        callback()
+      }
+    }
 
     return {
       passForm: {
+        id: this.user.id,
         oldPassword: '',
         newPassword: '',
         newPassword2: ''
       },
       rules: {
-            newPassword: [
-                { validator: checkPass, trigger: 'blur' },
-                { min: 5, max: 20, trigger: 'blur' }
-            ],
-            newPassword2: [
-                { validator: checkPass2, trigger: 'blur' },
-                { min: 5, max: 20, trigger: 'blur' }
-            ]
+        oldPassword: [
+          { require: true, message: 'Please input password', trigger: 'blur' }
+        ],
+        newPassword: [
+          { validator: checkPass, trigger: 'blur' },
+          { min: 5, max: 20, trigger: 'blur' }
+        ],
+        newPassword2: [
+          { validator: checkPass2, trigger: 'blur' },
+          { min: 5, max: 20, trigger: 'blur' }
+        ]
       }
+    }
+  },
+  methods: {
+    save () {
+      this.$axios.post('/api/setting/password', this.passForm)
+        .then(res => {
+          console.log(res.data)
+          this.$message({
+            message: 'Successfully Saved',
+            type: 'success'
+          })
+        })
     }
   }
 }

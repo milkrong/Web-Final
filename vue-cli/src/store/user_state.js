@@ -4,7 +4,7 @@ const types = {
 }
 
 const state = { // status
-  isAutnenticated: !!localStorage.getItem('postifyToken'), // auth
+  isAutnenticated: false, // auth
   user: {} // stored user
 }
 

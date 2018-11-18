@@ -25,31 +25,30 @@ export default {
         username: this.user.username
       },
       rules: {
-        email: [ 
-              { type: "email", required: true, message: "Please input correct email", trigger: "blur" }
+        email: [
+          { type: 'email', required: true, message: 'Please input correct email', trigger: 'blur' }
         ],
         username: [
-            { required: true, message: "Please set your username", trigger: "blur"}
+          { required: true, message: 'Please set your username', trigger: 'blur' }
         ]
       }
     }
   },
   methods: {
-      save (formName) {
-          this.$refs[formName].validate(valid => {
-              if (valid) {
-
-                  this.$axios.post('/api/setting/account', this.accountForm)
-                    .then(res => {
-                        console.log(res.data)
-                        this.$message({
-                            message: "Changes Saved",
-                            type: 'success'
-                        })
-                    })
-              }
-          })
-      } 
+    save (formName) {
+      this.$refs[formName].validate(valid => {
+        if (valid) {
+          this.$axios.post('/api/setting/account', this.accountForm)
+            .then(res => {
+              console.log(res.data)
+              this.$message({
+                message: res.data,
+                type: 'success'
+              })
+            })
+        }
+      })
+    }
   }
 }
 </script>

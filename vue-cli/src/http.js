@@ -40,9 +40,9 @@ axios.interceptors.response.use(response => {
     Message.error('Long time no see, please login again')
     // 清除token
     localStorage.removeItem('postifyToken')
-
+    this.$store.dispatch('clearCurrentState')
     // 页面跳转
-    router.push('/login')
+    router.push('login')
   }
   return Promise.reject(error)
 })

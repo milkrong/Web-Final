@@ -21,8 +21,8 @@ const setting = require("./routes/api/setting")
 const db = require("./config/key").mongoURI;
 
 // middleware bodyparser
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json({limit: '50mb'}))
+app.use(bodyParser.urlencoded({limit: '50mb', extended: true}));
 
 // connect mongoDB
 mongoose.connect(db, { useNewUrlParser: true })
