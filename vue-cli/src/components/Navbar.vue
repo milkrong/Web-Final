@@ -3,7 +3,7 @@
     <nav class="top-nav navbar navbar-expand-lg bg-white shadow-sm">
         <div class="brand">   
             <a href="/" class="mx-sm-3">
-                <img src="@/assets/icons/facebook.svg" alt="brand" width="30px" height="30px">
+                <img src="@/assets/logo.png" alt="brand" width="30px" height="30px">
             </a>
         </div> 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -12,12 +12,9 @@
         </button>
         
         <form class="form-inline my-2 my-lg-0 mr-sm-4">
-                <div class="input-group">
-                    <input class="form-control" type="search" placeholder="Search..." aria-label="Search">
-                    <div class="input-group-append">
-                        <button type="button" class="btn btn-outline-secondary my-2 my-sm-0"><i class="fa fa-search"></i></button>
-                    </div>
-                </div>
+            <el-input v-model="searchInput" type="text" size="small">
+                <i class="el-icon-search el-input__icon" slot="suffix" @click="search"></i>
+            </el-input>
         </form>
 
         <div class="navigation-group collapse navbar-collapse" id="navbarSupportedContent">
@@ -89,6 +86,11 @@
 <script>
 export default {
   name: 'nav-bar',
+  data () {
+    return {
+      searchInput: ''
+    }
+  },
   computed: {
     user () {
       return this.$store.getters.user
@@ -103,6 +105,9 @@ export default {
       this.$store.dispatch('clearCurrentState')
 
       this.$router.push('/home')
+    },
+    search () {
+
     }
   }
 }
@@ -124,6 +129,10 @@ nav .navigation-group .profile-navigation img {
 
 .profile-navigation .profile-list .profile-link-group {
     font-size: 14px;
+}
+
+.search-icon {
+    height:100%
 }
 </style>
 

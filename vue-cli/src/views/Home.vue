@@ -7,7 +7,7 @@
         </div>
         <div class="main-area col-lg-5 col-md-9">
             <template v-if="logged">
-                <new-feed-form></new-feed-form>
+                <new-feed-form :user='user'></new-feed-form>
                 <div class="sub-nav">
                     <el-menu :default-active="activeIndex" mode="horizontal">
                         <el-menu-item index="1">
