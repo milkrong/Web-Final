@@ -87,24 +87,25 @@ router.post('/password', passport.authenticate("jwt", {session: false} ), (req, 
 router.post('/upload', upload.single('avatar'), (req, res) => {
     const filePath = './' + req.file.path
     console.log(req.file)
-    const fileName = Date.now() + req.file.originalname
-
+    const fileType = req.file.originalname.split('.').pop()
+    const fileName = Date.now() + 'avatar.' + fileType
+    
     fs.rename(filePath, fileName, (err) => {
         if (err) {
             res.status(102).json('File Save Failed')        
         } else {
             const localFile = './' + fileName
-            const key = fileName
+            const key = 'avatar/' + fileName
 
             co(function* () {
                 client.useBucket(ali_oss.bucket)
                 const result = yield client.put(key, localFile)
 
                 const imgSrc = 'http://postifymusic.oss-us-east-1.aliyuncs.com/'+ result.name
-                fs.unlinkSync(localFile);
+                fs.unlinkSync(localFile)
                 res.json({msg: 'Success', avatar: imgSrc})
             }).catch(err => {
-                fs.unlinkSync(localFile);
+                fs.unlinkSync(localFile)
                 res.json('Failed while uploading')
             })
         }

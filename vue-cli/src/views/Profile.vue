@@ -1,19 +1,21 @@
 <template>
-    <div class="container-fluid">
+    <div class="container-fluid fill">
         <div class="profile-cover">
-            <img src="http://placehold.it/1800x400" alt="" class="img-fluid">
+            <img :src="landImg" alt="" class="img-fluid">
         </div>
         <div class="profile-content">
             <div class="avatar-container d-none d-lg-block">
                 <img :src="user.avatar" alt="">
             </div>
             <div class="sub-nav row">
-                <el-menu :default-active="activeIndex" mode="horizontal" class="col-md-9 offset-md-3">
-                    <el-menu-item index="1">Posts</el-menu-item>
-                    <el-menu-item index="2">Followers</el-menu-item>
-                    <el-menu-item index="3">Following</el-menu-item>
-                    <el-menu-item index="4">Friends</el-menu-item>
-                </el-menu>
+                <div class="col-md-9 offset-md-3">
+                    <el-menu :default-active="activeIndex" mode="horizontal">
+                        <el-menu-item index="1">Feeds</el-menu-item>
+                        <el-menu-item index="2">Followers</el-menu-item>
+                        <el-menu-item index="3">Following</el-menu-item>
+                        <el-menu-item index="4">Friends</el-menu-item>
+                    </el-menu>
+                </div>
             </div>
             <div class="row">
                 <div class="col-md-3">
@@ -76,7 +78,8 @@ import ProfileInfo from '@/components/ProfileInfo'
 export default {
   data () {
     return {
-      activeIndex: '1'
+      activeIndex: '1',
+      landImg: 'http://www.placehold.it//1800x400'
     }
   },
   components: {

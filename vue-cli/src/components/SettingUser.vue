@@ -2,15 +2,17 @@
     <div class="user-setting mt-5">
         <h3>User</h3>
         <el-form ref="userForm" :model="userForm" label-width="100px" class="form">
-            <el-upload
-                class="avatar-uploader"
-                action=""
-                :show-file-list="false"
-                :http-request = "upload"
-                :before-upload="beforeAvatarUpload">
-                <img v-if="userForm.avatar" :src="userForm.avatar" class="avatar">
-                <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-            </el-upload>
+            <el-form-item label="avatar">
+                <el-upload
+                    class="avatar-uploader"
+                    action=""
+                    :show-file-list="false"
+                    :http-request = "upload"
+                    :before-upload="beforeAvatarUpload">
+                    <img v-if="userForm.avatar" :src="userForm.avatar" class="avatar">
+                    <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+                </el-upload>
+            </el-form-item>
             <el-form-item label="Favorites">
                 <el-checkbox-group v-model="userForm.hobbies">
                     <el-checkbox v-for="hobby in hobbies" :label="hobby" :key="hobby">{{hobby}}</el-checkbox>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <nav-bar></nav-bar>
-    <router-view :user="user"></router-view>
+    <nav-bar :user="user"></nav-bar>
+    <router-view :user="user" @getUser="getUser"></router-view>
   </div>
 </template>
 
@@ -28,11 +28,7 @@ export default {
       const decode = jwt_decode(localStorage.postifyToken)
       this.$store.dispatch('setIsAutnenticated', !this.isEmpty(decode))
       this.$store.dispatch('setUser', decode)
-
-      this.$axios.post('/api/profiles/info', this.$store.getters.user)
-        .then(res => {
-          this.user = res.data
-        })
+      this.getUser()
     }
   },
   methods: {
@@ -43,6 +39,12 @@ export default {
         (typeof value === 'object' && Object.keys(value).length === 0) ||
         (typeof value === 'string' && value.trim().length === 0)
       )
+    },
+    getUser () {
+      this.$axios.get('/api/profiles/info/' + this.$store.getters.user.id)
+        .then(res => {
+          this.user = res.data
+        })
     }
   },
   components: {

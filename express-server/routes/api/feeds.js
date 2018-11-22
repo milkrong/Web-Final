@@ -21,8 +21,8 @@ const ali_oss = {
 var multer  = require('multer')
 var upload = multer({ dest: './tmp/' })
 
-const Feed = require("../../models/Feed");
-
+const Feed = require("../../models/Feed")
+const User = require("../../models/User")
 
 router.get("/test", (req, res) => {
     res.json({msg: "api works well"});
@@ -39,24 +39,48 @@ router.post("/create", passport.authenticate("jwt", {session: false}), (req, res
         feedObj.imgs = req.body.imgs.split("|");
     }
 
+    User.findById(feedObj.user_id)
+        .then(user => {
+            if(!user) {
+                return res.status(400).json('User not exist')
+            }
+
+            user.feeds_number += 1
+            user.save()
+                .then(user => {
+                    console.log(user)
+                    res.json('Post Success')
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.json('Error occured on upload user')
+                })
+        })
+
     // save feed
-    new Feed(feedObj).save().then(feed => {
-        res.json(feed);
-    });
+    new Feed(feedObj).save()
+        .then(feed => {
+            res.json(feed)
+        })
+        .catch(err => {
+            console.log(err)
+            res.json('Error Occured on save')
+        })
 });
 
 // upload img to cloud
 router.post('/upload', upload.single('file'), (req, res) => {
     const filePath = './' + req.file.path
     console.log(req.file)
-    const fileName = Date.now() + req.file.originalname
+    const fileType = req.file.originalname.split('.').pop()
+    const fileName = Date.now() + 'feeds.' + fileType 
 
     fs.rename(filePath, fileName, (err) => {
         if (err) {
-            res.status(102).json('File Save Failed')        
+            res.status(102).json('Error occured on upload')        
         } else {
             const localFile = './' + fileName
-            const key = fileName
+            const key = 'feeds/' + fileName
 
             co(function* () {
                 client.useBucket(ali_oss.bucket)
@@ -67,7 +91,7 @@ router.post('/upload', upload.single('file'), (req, res) => {
                 res.json({msg: 'Success', img: imgSrc})
             }).catch(err => {
                 fs.unlinkSync(localFile);
-                res.json('Failed while uploading')
+                res.json('Error occured on upload')
             })
         }
     })

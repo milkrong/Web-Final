@@ -21,21 +21,21 @@
                         </div>
                         <div class="personal-stats-container">
                             <div class="personal-stats">
-                                <h4>0</h4>
+                                <h4>{{ userData.follower_number }}</h4>
                                 <p>
                                     Followers
                                 </p>
                             </div>
                             <div class="personal-stats">
-                                <h4>0</h4>
+                                <h4>{{ userData.following_number }}</h4>
                                 <p>
                                     Following
                                 </p>
                             </div>
                             <div class="personal-stats">
-                                <h4>0</h4>
+                                <h4>{{ userData.feeds_number }}</h4>
                                 <p>
-                                    Posts
+                                    Feeds
                                 </p>
                             </div>
                         </div>

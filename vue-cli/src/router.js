@@ -109,6 +109,11 @@ const router = new Router({
       ]
     },
     {
+      path: '/search',
+      name: 'search',
+      component: () => import('./views/Search')
+    },
+    {
       path: '*',
       name: '/404',
       component: () => import('./views/404.vue')

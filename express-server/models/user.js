@@ -28,6 +28,18 @@ const userSchema = new Schema({
     avatar: String,
     landing_img: String,
     hobbies: [String],
+    following_number:{
+        type: Number,
+        default: 0
+    },
+    follower_number :{
+        type: Number,
+        default: 0
+    },
+    feeds_number: {
+        type: Number,
+        default: 0
+    },
     created_at: {
         type: Date,
         default: Date.now

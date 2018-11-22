@@ -110,7 +110,8 @@ export default {
               this.$store.dispatch('setIsAutnenticated', !this.isEmpty(decode))
               this.$store.dispatch('setUser', decode)
 
-              this.$router.push('/home')
+              this.$emit('getUser')
+              this.$router.push('/')
             })
         } else {
           return false

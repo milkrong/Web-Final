@@ -86,15 +86,13 @@
 <script>
 export default {
   name: 'nav-bar',
+  props: ['user'],
   data () {
     return {
       searchInput: ''
     }
   },
   computed: {
-    user () {
-      return this.$store.getters.user
-    },
     logged () {
       return this.$store.getters.isAutnenticated
     }
@@ -107,7 +105,7 @@ export default {
       this.$router.push('/home')
     },
     search () {
-
+      this.$router.push({ path: 'search', query: { searchInput: this.searchInput } })
     }
   }
 }
@@ -131,8 +129,8 @@ nav .navigation-group .profile-navigation img {
     font-size: 14px;
 }
 
-.search-icon {
-    height:100%
+.el-icon-search {
+    cursor: pointer;
 }
 </style>
 
