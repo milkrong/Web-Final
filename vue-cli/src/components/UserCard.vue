@@ -1,9 +1,9 @@
 <template>
-    <div class="user-card-container">   
+    <div class="user-cards-container mt-5">   
         <div class="user-card">
             <div class="card-front">
                 <div class="user-card-img">
-                    <img src="http://placehold.it/40x40" alt="friend" class="rounded-circle">
+                    <img :src="user.avatar" alt="friend" class="rounded-circle">
                 </div>
                 <div class="user-content">
                     <div class="user-main">
@@ -31,19 +31,19 @@
                         <h4 class="text-center">{{ user.name }}</h4>
                         <div class="user-stats-container">
                             <div class="user-stats">
-                                <h4>{{ user.followerNumber }}</h4>
+                                <h4>{{ user.follower_number }}</h4>
                                 <p>
                                     Followers
                                 </p>
                             </div>
                             <div class="user-stats">
-                                <h4>{{ user.followingNumber }}</h4>
+                                <h4>{{ user.following_number }}</h4>
                                 <p>
                                     Following
                                 </p>
                             </div>
                             <div class="user-stats">
-                                <h4>{{ user.feedNember}}</h4>
+                                <h4>{{ user.feeds_number}}</h4>
                                 <p>
                                     Feeds
                                 </p>
@@ -61,7 +61,7 @@
 <script>
 export default {
   name: 'user-card',
-  props: ['user'],
+  props: ['user', 'main-user'],
   data () {
     return {
       isFriend: {

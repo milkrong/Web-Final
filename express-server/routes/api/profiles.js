@@ -3,6 +3,7 @@
  const passport = require("passport");
 
  const User = require("../../models/User");
+ const Follower = require("../../models/Follower");
 
 //  $router /api/profiles/
 router.get("/info/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
@@ -31,12 +32,28 @@ router.get("/info/:id", passport.authenticate("jwt", {session: false}), (req, re
 
 router.get("/search/:username", passport.authenticate("jwt", {session: false}), (req,res) => {
     User.find({'username': { '$regex' : req.params.username, '$options' : 'i' }}).select('-hash_password')
-        .then(user => {
-            if(!user) {
+        .then(users => {
+            if(!users) {
                 res.status(400).json('No user found')
             } else {
-                console.log(user)
-                res.json(user)
+                console.log(users)
+                for (var i=0; i < users.length; i++){
+                    console.log(users[i])
+                    Follower.find({user_id: users[i]._id})
+                        .then((followers) => {
+                            if (!followers) {
+                                console.log(users[i])
+                                users[i].isfollowing = false
+                            } 
+                            console.log(users[i])
+                            if (followers.includes(req.user.id)) {
+                                users[i].isfollowing = true
+                            } else {
+                                users[i].isfollowing = true
+                            }
+                        })
+                }
+                res.json(users)
             }
         })
         .catch(err => {

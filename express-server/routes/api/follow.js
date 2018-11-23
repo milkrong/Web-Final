@@ -24,8 +24,8 @@ router.get("/followers", passport.authenticate("jwt", {session: false}), (req, r
 })
 
 // Get followings from From user id in the token
-router.get("/followings", passport.authenticate("jwt", {session: false}), (req, res) => {
-    Following.findById(req.user.id)
+router.get("/followings/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
+    Following.findById(req.params.id)
         .then(followings => {
             User.findById(followings.follower_id)
                 .then(following_profile => {
