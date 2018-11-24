@@ -1,9 +1,9 @@
- const express = require("express");
- const router = express.Router();
- const passport = require("passport");
+const express = require("express");
+const router = express.Router();
+const passport = require("passport");
 
- const User = require("../../models/User");
- const Follower = require("../../models/Follower");
+const User = require("../../models/User");
+const Follower = require("../../models/Follower");
 
 //  $router /api/profiles/
 router.get("/info/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
@@ -36,23 +36,16 @@ router.get("/search/:username", passport.authenticate("jwt", {session: false}), 
             if(!users) {
                 res.status(400).json('No user found')
             } else {
-                console.log(users)
-                for (var i=0; i < users.length; i++){
-                    console.log(users[i])
-                    Follower.find({user_id: users[i]._id})
-                        .then((followers) => {
-                            if (!followers) {
-                                console.log(users[i])
-                                users[i].isfollowing = false
-                            } 
-                            console.log(users[i])
-                            if (followers.includes(req.user.id)) {
-                                users[i].isfollowing = true
-                            } else {
-                                users[i].isfollowing = true
-                            }
-                        })
-                }
+                users.forEach((user, i) => {
+                    Follower.find({user_id: user._id, follower_id: req.user.id})
+                    .exec((err, followers) => {
+                        if (followers) {
+                            user.isfollowing = true
+                        } else {
+                            user.isfollowing = false
+                        }
+                    })
+                });
                 res.json(users)
             }
         })

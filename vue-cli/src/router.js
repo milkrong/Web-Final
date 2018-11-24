@@ -114,6 +114,11 @@ const router = new Router({
       component: () => import('./views/Search')
     },
     {
+      path: '/music',
+      name: 'music',
+      component: () => import ('./views/Music')
+    },
+    {
       path: '*',
       name: '/404',
       component: () => import('./views/404.vue')

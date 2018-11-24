@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { Message, Loading } from 'element-ui'
 import { router } from './router'
+import store from './store'
 
 let loading
 function startLoading () {
@@ -40,7 +41,7 @@ axios.interceptors.response.use(response => {
     Message.error('Long time no see, please login again')
     // 清除token
     localStorage.removeItem('postifyToken')
-    this.$store.dispatch('clearCurrentState')
+    store.dispatch('clearCurrentState')
     // 页面跳转
     router.push('/')
   }

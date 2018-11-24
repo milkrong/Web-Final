@@ -12,7 +12,7 @@
         </button>
         
         <form class="form-inline my-2 my-lg-0 mr-sm-4">
-            <el-input v-model="searchInput" type="text" size="small">
+            <el-input v-model="searchInput" type="text" size="small" placeholder="By username">
                 <i class="el-icon-search el-input__icon" slot="suffix" @click="search"></i>
             </el-input>
         </form>
@@ -23,6 +23,11 @@
                     <li class="nav-item active">
                         <router-link to="/home" class="nav-link">
                             <i class="fas fa-home mr-1"></i>Home
+                        </router-link>
+                    </li>
+                    <li class="nav-item">
+                        <router-link to="/music" class="nav-link">
+                            <i class="fas fa-music mr-1"></i>Music
                         </router-link>
                     </li>
                 </ul>

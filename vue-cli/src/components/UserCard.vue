@@ -10,15 +10,8 @@
                         <h3 class="user-name">{{ user.name }}</h3>
                         <p class="text-center">{{ user.motto }}</p>
                     </div>
-                    <div class="footer">
-                        <div class="follow-button">
-                            <el-button type="info" v-if="isFollowing" plain>Unfollow</el-button>
-                            <el-button type="success" else plain>Follow</el-button>
-                        </div>
-                        <div class="friend-button">
-                            <el-button type="info" v-if="isFriend">Delete Friend</el-button>
-                            <el-button type="primary" else>Add Friend</el-button>
-                        </div>
+                    <div class="footer text-center">
+                        <a href="" @click="$router.push('/user/profile')">View Page</a>
                     </div>
                 </div>
             </div>
@@ -52,7 +45,14 @@
                     </div>
                 </div>
                 <div class="footer">
-                    <a href="" @click="$router.push('/user/profile')">View Page</a>
+                    <div class="follow-button">
+                        <el-button type="info" v-if="user.isfollowing" plain>Unfollow</el-button>
+                        <el-button type="success" else plain>Follow</el-button>
+                    </div>
+                    <div class="friend-button">
+                        <el-button type="info" v-if="user.isfriend">Delete Friend</el-button>
+                        <el-button type="primary" else>Add Friend</el-button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,17 +61,7 @@
 <script>
 export default {
   name: 'user-card',
-  props: ['user', 'main-user'],
-  data () {
-    return {
-      isFriend: {
-        type: Boolean
-      },
-      isFollowing: {
-        type: Boolean
-      }
-    }
-  }
+  props: ['user', 'main-user']
 }
 </script>
 
@@ -170,7 +160,7 @@ export default {
 }
 
 .user-card .card-back .user-content .user-main {
-    min-height: 140px;
+    min-height: 110px;
 }
 
 .user-card .user-name {
@@ -185,7 +175,14 @@ export default {
     border-top: 1px solid #EEEEEE;
     margin: 30px 0 0;
     padding: 10px 0 0;
-    text-align: center;
+}
+
+.user-card .card-back .footer {
+    border-top: 1px solid #EEEEEE;
+    margin: 30px 0 0;
+    padding: 10px 0 0;
+    display: flex;
+    justify-content: space-evenly;
 }
 
 .user-card .motto{
@@ -220,5 +217,6 @@ export default {
 }
 .user-card .user-stats p{
 	color: #777777;
+    font-size: 13px
 }
 </style>
