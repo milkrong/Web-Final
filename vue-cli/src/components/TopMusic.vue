@@ -36,12 +36,12 @@
 </style>
 
 <script>
-import Aplayer from "vue-aplayer";
+import Aplayer from 'vue-aplayer'
 
 export default {
-    name: "top-music",
-    components: {
-        Aplayer
-    }
+  name: 'top-music',
+  components: {
+    Aplayer
+  }
 }
 </script>

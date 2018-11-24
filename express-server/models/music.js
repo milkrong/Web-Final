@@ -23,6 +23,10 @@ const musicSchema = Schema({
     src: {
         type: String,
         required: true
+    },
+    hot_level : {
+        type: Number,
+        default: 0
     }
 })
 

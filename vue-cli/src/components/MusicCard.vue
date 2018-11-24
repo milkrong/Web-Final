@@ -1,0 +1,80 @@
+<template>
+    <div class="music-card">
+        <div class="music-wrapper">
+            <div class="top" 
+            :style="{'background': 'url('+music.pic+') no-repeat center center'}">
+            </div>
+            <div class="bottom">
+                <div class="left">
+                    <h3>{{music.title}}</h3>
+                    <p>{{music.artist}}</p>
+                </div>
+                <div class="right">
+                    <el-button @click="play" circle><i class="fas fa-play"></i></el-button>
+                </div>
+            </div>
+            <div class="share">
+                <div class="icon">
+                    <i class="fas fa-share-alt"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<script>
+export default {
+  name: 'music-card',
+  props: ['music'],
+  methods: {
+    play () {
+      this.$emit()
+    }
+  }
+}
+</script>
+
+<style>
+.music-wrapper {
+    width: 250px;
+    height: 350px;
+    background: white;
+    margin: auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0;
+    transform: scale(0.95);
+    transition: box-shadow 0.5s, transform 0.5s;
+}
+
+.music-wrapper:hover {
+    transform: scale(1);
+    box-shadow: 5px 20px 30px rgba(0, 0, 0, 0.2);
+}
+
+.music-wrapper .top {
+    height: 80%;
+    width: 100%;
+    -webkit-background-size: 100%;
+    -moz-background-size: 100%;
+    -o-background-size: 100%;
+    background-size: auto;
+}
+
+.music-wrapper .bottom {
+    display: flex;
+    padding: 5px 10px;
+    align-content: space-evenly;
+}
+
+.bottom .left {
+    width: 50%
+}
+
+.bottom .right {
+    width: 50%;
+    text-align: right
+}
+
+</style>
