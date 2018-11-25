@@ -32,3 +32,13 @@
 }
 </style>
 
+<script>
+export default {
+    name: 'feed',
+    data() {
+        return {
+            feed: {}
+        }
+    }
+}
+</script>

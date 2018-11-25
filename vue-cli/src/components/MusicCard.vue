@@ -26,9 +26,19 @@
 export default {
   name: 'music-card',
   props: ['music'],
+  data () {
+      return {
+          toPlay : {
+            title: this.music.title,
+            src: this.music.src,
+            pic: this.music.pic,
+            artist: this.music.artist
+        }
+      }
+  },
   methods: {
     play () {
-      this.$emit()
+        this.$emit('play-this', this.toPlay)
     }
   }
 }
@@ -74,7 +84,27 @@ export default {
 
 .bottom .right {
     width: 50%;
-    text-align: right
+    text-align: right;
+    padding-top: 10px
 }
 
+.share {
+    z-index: 9;
+    position: absolute;
+    background: #409EFF;
+    width: 100px;
+    height: 100px;
+    top: -50px;
+    right:-50px;
+    border-radius: 0 0 100px 100px;
+    cursor: pointer;
+}
+
+.share .icon {
+    position: absolute;
+    right: 65px;
+    top:60px;
+    color: white;
+    opacity: 1;
+}
 </style>

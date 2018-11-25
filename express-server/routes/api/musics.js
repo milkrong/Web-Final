@@ -15,6 +15,26 @@ router.get('/all', (req, res) => {
         });
 });
 
+router.get('/top', (req, res) => {
+    Music.find({}, ['title','src', 'pic', 'artist', 'hot_level']).sort({hot_level: 1}).limit(5)
+        .then(musics => {
+            if(!musics) {
+                res.status(400).json('No Music in the website')
+            } else {
+                re_music = []
+                musics.forEach((music, i) => {
+                    re_music.push({
+                        title: music.title,
+                        artist: music.artist,
+                        src: music.src,
+                        pic: music.pic
+                    })
+                })
+                res.json(re_music)
+            }
+        });
+});
+
 router.post('/create', (req, res) => {
     const newMusic = new Music()
     if(req.body.title) newMusic.title = req.body.title

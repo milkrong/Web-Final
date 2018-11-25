@@ -4,16 +4,16 @@
             <span>Categories</span>
         </div>
         <div class="tags-body">
-            <a href="#Posts"><span class="badge badge-pill badge-primary">#Posts</span></a>
-            <a href="#MV"><span class="badge badge-pill badge-primary">#MV</span></a>
-            <a href="#Music"><span class="badge badge-pill badge-primary">#Music</span></a>
-            <a href="#Pop"><span class="badge badge-pill badge-success">#Pop Music</span></a>
-            <a href="#Hip"><span class="badge badge-pill badge-success">#Hip Hop</span></a>
+            <div class="tag" v-for="tag in categories" :key="tag">
+                <a href="#tag">
+                    <span class="badge badge-pill badge-success">#{{tag}}</span>
+                </a>
+            </div>
         </div>
     </div>
 </template>
 
-<style>
+<style scoped>
 .tags {
     margin-top: 20px;
     background: #fff;
@@ -28,8 +28,11 @@
 }
 
 .tags .tags-body {
-    text-align: center;
     padding: 10px;
+}
+
+.tag {
+    display: inline
 }
 
 .tags .badge {
@@ -40,7 +43,12 @@
 
 <script>
 export default {
-    name: "tags"
+    name: "tags",
+    data() {
+        return {
+            categories:['All','Classical','Country','Jazz','R&B','Rock','Pop']
+        }
+    }
 }
 </script>
 

@@ -2,7 +2,7 @@
     <div class="new-feed-form mt-5 shadow-sm p-3 ">
         <div class="new-feed">
             <textarea class="feed-text" rows="3" placeholder="Share Somthing Interesting..." v-model="text"></textarea>
-            <div class="feed-upload">
+            <div class="feed-upload" v-if="readyUpload">
                 <el-upload
                 action="#"
                 list-type="picture-card"
@@ -19,8 +19,11 @@
                 </el-dialog>
             </div>
         </div>
-        <div class="post-options text-right mt-3">
-            <el-button type="primary" @click="submit" round><i class="far fa-paper-plane"></i></el-button>
+        <div class="post-options">
+            <div class="media" @click="readyUpload=!readyUpload"><i class="far fa-images"></i></div>
+            <div class="submit" @click="submit">
+                Submit<i class="far fa-paper-plane ml-1"></i>
+            </div>
         </div>
     </div>
 </template>
@@ -53,6 +56,32 @@
     .new-feed .feed-text:focus {
         outline: none
     }
+
+    .post-options {
+        margin: 10px;
+        display: flex;
+    }
+
+    .post-options .media {
+        position: relative;
+        top: 10px;
+        left: 15px;
+        width: 50%;
+        color:dodgerblue;
+        cursor: pointer;
+        font-size: 20px
+    }
+
+    .post-options .submit {
+        text-align: right;
+        position: relative;
+        top: 10px;
+        right: 15px;
+        width: 50%;
+        color:dodgerblue;
+        cursor: pointer;
+        font-size: 20px
+    }
 </style>
 
 
@@ -66,7 +95,8 @@
           tags: 'All',
           dialogImageUrl: '',
           dialogVisible: false,
-          uploadImgList: []
+          uploadImgList: [],
+          readyUpload: false
         }
       },
       methods: {

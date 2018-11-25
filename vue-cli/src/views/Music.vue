@@ -7,13 +7,14 @@
                     v-for="music in musics"
                     :key="music._id"
                     :music = "music"
+                    @play-this="playThis"
                     class="col-lg-3"
                     >
                     </music-card>
                 </div>
             </div>
         </div>
-        <div class="player fixed-bottom">
+        <div class="player fixed-bottom" v-if="musics[0]">
             <aplayer autoplay
             :music="defaultMusic"
             theme ="#dc3545"
@@ -51,6 +52,11 @@ export default {
   components: {
     Aplayer,
     'music-card': MusicCard
+  },
+  methods: {
+      playThis (music) {
+          this.defaultMusic = music
+      }
   }
 }
 </script>
@@ -61,7 +67,7 @@ export default {
 }
 
 .player {
-    box-shadow: 0 -2px 2px #dc3545;
+    box-shadow: 0 -2px 5px 3px #409EFF;
 }
 </style>
 

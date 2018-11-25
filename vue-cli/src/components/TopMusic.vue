@@ -1,16 +1,12 @@
 <template>
-    <div class="music-rank mt-5 shadow-sm">
-        <div class="rank-head">
+    <div class="music-rank mt-5">
+        <div class="rank-head shadow-sm">
             <span>Top Music</span>
         </div>
-        <div class="rank-body">
+        <div class="rank-body" v-if="musics[0]">
             <aplayer 
-            :music="{
-                title: 'secret base~君がくれたもの~',
-                artist: 'Silent Siren',
-                src: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.mp3',
-                pic: 'https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg'
-            }"
+            :music="musics[0]"
+            :list="musics"
             />
         </div>
     </div>
@@ -18,11 +14,11 @@
 
 <style>
 .right-area .music-rank {
-    background: #fff;
     width: 90%;
 }
 
 .music-rank .rank-head {
+    background: #fff;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #e5e5e5;
@@ -42,6 +38,17 @@ export default {
   name: 'top-music',
   components: {
     Aplayer
+  },
+  data () {
+      return {
+          musics: []
+      }
+  },
+  created () {
+    this.$axios.get('/api/musics/top')
+      .then(res => {
+        this.musics = res.data
+      })
   }
 }
 </script>
