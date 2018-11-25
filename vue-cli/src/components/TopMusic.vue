@@ -7,6 +7,7 @@
             <aplayer 
             :music="musics[0]"
             :list="musics"
+            style="margin:0"
             />
         </div>
     </div>
@@ -40,9 +41,9 @@ export default {
     Aplayer
   },
   data () {
-      return {
-          musics: []
-      }
+    return {
+      musics: []
+    }
   },
   created () {
     this.$axios.get('/api/musics/top')

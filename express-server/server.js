@@ -19,6 +19,7 @@ const follow  = require("./routes/api/follow");
 const friends  = require("./routes/api/friends");
 const setting = require("./routes/api/setting");
 const musics = require("./routes/api/musics");
+const admin = require("./routes/api/admin");
 // require config
 const db = require("./config/key").mongoURI;
 
@@ -43,6 +44,7 @@ app.use("/api/follow", follow);
 app.use("/api/setting", setting);
 app.use("/api/friends", friends);
 app.use("/api/musics", musics);
+app.use("/api/admin", admin);
 
 app.listen(port, () => {
     console.log('Server running on ${port}');

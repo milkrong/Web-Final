@@ -43,7 +43,7 @@ axios.interceptors.response.use(response => {
     localStorage.removeItem('postifyToken')
     store.dispatch('clearCurrentState')
     // 页面跳转
-    router.push('/')
+    router.push('/login')
   }
   return Promise.reject(error)
 })

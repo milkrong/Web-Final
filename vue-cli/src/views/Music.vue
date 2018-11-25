@@ -18,6 +18,7 @@
             <aplayer autoplay
             :music="defaultMusic"
             theme ="#dc3545"
+            style ="margin : 0"
             />
         </div>
     </div>
@@ -54,9 +55,9 @@ export default {
     'music-card': MusicCard
   },
   methods: {
-      playThis (music) {
-          this.defaultMusic = music
-      }
+    playThis (music) {
+      this.defaultMusic = music
+    }
   }
 }
 </script>

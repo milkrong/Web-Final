@@ -4,21 +4,64 @@ import Home from "./views/Home.vue";
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
+  base: process.env.BASE_URL,
   routes: [
     {
       path: "/",
       name: "home",
-      component: Home
+      component: Home,
+      meta: {
+        login_require: true
+      },
+      children: [
+        {
+          path: "",
+          redirect: "dashboard"
+        },
+        {
+          path: "dashboard",
+          name: "dashboard"
+        },
+        {
+          path: "users",
+          name: "users"
+        },
+        {
+          path: "admin",
+          name: "admin"
+        },
+        {
+          path: "upload",
+          name: "upload"
+        },
+        {
+          path: "location",
+          name: "location",
+          component: () => import("./views/Location")
+        }
+      ]
     },
     {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
+      path: "/login",
+      name: "login",
+      component: () => import("./views/Login")
     }
   ]
 });
+
+// routes guradiance
+router.beforeEach((to, from, next) => {
+  const isLogin = !!localStorage.adminToken;
+  if (
+    to.matched.some(function(item) {
+      return item.meta.login_require;
+    })
+  ) {
+    isLogin ? next() : next("/login");
+  } else {
+    next();
+  }
+});
+
+export default router;
