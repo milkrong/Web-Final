@@ -21,7 +21,8 @@ const router = new Router({
         },
         {
           path: "dashboard",
-          name: "dashboard"
+          name: "dashboard",
+          component: () => import("./views/Dash")
         },
         {
           path: "users",
