@@ -21,7 +21,7 @@ export default {
   components: {
     'user-card': UserCard
   },
-  props:['user'],
+  props: ['user'],
   data () {
     return {
       results: []
@@ -34,9 +34,9 @@ export default {
       })
 
     this.$axios.get('/api/friends/search/' + this.$route.query.searchInput)
-    .then(res => {
-      this.results.isfriend = res.data.isfriend
-    })
+      .then(res => {
+        this.results.isfriend = res.data.isfriend
+      })
   }
 }
 </script>

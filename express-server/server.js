@@ -35,7 +35,6 @@ mongoose.connect(db, { useNewUrlParser: true })
 // use passport 
 app.use(passport.initialize());
 require("./config/passport")(passport);
-
 // use routes
 app.use("/api/users", users);
 app.use("/api/profiles", profiles);

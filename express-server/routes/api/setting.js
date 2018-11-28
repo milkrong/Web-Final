@@ -25,7 +25,7 @@ var upload = multer({ dest: './tmp/' })
 const User = require('../../models/User')
 
 router.post('/account', passport.authenticate("jwt", {session: false} ), (req,res) => {
-    User.findById(req.body.id)
+    User.findById(req.user.id)
     .then(user => {
         if(!user) {
             res.status(404).json('Please Try Again, UserID not exist')
@@ -49,7 +49,7 @@ router.post('/account', passport.authenticate("jwt", {session: false} ), (req,re
 router.post('/password', passport.authenticate("jwt", {session: false} ), (req, res) => {
     const oldPassword = req.body.oldPassword
     const newPassword = req.body.newPassword
-    const userId = req.body.id
+    const userId = req.user.id
 
     User.findById(userId)
         .then(user => {
@@ -61,7 +61,7 @@ router.post('/password', passport.authenticate("jwt", {session: false} ), (req, 
                 .then(isMatch => {
                     if (isMatch) {
                         
-                        user.has_password = newPassword
+                        user.hash_password = newPassword
                         // hash the password and store
                         bcrypt.genSalt(10, function(err, salt) {
                             bcrypt.hash(user.hash_password, salt, (err, hash) => {
@@ -115,7 +115,7 @@ router.post('/upload', upload.single('avatar'), (req, res) => {
 router.post('/user', passport.authenticate("jwt", {session: false} ), (req, res) => {
     // console.log(req.body)
     const newUser = req.body
-    User.findById(newUser.id)
+    User.findById(req.user.id)
         .then(user => {
             if(!user) {
                 res.status(400).json('User not exist')

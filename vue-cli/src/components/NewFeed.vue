@@ -121,8 +121,6 @@
         },
         submit () {
           const feed = {}
-          feed.user_id = this.user.id
-          feed.name = this.user.name
           feed.tags = this.tags
           feed.text = this.text
           feed.imgs = this.uploadImgList.map(e => e.url).join('|')

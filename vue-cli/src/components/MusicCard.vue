@@ -14,7 +14,7 @@
                 </div>
             </div>
             <div class="share">
-                <div class="icon">
+                <div class="icon" @click="share">
                     <i class="fas fa-share-alt"></i>
                 </div>
             </div>
@@ -27,18 +27,39 @@ export default {
   name: 'music-card',
   props: ['music'],
   data () {
-      return {
-          toPlay : {
-            title: this.music.title,
-            src: this.music.src,
-            pic: this.music.pic,
-            artist: this.music.artist
-        }
+    return {
+      toPlay: {
+        title: this.music.title,
+        src: this.music.src,
+        pic: this.music.pic,
+        artist: this.music.artist
       }
+    }
   },
   methods: {
     play () {
-        this.$emit('play-this', this.toPlay)
+      this.$emit('play-this', this.toPlay)
+    },
+    share () {
+      this.$prompt(this.music.title, 'Share', {
+        confirmButtonText: 'Confirm',
+        cancelButtonText: 'Cancel',
+        inputPlaceholder: 'Say something...'
+      }).then(({ value }) => {
+        const newFeed = {
+          music: this.music,
+          text: value
+        }
+        this.$axios.post('/api/feeds/share', newFeed)
+          .then(res => {
+            console.log(res)
+          })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Cancelled'
+        })
+      })
     }
   }
 }

@@ -26,7 +26,8 @@ const router = new Router({
         },
         {
           path: "users",
-          name: "users"
+          name: "users",
+          component: () => import("./views/Users")
         },
         {
           path: "admin",

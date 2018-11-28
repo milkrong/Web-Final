@@ -9,11 +9,11 @@
             </div>
             <div class="sub-nav row">
                 <div class="col-md-9 offset-md-3">
-                    <el-menu :default-active="activeIndex" mode="horizontal">
-                        <el-menu-item index="1">Feeds</el-menu-item>
-                        <el-menu-item index="2">Followers</el-menu-item>
-                        <el-menu-item index="3">Following</el-menu-item>
-                        <el-menu-item index="4">Friends</el-menu-item>
+                    <el-menu :default-active="activeIndex" router mode="horizontal">
+                        <el-menu-item index="1" :route="{path: 'feeds'}">Feeds</el-menu-item>
+                        <el-menu-item index="2" :route="{path: 'followers'}">Followers</el-menu-item>
+                        <el-menu-item index="3" :route="{path: 'followings'}">Following</el-menu-item>
+                        <el-menu-item index="4" :route="{path: 'friends'}">Friends</el-menu-item>
                     </el-menu>
                 </div>
             </div>
@@ -22,7 +22,7 @@
                     <profile-info class="profile-info" :user-data="user"></profile-info>
                 </div>
                 <div class="profile-main col-lg-5">
-                    <router-view></router-view>
+                    <router-view :user-data="user"></router-view>
                 </div>
             </div>
         </div>

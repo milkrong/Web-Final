@@ -7,37 +7,52 @@ const Following = require("../../models/Following");
 const User = require("../../models/User");
 
 // Get followers by user id, the user Id is stored in the token form request(req.user.id)
-router.get("/followers", passport.authenticate("jwt", {session: false}), (req, res) => {
-    Follower.findById(req.user.id)
+router.get("/followers/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
+    Follower.find({user_id:req.params.id})
         .then(followers => {
-            User.findById(followers.follower_id)
-                .then(follower_profile => {
-                    res.json({
-                        id: follower_profile.id,
-                        name: follower_profile.name,
-                        username: follower_profile.username,
-                        motto: follower_profile.motto,
-                        avatar: follower_profile.avatar,
-                    })
-                })
+            if (followers.length < 1) {
+                res.status(400).json("No followers")
+            }
+            console.log(followers)
+            follower_ids = []
+            followers.forEach((follower, i) => {
+                follower_ids.push(follower.follower_id)
+            })
+            User.find({
+                _id: { $in: follower_ids}
+            }).select('-hash_password')
+            .then(users => {
+                res.json(users)
             });
+            
+        })
+        .catch(err=> {
+            res.status(500).json("Something Wrong")
+        });
 })
 
 // Get followings from From user id in the token
 router.get("/followings/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
-    Following.findById(req.params.id)
+    Following.find({user_id:req.params.id})
         .then(followings => {
-            User.findById(followings.follower_id)
-                .then(following_profile => {
-                    res.json({
-                        id: following_profile.id,
-                        name: following_profile.name,
-                        username: following_profile.username,
-                        motto: following_profile.motto,
-                        avatar: following_profile.avatar,
-                    })
-                })
+            if (followings.length < 1) {
+                res.status(400).json("No followings")
+            }
+            following_ids = []
+            followings.forEach((following, i) => {
+                following_ids.push(following.following_id)
+            })
+            User.find({
+                _id: { $in: following_ids}
+            }).select('-hash_password')
+            .then(users => {
+                res.json(users)
             });
+            
+        })
+        .catch(err=> {
+            res.status(500).json("Something Wrong")
+        });
 });
 
 // post following request, and save the user id and follower id and following id like this, 
@@ -56,6 +71,20 @@ router.post("/following", passport.authenticate("jwt", {session: false}), (req,r
 
     new Follower(followerStatement).save().then(() => {
         res.json({msg: "Success"});
+    })
+
+    User.findByIdAndUpdate(req.user.id, {$inc: {following_number: 1}}, function (err, user) {
+        if(err) {
+            console.log(err)
+            res.status(500).json('Something went wrong')
+        }
+        User.findByIdAndUpdate(req.body.id, {$inc: {following_number: 1}}, function (err, user) {
+            if(err) {
+                console.log(err)
+                res.status(500).json('Something went wrong')
+            }
+            res.json('Success')
+        })
     })
 })
 
