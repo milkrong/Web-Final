@@ -142,6 +142,7 @@ export default {
     background: none repeat scroll 0 0 #FFFFFF;
     border: 4px solid #FFFFFF;
     width: 100%;
+    height: 100%
 }
 
 .user-card .user-card-header {

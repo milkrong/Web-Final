@@ -5,11 +5,12 @@ const userSchema = new Schema({
     name: {
         type: String, 
         required: true,
-        default: "Nobody"
+        default: "Unknown"
     },
     username: {
         type: String,
-        required: true
+        required: true,
+        default: 'Unknown'
     },
     motto: {
         type: String,
@@ -20,6 +21,10 @@ const userSchema = new Schema({
         type: String, 
         required: true, 
         unique: true
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
     },
     hash_password: {
         type: String,

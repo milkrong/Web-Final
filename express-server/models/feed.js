@@ -32,6 +32,7 @@ const feedSchema = new Schema({
     imgs: {
         type: [String]
     },
+    music: Object,
     created_at: {
         type: Date,
         default: Date.now

@@ -29,10 +29,11 @@ router.get("/test", (req, res) => {
 })
 // $router /api/feeds/create POST
 router.post("/create", passport.authenticate("jwt", {session: false}), (req, res) => {
-    console.log(req.body)
+
     const feedObj = {};
-    feedObj.user_id = req.body.user_id;
-    feedObj.name = req.body.name
+    feedObj.user_id = req.user.id;
+    feedObj.avatar = req.user.avatar;
+    feedObj.name = req.user.name
     feedObj.tag = req.body.tags
     if (req.body.text) feedObj.text = req.body.text;
     if (req.body.imgs) {
@@ -68,6 +69,43 @@ router.post("/create", passport.authenticate("jwt", {session: false}), (req, res
         })
 });
 
+router.post("/share", passport.authenticate("jwt", {session: false}), (req, res) => {
+    const feedObj = {}
+    feedObj.user_id = req.user.id;
+    feedObj.avatar = req.user.avatar;
+    feedObj.name = req.user.name
+    feedObj.music = req.body.music
+    if (req.body.text) feedObj.text = req.body.text
+
+    User.findById(feedObj.user_id)
+        .then(user => {
+            if(!user) {
+                return res.status(400).json('User not exist')
+            }
+
+            user.feeds_number += 1
+            user.save()
+                .then(user => {
+                    console.log(user)
+                    res.json('Post Success')
+                })
+                .catch(err => {
+                    console.log(err)
+                    res.json('Error occured on upload user')
+                })
+        })
+
+    // save feed
+    new Feed(feedObj).save()
+        .then(feed => {
+            res.json(feed)
+        })
+        .catch(err => {
+            console.log(err)
+            res.json('Error Occured on save')
+        })
+})
+
 // upload img to cloud
 router.post('/upload', upload.single('file'), (req, res) => {
     const filePath = './' + req.file.path
@@ -98,14 +136,25 @@ router.post('/upload', upload.single('file'), (req, res) => {
 })
 // $router /api/feeds/concern/latest
 //  Get latest feed by following id  from request
-router.get("/concern/latest", passport.authenticate("jwt", {session: false}), (req, res) => {
-
+router.get("/concern/latest/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
+    
 })
 
 // $router /api/feeds/self/latest
 // get personal feed by user id from token (reference :user's router get current)
-router.get("/self/latest", passport.authenticate("jwt", {session: false}), (req, res) => {
+router.get("/self/latest/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
+    Feed.find({user_id: req.params.id})
+        .sort({created_at: -1})
+        .then(feeds => {
+            if(feeds.length < 1) {
+                res.status(400).json("There is not feeds")
+            }
 
+            res.json(feeds)
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json("Server not work with feeds")
+        })
 })
 
 // Get lasets feeds from recomment user_id from the req

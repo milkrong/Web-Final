@@ -34,22 +34,22 @@ const router = new Router({
         {
           path: 'feeds',
           name: 'feeds',
-          component: () => import('./components/ProfileFeed')
+          component: () => import('./views/SelfFeed')
         },
         {
           path: 'followers',
           name: 'followers',
-          component: () => import('./components/ProfileFollower')
+          component: () => import('./views/ProfileFollower')
         },
         {
           path: 'followings',
           name: 'followings',
-          component: () => import('./components/ProfileFollowing')
+          component: () => import('./views/ProfileFollowing')
         },
         {
           path: 'friends',
           name: 'friends',
-          component: () => import('./components/Friends')
+          component: () => import('./views/Friends')
         }
       ]
     },
@@ -116,7 +116,7 @@ const router = new Router({
     {
       path: '/music',
       name: 'music',
-      component: () => import ('./views/Music')
+      component: () => import('./views/Music')
     },
     {
       path: '*',

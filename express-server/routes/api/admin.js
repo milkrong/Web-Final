@@ -5,34 +5,37 @@ const jwt = require("jsonwebtoken");
 const gravatar = require("gravatar");
 const key = require("../../config/key");
 const passport = require('passport');
+const admin = require('../../config/admin');
 
-const Admin = require("../../models/Admin");
+const User = require("../../models/User");
+const Feed = require("../../models/Feed");
 
 // $router POST /api/user/register
 router.post("/register", (req, res) => {
     // Check existing email 
-    Admin.findOne({ email: req.body.email })
-        .then((admin) => {
-            if(admin) {
+    User.findOne({ email: req.body.email })
+        .then((user) => {
+            if(user) {
                 return res.status(400).json("Email already been used");
             } else {
                 // store user in newUser object
                 const avatar = gravatar.url(req.body.email, {s: '64', r: 'pg', d:'mm'}); 
-                const newAdmin = new Admin({
+                const newUser = new User({
                     email: req.body.email,
                     avatar,
-                    hash_password: req.body.password
+                    hash_password: req.body.password,
+                    isAdmin: true
                 });
                 // hash the password and store
                 bcrypt.genSalt(10, function(err, salt) {
-                    bcrypt.hash(newAdmin.hash_password, salt, (err, hash) => {
+                    bcrypt.hash(newUser.hash_password, salt, (err, hash) => {
                         // Store hash in your password DB.
                         if(err) throw err;
                         
-                        newAdmin.hash_password = hash;
-                        newAdmin.save()
-                            .then(admin => res.json({
-                                id: admin._id
+                        newUser.hash_password = hash;
+                        newUser.save()
+                            .then(user => res.json({
+                                id: user._id
                             }))
                             .catch(err => {
                                 console.log(err)
@@ -50,17 +53,17 @@ router.post("/login", (req, res) => {
     const password = req.body.password;
 
     // find user
-    Admin.findOne({email})
-        .then(admin => {
-            if(!admin){
+    User.findOne({email})
+        .then(user => {
+            if(!user){
                 return res.status(404).json('User is not exist')
             }
 
             // Load hash from your password DB.
-            bcrypt.compare(password , admin.hash_password)
+            bcrypt.compare(password , user.hash_password)
                 .then(isMatch =>  {
                     if(isMatch) {
-                        const rule = {id:admin.id, email: admin.email, avatar: admin.avatar};
+                        const rule = {id:user.id, email: user.email, avatar: user.avatar, isAdmin: user.isAdmin};
                         jwt.sign(rule, key.secretKey, {expiresIn: 7200}, (err, token) => {
                             if(err) throw err;
                             res.json({
@@ -75,13 +78,20 @@ router.post("/login", (req, res) => {
         });
 })
 
-//$router /api/admin/current
-router.get("/current", passport.authenticate("jwt", {session: false}), (req, res) => {
+//$router /api/user/current
+router.get("/current", [passport.authenticate("jwt", {session: false}), admin], (req, res) => {
     res.json({
         id: req.admin.id,
         email: req.admin.email,
         avatar: req.admin.avatar,
+        admin: req.admin.isAdmin
     });
 }) 
 
+router.get("/alluser", passport.authenticate("jwt", {session: false}), (req, res) => {
+    User.find({}, ['name', 'username', 'email', 'created_at'])
+        .then(users => {
+            res.json(users)
+        })
+})
 module.exports = router;
