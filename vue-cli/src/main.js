@@ -12,6 +12,14 @@ import store from './store'
 
 import axios from './http'
 
+/* connect host (socket) */
+import VueSocketIo from 'vue-socket.io'
+import io from 'socket.io-client'
+Vue.use(new VueSocketIo({
+  connection: io('http://localhost:3333')
+})
+)
+
 Vue.use(ElementUI)
 Vue.use(VueParticles)
 

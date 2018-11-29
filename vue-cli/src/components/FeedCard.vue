@@ -9,9 +9,12 @@
                     <h3>{{ feed.name }}</h3>
                     <span><i class="far fa-clock mr-1"></i>{{feed.created_at}}</span>
                 </div> 
-                <div class="feed-option">
-                    <a href="#"><i class="fas fa-ellipsis-v"></i></a>
-                </div>
+                <el-dropdown style="width: 40%; text-align: right">
+                    <span class="dropdownlink"><i class="fas fa-ellipsis-v"></i></span>
+                    <el-dropdown-menu slot="dropdown">
+                        <el-dropdown-item>Delete</el-dropdown-item>
+                    </el-dropdown-menu>
+                </el-dropdown>
             </div>
             <div class="feed-content">
                 <p class="text-feed" v-if="feed.text">{{feed.text}}</p> 
@@ -90,11 +93,6 @@ export default {
     color: #c2bfbf;
     position: relative;
     bottom: 8px
-}
-
-.feed-option {
-    width: 40%;
-    text-align: right;
 }
 
 .imgs {

@@ -16,10 +16,12 @@
     "jquery": "^3.3.1",
     "jwt-decode": "^2.2.0",
     "popper.js": "^1.14.4",
+    "socket.io-client": "^2.1.1",
     "vue": "^2.5.17",
     "vue-aplayer": "^1.6.1",
     "vue-particles": "^1.0.9",
     "vue-router": "^3.0.1",
+    "vue-socket.io": "^3.0.4",
     "vuex": "^3.0.1"
   },
   "devDependencies": {
