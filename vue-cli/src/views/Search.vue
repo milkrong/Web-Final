@@ -32,11 +32,6 @@ export default {
       .then(res => {
         this.results = res.data
       })
-
-    this.$axios.get('/api/friends/search/' + this.$route.query.searchInput)
-      .then(res => {
-        this.results.isfriend = res.data.isfriend
-      })
   }
 }
 </script>

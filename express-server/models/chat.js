@@ -5,15 +5,11 @@ const chatSchema = mongoose.Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    send_to: {
+    friend_id: {
         type: Schema.Types.ObjectId,
         ref: 'User'
     },
-    content: String,
-    created_at: {
-        type: Date,
-        default: Date.now
-    }
+    message: String
 })
 
 module.exports = Chat = mongoose.model('chats', chatSchema);

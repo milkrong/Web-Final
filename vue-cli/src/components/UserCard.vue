@@ -1,5 +1,5 @@
 <template>
-    <div class="user-cards-container mt-5">   
+    <div class="user-cards-container mt-5" v-if="loaded">   
         <div class="user-card">
             <div class="card-front">
                 <div class="user-card-img">
@@ -46,12 +46,12 @@
                 </div>
                 <div class="footer">
                     <div class="follow-button">
-                        <el-button type="info" v-if="user.isfollowing" plain>Unfollow</el-button>
-                        <el-button type="success" else plain>Follow</el-button>
+                        <el-button type="info" v-if="user.isfollowing" @click="unfollow">Unfollow</el-button>
+                        <el-button type="success" v-else @click="follow" plain>Follow</el-button>
                     </div>
                     <div class="friend-button">
-                        <el-button type="info" v-if="user.isfriend">Delete Friend</el-button>
-                        <el-button type="primary" else>Add Friend</el-button>
+                        <el-button type="info" v-if="user.isfriend" @click="deleteFriend">Delete Friend</el-button>
+                        <el-button type="primary" v-else @click="addFriend" plain>Add Friend</el-button>
                     </div>
                 </div>
             </div>
@@ -61,7 +61,89 @@
 <script>
 export default {
   name: 'user-card',
-  props: ['user', 'main-user']
+  props: ['user', 'main-user'],
+  data () {
+    return {
+      loaded: false
+    }
+  },
+  mounted () {
+    this.$axios.get('/api/follow/isfollowing/' + this.user._id)
+      .then(res => {
+        this.user.isfollowing = res.data.isfollowing
+        this.$axios.get('/api/friends/isfriend/' + this.user._id)
+          .then(res => {
+            this.user.isfriend = res.data.isfriend
+            this.loaded = true
+          })
+          .catch(err => {
+            this.$message({
+              message: err,
+              type: 'error'
+            })
+          })
+      })
+      .catch(err => {
+        this.$message({
+          message: err,
+          type: 'error'
+        })
+      })
+  },
+  methods: {
+    addFriend () {
+      this.$axios.post('/api/friends/add', this.user)
+        .then(res => {
+          this.user.isfriend = true
+          this.$forceUpdate()
+        })
+        .catch(err => {
+          this.$message({
+            message: err,
+            type: 'error'
+          })
+        })
+    },
+    deleteFriend () {
+      this.$axios.post('/api/friends/delete', this.user)
+        .then(res => {
+          this.user.isfriend = false
+          this.$forceUpdate()
+        })
+        .catch(err => {
+          this.$message({
+            message: err,
+            type: 'error'
+          })
+        })
+    },
+    follow () {
+      this.$axios.post('/api/follow/following', this.user)
+        .then(res => {
+          this.user.isfollowing = true
+          this.$forceUpdate()
+        })
+        .catch(err => {
+          this.$message({
+            message: err,
+            type: 'error'
+          })
+        })
+    },
+    unfollow () {
+      this.$axios.post('/api/follow/unfollowing', this.user)
+        .then(res => {
+          this.user.isfollowing = false
+          this.$forceUpdate()
+        })
+        .catch(err => {
+          this.$message({
+            message: err,
+            type: 'error'
+          })
+        })
+    }
+  }
 }
 </script>
 

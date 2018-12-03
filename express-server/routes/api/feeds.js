@@ -23,6 +23,7 @@ var upload = multer({ dest: './tmp/' })
 
 const Feed = require("../../models/Feed")
 const User = require("../../models/User")
+const Following = require("../../models/Following")
 
 router.get("/test", (req, res) => {
     res.json({msg: "api works well"});
@@ -40,7 +41,7 @@ router.post("/create", passport.authenticate("jwt", {session: false}), (req, res
         feedObj.imgs = req.body.imgs.split("|");
     }
 
-    User.findById(feedObj.user_id)
+    User.findById(feedObj.user_id).select('-hash_password')
         .then(user => {
             if(!user) {
                 return res.status(400).json('User not exist')
@@ -134,10 +135,33 @@ router.post('/upload', upload.single('file'), (req, res) => {
         }
     })
 })
+
 // $router /api/feeds/concern/latest
 //  Get latest feed by following id  from request
-router.get("/concern/latest/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
-    
+router.get("/concern/latest/:id", (req, res) => {
+    Following.find({user_id:req.params.id})
+        .then(followings => {
+            if (followings.length < 1) {
+                res.status(400).json("No followings")
+            }
+            following_ids = []
+            followings.forEach((following, i) => {
+                following_ids.push(following.following_id)
+            })
+            Feed.find({
+                user_id: { $in: following_ids.concat(req.params.id)}
+            })
+            .select('-hash_password')
+            .sort({ created_at: -1 })
+            .populate("Feed.user_id")
+            .then(feeds => {
+                res.json(feeds)
+            });
+            
+        })
+        .catch(err=> {
+            res.status(500).json("Something Wrong")
+        });
 })
 
 // $router /api/feeds/self/latest

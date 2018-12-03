@@ -52,26 +52,6 @@
         }
       },
       data () {
-        var checkUsername = (rule, value, callback) => {
-          if (!value) {
-            callback(new Error('username must not be empty'))
-          } else {
-            callback()
-          }
-        }
-
-        var checkEmail = (rule, value, callback) => {
-          let pattern = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/
-          if (!value) {
-            callback(new Error('Please input email'))
-          }
-          if (!(pattern.test(value))) {
-            callback(new Error('The Format is incorrect'))
-          } else {
-            callback()
-          }
-        }
-
         var checkPass = (rule, value, callback) => {
           if (value === '') {
             return callback(new Error('Please input password'))
@@ -102,11 +82,16 @@
             password2: ''
           },
           rule: {
+            name: [
+              { required: true, message: 'Please enter name', trigger: 'blur' },
+              { max: 20, message: 'No more than 20', trigger: 'blur' }
+            ],
             username: [
-              { validator: checkUsername, trigger: 'blur' }
+              { required: true, message: 'Please enter name', trigger: 'blur' },
+              { max: 20, message: 'No more than 20', trigger: 'blur' }
             ],
             email: [
-              { validator: checkEmail, trigger: 'blur' }
+              { type: 'email', required: true, message: 'Please enter correct email', trigger: 'blur' }
             ],
             password: [
               { validator: checkPass, trigger: 'blur' },

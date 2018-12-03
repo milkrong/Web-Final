@@ -55,33 +55,47 @@ router.get("/followings/:id", passport.authenticate("jwt", {session: false}), (r
         });
 });
 
+router.get("/isfollowing/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
+    Following.find({user_id: req.user.id, following_id: req.params.id})
+        .then(following => {
+            if(following.length < 1) {
+                res.json({isfollowing: false})
+            } else {
+                console.log(following)
+                res.json({isfollowing: true})
+            }
+        })
+        .catch(err => {
+            console.log(err)
+            res.json("Something wrong")
+        })
+})
+
 // post following request, and save the user id and follower id and following id like this, 
 // we need to save to Follwer and Follwing both
 router.post("/following", passport.authenticate("jwt", {session: false}), (req,res) => {
     const followingStatement =  {};
     const followerStatement = {};
     followingStatement.user_id = req.user.id;
-    followingStatement.following_id = req.body.id;
-    followerStatement.user_id = req.body.id;
+    followingStatement.following_id = req.body._id;
+    followerStatement.user_id = req.body._id;
     followerStatement.follower_id = req.user.id;
 
-    new Following(followingStatement).save().then(() => {
-        res.json({msg: "success"});
-    })
+    new Following(followingStatement).save()
 
-    new Follower(followerStatement).save().then(() => {
-        res.json({msg: "Success"});
-    })
+    new Follower(followerStatement).save()
 
     User.findByIdAndUpdate(req.user.id, {$inc: {following_number: 1}}, function (err, user) {
         if(err) {
             console.log(err)
             res.status(500).json('Something went wrong')
+            return
         }
-        User.findByIdAndUpdate(req.body.id, {$inc: {following_number: 1}}, function (err, user) {
+        User.findByIdAndUpdate(req.body._id, {$inc: {follower_number: 1}}, function (err, user) {
             if(err) {
                 console.log(err)
                 res.status(500).json('Something went wrong')
+                return
             }
             res.json('Success')
         })
@@ -90,7 +104,33 @@ router.post("/following", passport.authenticate("jwt", {session: false}), (req,r
 
 // post request to delte from Follower and Following both.
 router.post("/unfollowing", passport.authenticate("jwt", {session: false}), (req, res) => {
+    console.log(req.user.id)
+    Following.remove({user_id: req.user.id, following_id: req.body._id}, function(err, user){
+        if(err) {
+            console.log(err)
+        }
+    })
+    Follower.remove({user_id: req.body._id, follower_id: req.user.id}, function(err, user) {
+        if(err){
+            console.log(err)
+        }
+    })
 
+    User.findByIdAndUpdate(req.user.id, {$inc: {following_number: -1}}, function (err, user) {
+        if(err) {
+            console.log(err)
+            res.status(500).json('Something went wrong')
+            return
+        }
+        User.findByIdAndUpdate(req.body._id, {$inc: {follower_number: -1}}, function (err, user) {
+            if(err) {
+                console.log(err)
+                res.status(500).json('Something went wrong')
+                return
+            }
+            res.json('Success')
+        })
+    })
 })
 
 module.exports = router;
