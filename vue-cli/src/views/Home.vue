@@ -9,14 +9,17 @@
             <template v-if="logged">
                 <new-feed-form :user='user'></new-feed-form>
                 <div class="sub-nav">
-                    <el-menu :default-active="activeIndex" mode="horizontal">
-                        <el-menu-item index="1">
-                            <el-badge value="new">My Concern</el-badge>
+                    <el-menu :default-active="activeIndex" router mode="horizontal">
+                        <el-menu-item index="1" :route="{path: 'concern'}">
+                            <el-badge>My Concern</el-badge>
                         </el-menu-item>
-                        <el-menu-item index="2">
+                        <el-menu-item index="2" :route="{path: 'recommend'}">
                             <el-badge>Recommendation</el-badge>
                         </el-menu-item>
                     </el-menu>
+                </div>
+                <div class="feeds">
+                    <router-view :userData="user"></router-view>
                 </div>
             </template>
         </div>
@@ -24,6 +27,9 @@
              <top-music></top-music>
              <tags></tags>         
         </div>
+        <div class="chat col-lg-2" v-if="logged">
+          <chat :userData="user"></chat>
+      </div>
       </div>
   </div>
 </template>
@@ -33,11 +39,12 @@ import ProfileCard from '@/components/ProfileCard'
 import NewFeed from '@/components/NewFeed'
 import TopMusic from '@/components/TopMusic'
 import Tags from '@/components/Tags'
+import Chat from '@/components/Chat'
 
 export default {
   data: function () {
     return {
-      activeIndex: '2'
+      activeIndex: '1'
     }
   },
   props: ['user'],
@@ -45,7 +52,8 @@ export default {
     'profile-card': ProfileCard,
     'new-feed-form': NewFeed,
     'top-music': TopMusic,
-    'tags': Tags
+    'tags': Tags,
+    'chat': Chat
   },
   computed: {
     logged () {
@@ -66,5 +74,7 @@ export default {
     background: #fff;
     width: 100%;
 }
+
+
 </style>
 

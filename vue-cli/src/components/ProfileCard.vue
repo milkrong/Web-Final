@@ -48,7 +48,7 @@
         </template>
         <template v-else>
             <div class="log-card">
-                <button @click="$router.push('login')" class="btn btn-primary">Log In</button>
+                <button @click="$router.push('/login')" class="btn btn-primary">Log In</button>
             </div>
         </template>
     </div>

@@ -110,7 +110,7 @@ export default {
       this.$router.push('/home')
     },
     search () {
-      this.$router.push({ path: 'search', query: { searchInput: this.searchInput } })
+      this.$router.push({ path: '/search', query: { searchInput: this.searchInput } })
     }
   }
 }

@@ -17,7 +17,22 @@ const router = new Router({
     {
       path: '/home',
       name: 'home',
-      component: () => import('./views/Home.vue')
+      component: () => import('./views/Home.vue'),
+      children: [
+        {
+          path: '',
+          redirect: 'concern'
+        },
+        {
+          path: 'concern',
+          name: 'concern',
+          component: () => import('./views/Concern.vue')
+        },
+        {
+          path: 'recommend',
+          name: 'recommend'
+        }
+      ]
     },
     {
       path: '/profile',
@@ -49,7 +64,7 @@ const router = new Router({
         {
           path: 'friends',
           name: 'friends',
-          component: () => import('./views/Friends')
+          component: () => import('./views/ProfileFriend')
         }
       ]
     },
