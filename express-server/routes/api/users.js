@@ -108,4 +108,12 @@ router.get("/current", passport.authenticate("jwt", {session: false}), (req, res
     });
 }) 
 
+router.get("/count", (req, res)=> {
+    User.count({}, function(err, c) {
+        if(err) res.status(500).json("count error")
+
+        res.json(c)
+    })
+})
+
 module.exports = router;

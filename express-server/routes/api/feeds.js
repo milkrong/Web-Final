@@ -186,4 +186,12 @@ router.get("/recommend/latest", passport.authenticate("jwt", {session: false}), 
 
 })
 
+router.get("/count", (req,res) => {
+    Feed.count({}, (err, c) => {
+        if (err) res.status(500).json("count is invalid")
+
+        res.json(c)
+    })
+})
+
 module.exports = router;

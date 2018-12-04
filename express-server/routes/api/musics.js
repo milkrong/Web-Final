@@ -53,4 +53,12 @@ router.post('/create', (req, res) => {
         })
 })
 
+router.get('/count', (req, res) => {
+    Music.count({}, function(err, c) {
+        if(err) res.status(500).json("get count is valid")
+
+        res.json(c)
+    })
+})
+
 module.exports = router;

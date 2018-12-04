@@ -94,4 +94,5 @@ router.get("/alluser", passport.authenticate("jwt", {session: false}), (req, res
             res.json(users)
         })
 })
+
 module.exports = router;

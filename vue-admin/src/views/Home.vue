@@ -25,7 +25,7 @@
           </el-submenu>
           <el-menu-item index="3" :route="{path:'upload'}">
             <i class="fas fa-upload mr-1"></i>
-            <span slot="title">Upload Music</span>
+            <span slot="title">Musics</span>
           </el-menu-item>
           <el-menu-item index="4" :route="{path: 'location'}">
             <i class="fas fa-map-marker mr-1"></i>
@@ -38,8 +38,11 @@
           <div class="avatar">
             <img :src="user.avatar" alt="">
           </div>
-          <div class="name">
+          <div class="name mr-2">
             {{ user.email }}
+          </div>
+          <div class="log">
+            <p @click="logout" class="text-white">Log out</p>
           </div>
         </el-header>
         <el-main>
@@ -53,7 +56,14 @@
 <script>
 export default {
   name: "home",
-  props: ["user"]
+  props: ["user"],
+  methods: {
+    logout() {
+      localStorage.removeItem("adminToken");
+      this.$store.dispatch("clearCurrentState");
+      this.$router.push("/home");
+    }
+  }
 };
 </script>
 
@@ -84,5 +94,9 @@ export default {
   width: 36px;
   border-radius: 50%;
   margin-right: 10px;
+}
+
+.log {
+  cursor: pointer;
 }
 </style>

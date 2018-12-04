@@ -1,6 +1,6 @@
 <template>
     <div class="dash-board">
-        <div class="container-fluid">
+        <div class="container-fluid" v-if="loaded">
             <div class="row">
                 <div class="col-xl-3 col-md-4">
                     <stats-card>
@@ -9,7 +9,7 @@
                         </div>
                         <div slot="content">
                         <p class="card-category">Users</p>
-                        <h4 class="card-title">10</h4>
+                        <h4 class="card-title">{{userCount}}</h4>
                         </div>
                     </stats-card>
                 </div>
@@ -19,8 +19,8 @@
                         <i class="fas fa-vote-yea text-info"></i>
                         </div>
                         <div slot="content">
-                        <p class="card-category">Posts</p>
-                        <h4 class="card-title">10</h4>
+                        <p class="card-category">Feeds</p>
+                        <h4 class="card-title">{{feedCount}}</h4>
                         </div>
                     </stats-card>
                 </div>
@@ -31,7 +31,7 @@
                         </div>
                         <div slot="content">
                         <p class="card-category">Musics</p>
-                        <h4 class="card-title">10</h4>
+                        <h4 class="card-title">{{musicCount}}</h4>
                         </div>
                     </stats-card>
                 </div>
@@ -93,8 +93,27 @@ export default {
             }
           ]
         }
-      }
+      },
+      userCount: 0,
+      musicCount: 0,
+      feedCount: 0,
+      loaded: false
     };
+  },
+  mounted() {
+    this.$axios("/api/users/count").then(res => {
+      this.userCount = res.data;
+    });
+
+    this.$axios.get("/api/musics/count").then(res => {
+      this.musicCount = res.data;
+    });
+
+    this.$axios.get("/api/feeds/count").then(res => {
+      this.feedCount = res.data;
+    });
+
+    this.loaded = true;
   }
 };
 </script>

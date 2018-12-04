@@ -9,6 +9,10 @@ const router = new Router({
   routes: [
     {
       path: "/",
+      redirect: "/home"
+    },
+    {
+      path: "/home",
       name: "home",
       component: Home,
       meta: {
@@ -35,7 +39,8 @@ const router = new Router({
         },
         {
           path: "upload",
-          name: "upload"
+          name: "upload",
+          component: () => import("./views/Music")
         },
         {
           path: "location",
