@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const passport = require("passport");
-const key = require('../../config/key')
+const key = require('../../config/key');
+const moment = require("moment");
 
 const fs = require('fs');
 // 初始化Client
@@ -188,6 +189,28 @@ router.get("/recommend/latest", passport.authenticate("jwt", {session: false}), 
 
 router.get("/count", (req,res) => {
     Feed.count({}, (err, c) => {
+        if (err) res.status(500).json("count is invalid")
+
+        res.json(c)
+    })
+})
+
+router.get("/countHours", (req, res) => {
+    const ops = [
+        {
+            '$match' : {
+                'created_at' : {'$gte' : moment().startOf('day'), '$lt': moment().endOf('day') }
+            }
+        },
+        {
+            '$group' : {
+                '_id' : {
+                     $hour: "$created_at"
+                },
+                'feedNumber' : { '$sum' : 1}
+            }
+        }];
+    Feed.aggregate(ops, (err, c) => {
         if (err) res.status(500).json("count is invalid")
 
         res.json(c)
