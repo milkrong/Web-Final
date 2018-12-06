@@ -50,9 +50,9 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header">User's New Feeds Every Day</div>
+                        <div class="card-header">User's New Feeds This Week</div>
                         <div class="card-body">
-                            <chart-card :chart-data="lineChart.data"></chart-card>
+                            <chart-card :chart-data="chartData"></chart-card>
                         </div>
                     </div>
                 </div>
@@ -73,27 +73,7 @@ export default {
   },
   data() {
     return {
-      lineChart: {
-        data: {
-          labels: [
-            "9:00AM",
-            "12:00AM",
-            "3:00PM",
-            "6:00PM",
-            "9:00PM",
-            "12:00PM",
-            "3:00AM",
-            "6:00AM"
-          ],
-          datasets: [
-            {
-              label: "User",
-              backgroundColor: "#f87979",
-              data: [287, 385, 490, 492, 554, 586, 698, 695]
-            }
-          ]
-        }
-      },
+      chartData: {},
       userCount: 0,
       musicCount: 0,
       feedCount: 0,
@@ -111,6 +91,10 @@ export default {
 
     this.$axios.get("/api/feeds/count").then(res => {
       this.feedCount = res.data;
+    });
+
+    this.$axios.get("/api/feeds/countHours").then(res => {
+      this.chartData = res.data;
     });
 
     this.loaded = true;

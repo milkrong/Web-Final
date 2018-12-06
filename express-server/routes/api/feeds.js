@@ -196,24 +196,49 @@ router.get("/count", (req,res) => {
 })
 
 router.get("/countHours", (req, res) => {
+    const start = moment().startOf('week').toDate()
+    console.log(start)
     const ops = [
         {
             '$match' : {
-                'created_at' : {'$gte' : moment().startOf('day'), '$lt': moment().endOf('day') }
+                'created_at' : {'$gte' : start}
             }
         },
+    // Get the year, month and day from the createdTimeStamp
         {
-            '$group' : {
-                '_id' : {
-                     $hour: "$created_at"
-                },
-                'feedNumber' : { '$sum' : 1}
-            }
-        }];
+            $project:{
+                "year":{$year:"$created_at"}, 
+                "month":{$month:"$created_at"}, 
+                "day": {$dayOfMonth:"$created_at"}
+        }},
+        {
+            $group:{
+                _id:{year:"$year", month:"$month", day:"$day"}, 
+                "count":{$sum:1}
+        }} 
+    ];
     Feed.aggregate(ops, (err, c) => {
-        if (err) res.status(500).json("count is invalid")
-
-        res.json(c)
+        if (err) {
+            console.log(err)
+            res.status(500).json("count is invalid")
+        }
+        labels = []
+        data = []
+        for (var item of c) {
+            labels.push(item._id.month.toString() + "/" + item._id.day.toString())
+            data.push(item.count)
+        }
+        result = {
+            labels: labels,
+            datasets: [
+              {
+                label: "User",
+                backgroundColor: "#f87979",
+                data: data
+              }
+            ]
+          }
+        res.json(result)
     })
 })
 
