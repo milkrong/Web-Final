@@ -8,6 +8,7 @@
   },
   "devDependencies": {},
   "scripts": {
+    "postinstall": "npm install --prefix ./vue-cli && npm install --prefix ./express-server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix vue-cli",
     "serve": "npm run server --prefix express-server",
