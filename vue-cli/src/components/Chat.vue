@@ -40,6 +40,9 @@
 
         <!--friend list frame-->
         <ul id="friendList" class="friendList">
+            <li>
+                <p id="myUserName">{{senderUserName}}</p>
+            </li>
             <li class="friend" v-on:click="display" v-for="friend in friends" :key="friend.index">
                 <!--head image-->
                 <img v-if="friend.online" class="head img-thumbnail" :src="friend.src" :alt="friend.Id">
@@ -63,6 +66,7 @@ export default {
   props: ['userData'],
   data: function () {
     return {
+      senderUserName: '',
       senderEmail: this.userData.email,
       sender: '',
       receiver: '',
@@ -92,33 +96,27 @@ export default {
       })
     }
   },
-
-  mounted: function () {
+  created () {
     this.getSenderEmail()
+  },
+  mounted () {
+    this.$socket.on('reconnect', (attemptNumber) => {
+      console.log('rereredodododo')
+      this.$socket.emit('friendOn', { sender: this.sender })
+    })
+    this.$socket.on('get history', (data) => {
+      console.log('get history')
+      for (let i = 0; i < data.length; i++) {
+        this.msgs.push({ id: this.nextMsgId++, type: data[i].sendOrRecv, info: data[i].message })
+      }
+    })
     this.$socket.on('receive a message', (data) => {
       // data saved in the MongoDb, should be retrieved to display
-      if (data.sender === this.receiver) { // NO need to use red dot to remind me, we can see chat screen displayed
+      if (data.sender === this.receiver) {
         this.msgs.push({ id: this.nextMsgId++, type: 'receive', info: data.msg })
       } else {
         console.log('click the user iamge to display') // Use red dot to remind me
       }
-    })
-    this.$socket.on('colorHead', (friendsOnline) => {
-      // console.log(friendsOnline);
-      var friendList = this.friends
-      if (friendsOnline.length != undefined || friendsOnline != null) {
-        for (var i = 0; i < friendsOnline.length; i++) {
-          var idx = this.friends.map(function (x) { return x.Id }).indexOf(friendsOnline[i])
-          friendList[idx].online = true
-          console.log(this.friends[idx].online)
-        }
-      }
-    })
-    this.$socket.on('grayHead', (friend) => {
-      console.log(this.friends)
-      var idx = this.friends.map(function (x) { return x.Id }).indexOf(friend)
-      this.friends[idx].online = false
-      console.log(this.friends[idx].online)
     })
   },
 
@@ -139,6 +137,7 @@ export default {
                 Id: friend._id
               })
             }
+            // that.senderUserName = response.data['me'].username
             that.sender = response.data[0].user_id
             that.$socket.emit('friendOn', { sender: that.sender })
           }
@@ -168,6 +167,13 @@ export default {
       this.receiver = this.currentFriend.Id
       this.userHead = this.currentFriend.src
 
+      // add message from database
+      // load chat history
+      this.$socket.emit('load history',
+        {
+          sender: this.sender,
+          receiver: this.receiver
+        })
       console.log('receiver: ' + this.receiver)
     },
     newLine: function () {
@@ -382,6 +388,14 @@ export default {
     .grayHead{
         -webkit-filter: grayscale(100%);
         filter: grayscale(100%);
+    }
+
+    #myUserName{
+        text-align: center;
+        background-color: #548cc9;
+        padding: 0;
+        margin: 1px 0;
+        font-size: 20px;
     }
 
 </style>

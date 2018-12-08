@@ -15,11 +15,14 @@ import axios from './http'
 /* connect host (socket) */
 import VueSocketIo from 'vue-socket.io'
 import io from 'socket.io-client'
-Vue.use(new VueSocketIo({
-  connection: io('http://localhost:3333')
-})
-)
+/** *	Connect to server	***/
 
+Vue.use(VueSocketIo, io('http://localhost:5000', {
+  'reconnection': true,
+  'reconnectionDelay': 1000,
+  'reconnectionDelayMax': 5000,
+  'reconnectionAttempts': 5000000000000000000000000
+}))
 Vue.use(ElementUI)
 Vue.use(VueParticles)
 
