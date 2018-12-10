@@ -1,0 +1,31 @@
+.
+├── README.md
+├── babel.config.js
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   └── index.html
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   └── logo.png
+│   ├── components
+│   │   └── Cards
+│   ├── config
+│   │   └── key.js
+│   ├── http.js
+│   ├── main.js
+│   ├── router.js
+│   ├── store.js
+│   └── views
+│       ├── Dash.vue
+│       ├── Home.vue
+│       ├── Location.vue
+│       ├── Login.vue
+│       ├── Music.vue
+│       └── Users.vue
+├── tree.txt
+└── vue.config.js
+
+7 directories, 21 files

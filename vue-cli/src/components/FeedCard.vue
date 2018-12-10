@@ -33,7 +33,7 @@
                 <span class="badge badge-pill badge-primary" v-for="(tag,index) in feed.tag" :key="index">{{tag}}</span>
             </div>
             <div class="feed-footbar">
-                <a href="#"><i class="far fa-thumbs-up mx-md-1"></i>{{feed.likes}}</a>
+                <a href="#"><i class="far fa-thumbs-up mx-md-1" @click="like"></i>{{feed.likes}}</a>
                 <a href="" class="float-right"><i class="far fa-comment-dots mr-md-2"></i></a>
             </div>
         </el-card>
@@ -57,6 +57,14 @@ export default {
         pic: this.feed.music.pic,
         artist: this.feed.music.artist
       }
+    }
+  },
+  methods: {
+    like () {
+      this.$axios.post('/api/feeds/like', this.feed)
+        .then(res => {
+          this.feed.likes += 1
+        })
     }
   }
 }

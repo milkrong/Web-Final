@@ -1,0 +1,58 @@
+.
+├── README.md
+├── babel.config.js
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   └── index.html    //main entry point
+├── src
+│   ├── App.vue
+│   ├── assets
+│   │   ├── compact-disc.png
+│   │   ├── icons
+│   │   └── logo.png
+│   ├── components
+│   │   ├── Chat.vue
+│   │   ├── FeedCard.vue
+│   │   ├── FriendSuggestion.vue
+│   │   ├── MusicCard.vue
+│   │   ├── Navbar.vue
+│   │   ├── NewFeed.vue
+│   │   ├── ProfileCard.vue
+│   │   ├── ProfileInfo.vue
+│   │   ├── Register1.vue
+│   │   ├── Register2.vue
+│   │   ├── Register3.vue
+│   │   ├── SettingAccount.vue
+│   │   ├── SettingPass.vue
+│   │   ├── SettingUser.vue
+│   │   ├── Tags.vue
+│   │   ├── TopMusic.vue
+│   │   └── UserCard.vue
+│   ├── http.js
+│   ├── main.js
+│   ├── router.js
+│   ├── store
+│   │   ├── index.js
+│   │   ├── register_step.js
+│   │   ├── register_user.js
+│   │   └── user_state.js
+│   └── views
+│       ├── 404.vue
+│       ├── Concern.vue
+│       ├── Home.vue
+│       ├── Login.vue
+│       ├── Music.vue
+│       ├── Profile.vue
+│       ├── ProfileFollower.vue
+│       ├── ProfileFollowing.vue
+│       ├── ProfileFriend.vue
+│       ├── Register.vue
+│       ├── Search.vue
+│       ├── SelfFeed.vue
+│       └── Setting.vue
+├── tree.txt
+└── vue.config.js
+
+7 directories, 48 files

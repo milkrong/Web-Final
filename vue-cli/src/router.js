@@ -30,7 +30,8 @@ const router = new Router({
         },
         {
           path: 'recommend',
-          name: 'recommend'
+          name: 'recommend',
+          component: () => import('./views/Recommend.vue')
         }
       ]
     },

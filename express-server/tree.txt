@@ -1,0 +1,36 @@
+.
+├── config
+│   ├── admin.js
+│   ├── key.js
+│   └── passport.js
+├── models
+│   ├── Chat.js
+│   ├── Comment.js
+│   ├── Favorite.js
+│   ├── Feed.js
+│   ├── Follower.js
+│   ├── Following.js
+│   ├── Friend.js
+│   ├── Music.js
+│   ├── User.js
+│   ├── chatRecords.js
+│   └── socketRecords.js
+├── package-lock.json
+├── package.json
+├── routes
+│   └── api
+│       ├── admin.js
+│       ├── chat.js
+│       ├── feeds.js
+│       ├── follow.js
+│       ├── friends.js
+│       ├── musics.js
+│       ├── profiles.js
+│       ├── setting.js
+│       └── users.js
+├── server.js
+├── tmp
+│   └── 4441358a706a29c7a1735ebdf54143f5
+└── tree.txt
+
+5 directories, 28 files

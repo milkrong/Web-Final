@@ -172,7 +172,7 @@ router.get("/self/latest/:id", passport.authenticate("jwt", {session: false}), (
         .sort({created_at: -1})
         .then(feeds => {
             if(feeds.length < 1) {
-                res.status(400).json("There is not feeds")
+                res.status(400).json("There is no feeds")
             }
 
             res.json(feeds)
@@ -183,8 +183,19 @@ router.get("/self/latest/:id", passport.authenticate("jwt", {session: false}), (
 })
 
 // Get lasets feeds from recomment user_id from the req
-router.get("/recommend/latest", passport.authenticate("jwt", {session: false}), (req, res) => {
+router.get("/recommend/latest/:id", passport.authenticate("jwt", {session: false}), (req, res) => {
+    Feed.find({user_id: req.params.id})
+        .sort({created_at: -1})
+        .then(feeds => {
+            if(feeds.length < 1) {
+                res.status(400).json("There is no feeds")
+            }
 
+            res.json(feeds)
+        }).catch(err => {
+            console.log(err)
+            res.status(500).json("Server not work with feeds")
+        })
 })
 
 router.get("/count", (req,res) => {
@@ -239,6 +250,18 @@ router.get("/countHours", (req, res) => {
             ]
           }
         res.json(result)
+    })
+})
+
+router.post("/like", (req, res) => {
+    console.log(req.body._id)
+    Feed.findByIdAndUpdate(req.body._id, {$inc: {likes: 1}}, function(err, feed) {
+        if(err) {
+            console.log(err)
+            res.status(500).json('Something went wrong')
+            return
+        }
+        res.json('Success')
     })
 })
 
