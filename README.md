@@ -2,32 +2,22 @@
 
 ## Introduction
 
-The social and comment website to share personal interets about music. 
+The social and comment website to share personal interest about music. 
 Customers can share their idea about popular music and share resources.
 
 ## Build Status
-Building Status
+Success
 
 ## Build Setup
 
 ``` bash
 # install dependencies
 npm install
+```
 
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
+## Run
+``` bash
+npm start
 ```
 
 ## Pages
@@ -57,10 +47,10 @@ npm test
 
 ## To-do list
 
-- Pages except home page
-- back-end 
-- VueJS framework
+- Comment Function
+
 
 ## Last Update
 
 2018-10-27
+2018-12-10
