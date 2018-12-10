@@ -14,6 +14,15 @@ Success
 # install dependencies
 npm install
 ```
+## Before Running
+Add `key.js` file as following:
+``` javascript
+module.exports = {
+  mongoURI: '<mongdbURL>',
+  secretKey: 'postify',
+  osskey: '<OSSkey of Aliyun',
+};
+```
 
 ## Run
 ``` bash
