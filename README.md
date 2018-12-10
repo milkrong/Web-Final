@@ -15,7 +15,7 @@ Success
 npm install
 ```
 ## Before Running
-Add `key.js` file as following:
+Add `key.js` in 'express-server/confog' as following:
 ``` javascript
 module.exports = {
   mongoURI: '<mongdbURL>',
