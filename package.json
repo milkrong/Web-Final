@@ -11,7 +11,7 @@
     "postinstall": "npm install -g @vue/cli-service && npm install --prefix ./vue-cli && npm install --prefix ./express-server",
     "test": "echo \"Error: no test specified\" && exit 1",
     "client": "npm start --prefix vue-cli",
-    "serve": "npm run server --prefix express-server",
+    "serve": "npm start --prefix express-server",
     "dev": "concurrently \"npm run serve\" \"npm run client\"",
     "start": "concurrently \"npm run serve\" \"npm run client\"" 
   },
